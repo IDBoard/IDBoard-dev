@@ -13,37 +13,35 @@ namespace Backend_Project.Controllers
         public int age { get; set; }
         public string nom { get; set; }
     }
-
-    public class GetInfoController : ApiController
+    public class GetTrombiController : ApiController
     {
-        // GET: api/GetInfo
+        // GET: api/GetTrombi
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/GetInfo/5
+        // GET: api/GetTrombi/5
         public string Get(int id)
         {
-
             Person p = new Person();
             p.age = id;
-            p.nom = "tg";
+            p.nom = "Antoine";
             return (JsonConvert.SerializeObject(p));
 
         }
 
-        // POST: api/GetInfo
+        // POST: api/GetTrombi
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/GetInfo/5
+        // PUT: api/GetTrombi/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/GetInfo/5
+        // DELETE: api/GetTrombi/5
         public void Delete(int id)
         {
         }
