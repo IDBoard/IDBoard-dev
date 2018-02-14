@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <None Include="tata" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
