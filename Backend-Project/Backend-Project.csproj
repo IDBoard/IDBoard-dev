@@ -100,7 +100,6 @@
       <DependentUpon>IdboardDb.edmx</DependentUpon>
       <LastGenOutput>IdboardDb.cs</LastGenOutput>
     </Content>
-    <None Include="toto" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
