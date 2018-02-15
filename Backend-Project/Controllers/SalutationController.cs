@@ -13,12 +13,11 @@ namespace Backend_Project.Controllers
 
         public IHttpActionResult Get()
         {
-            IDBoardDb iDBoard = new IDBoardDb();
+             IDBoardDb iDBoard = new IDBoardDb();
 
-            //            return Ok(from salutation in iDBoard.Salutations.ToList()
-            //                    select salutation);
-            var list = from salutation in iDBoard.Salutations select salutation;
-            return Ok(JsonConvert.SerializeObject(list));
+
+             var list = from salutation in iDBoard.Salutations select salutation.SalutationDefaultValue;
+             return Ok(JsonConvert.SerializeObject(list));
         }
     }
 

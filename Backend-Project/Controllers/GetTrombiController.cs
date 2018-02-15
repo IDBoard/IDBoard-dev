@@ -8,42 +8,15 @@ using System.Web.Http;
 
 namespace Backend_Project.Controllers
 {
-    public class Person
-    {
-        public int age { get; set; }
-        public string nom { get; set; }
-    }
+
     public class GetTrombiController : ApiController
     {
-        // GET: api/GetTrombi
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
-        }
+            IDBoardDb idBoard = new IDBoardDb();
 
-        // GET: api/GetTrombi/5
-        public string Get(int id)
-        {
-            Person p = new Person();
-            p.age = id;
-            p.nom = "Antoine";
-            return (JsonConvert.SerializeObject(p));
-
-        }
-
-        // POST: api/GetTrombi
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/GetTrombi/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/GetTrombi/5
-        public void Delete(int id)
-        {
+            var listStudent = from eleves in idBoard.BusinessEntities select eleves.Name;
+            return Ok(JsonConvert.SerializeObject(listStudent));
         }
     }
 }
