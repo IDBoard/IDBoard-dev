@@ -1,0 +1,338 @@
+﻿body {
+    height: 100%;
+    margin: 0;
+    background: #EAEAEA;
+
+}
+
+table{
+    border: 1px solid red;
+}
+
+tr {
+   
+   
+}
+
+td {
+  text-align:left;
+}
+
+
+.mypagecontainer {
+    border: 3px solid black;
+    float: left;
+    height: auto;
+    padding-top:5px;
+}
+
+.blockcontainer {
+    height: 300px;
+    width: 80%;
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: auto;
+    word-wrap: break-word;
+    float: left;
+    background: #ebebe0;
+}
+
+
+.square {
+    border: 5px solid red;
+    position: relative;
+    text-align: center;
+    width: 40%;
+    float:left;
+}
+
+.square:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+
+    }
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    padding-top: 20%;
+}
+
+.wrapperimg {
+   width:40%
+}
+
+.rectangletop {
+
+    width: 100%;
+    height: 150px;
+    background: #d60000;
+    float: left;
+}
+
+.rectangleleft {
+    width: 100px;   
+    bottom: 0;
+    background: black;
+    height:100vh ;
+    float:left;
+}
+
+img {
+   border:1px solid #021a40;
+    max-height: 195px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+ul, li {
+    list-style-type: none;
+    text-align:left;
+    padding-left:0;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="rectangletop"] {
+        height: 60px;
+    }
+
+    /* For mobile phones: */
+    [class*="rectangleleft"] {
+        width: 60px;
+    }
+
+  
+}
+
+@media screen and (max-width: 991px) {
+    /* start of large tablet styles */
+    .img-responsive {
+        min-width: 70%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    /* Adding a fixed/percentage min-width could ensure that the image doesn't get too small */
+    .img-responsive {
+        min-width: 30%;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    /* start of phone styles */
+    /* It's possible to hide the image if the screen becomes too small */
+    .img-responsive {
+        min-width: 10%;
+    }
+}
+
+
+    .user-details {
+        position: relative;
+        padding: 0;
+    }
+
+        .user-details .user-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            text-align: center;
+        }
+
+    .user-image img {
+        clear: both;
+        margin: auto;
+        position: relative;
+    }
+
+    .user-details .user-info-block {
+        width: 100%;
+        position: absolute;
+        top: 55px;
+        background: rgb(255, 255, 255);
+        z-index: 0;
+        padding-top: 35px;
+    }
+
+    .user-info-block .user-heading {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0 0;
+    }
+
+ .navigation {        
+        width: 100%;
+        margin-left:0;
+        list-style: none;   
+    }
+
+    .navigation li {
+        float: left;
+        margin-left: 0;
+        width: 25%;
+        background-color: 	rgba(160, 160, 160, 1.0);
+        padding: 10px;
+    }
+        .navigation li  {
+            border-left:2px solid red;
+            text-align: center
+        }
+
+            li:hover {
+                color: red;
+            }
+
+
+
+        .navigation li a:hover {
+
+            margin-bottom:2px;
+            color: red;
+            text-align: center
+        }
+
+        .navigation li a {
+        
+            color: black;
+        }
+
+    .user-info-block .user-body {
+        float: left;
+        padding: 5%;
+        width: 90%;
+    }
+
+    .user-body .tab-content > div {
+        float: left;
+        width: 100%;
+    }
+
+    .user-body .tab-content h4 {
+        width: 100%;
+        margin: 10px 0;
+        color: #333;
+    }
+
+#leftPanel {
+    background-color: rgb(220, 40, 40);
+    color: black;
+    text-align: center;
+    border-color: black;
+}
+
+#rightPanel {
+    background-color: rgb(210, 202, 202);
+    min-height: 2000px;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-color: black;
+}
+
+
+.panelmodificationMine {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 50px;
+    background-color: black;
+    border-radius: 15px;
+    position:absolute;
+}
+.wrapper {
+    position: absolute;
+    right: 0;
+}
+
+.distanceTop {
+    margin-top:80px;
+    margin-left:auto;
+    margin-right:auto;
+    float:none;
+    width:90%;
+    height:auto;
+}
+
+.dw {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    width: 90%;
+    height: auto;
+}
+
+.myLittleContainer {
+   width:90%;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+.mybox {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    height: auto;
+    background-color: whitesmoke;
+    float: none;
+}
+
+.read-more-state {
+    display: none;
+}
+
+.read-more-target {
+    opacity: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+    content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+    content: 'Show less';
+}
+
+.read-more-trigger {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 .5em;
+    color: red;
+    font-size: .9em;
+    line-height: 2;
+    border: 1px solid #ddd;
+    border-radius: .25em;
+}
+
+.wrapMessage {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    width: 90%;
+    height: auto;
+
+}
+
+.message {
+    padding: 1%;
+    background: #ffffff;
+    color: black;
+    border-radius: .25em;
+}
+
