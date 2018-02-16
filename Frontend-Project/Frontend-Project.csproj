@@ -1036,7 +1036,6 @@
     <Content Include="fonts\themify.woff" />
     <None Include="packages.config" />
     <Content Include="css\style.css" />
-    <Content Include="index.html" />
     <Content Include="js\angularjs\angular.min.js.map" />
     <Content Include="scss\.sass-cache\0c2f4e7e3ce607a0f7f238a71122520ed74aaa15\style.scssc" />
     <Content Include="scss\.sass-cache\0c2f4e7e3ce607a0f7f238a71122520ed74aaa15\variables.scssc" />
