@@ -5,6 +5,7 @@
             {
                 id: '1',
                 name: 'Jane',
+                active: true,
                 students: [
                     {
                         name: "Jorge",
@@ -23,6 +24,7 @@
             {
                 id: '88',
                 name: 'Bob',
+                active: true,
                 students: [
                     {
                         name: "Pepe1",
@@ -33,20 +35,22 @@
             {
                 id: '3',
                 name: 'Jim',
+                active: true,
                 students: [
                     {
                         name: "Pepe11",
-                        activated: false
+                        active: false
                     }
                 ]
             },
             {
                 id: '4',
                 name: 'Bill',
+                active: true,
                 students: [
                     {
                         name: "Pepe77",
-                        activated: false
+                        active: false
                     }
                 ]
             }
@@ -60,6 +64,7 @@
                 {
                     id: '77',
                     name: $scope.className,
+                    activated: true,
                     students: [
                         {
                             name: "Antuanett",
@@ -81,6 +86,18 @@
             console.log(grade.id);
             var index = $scope.grades.indexOf(grade);
             $scope.grades.splice(index, 1);  
+        };
+
+        $scope.saveGrade = function (grade) {
+            console.log("saveGrade");
+            var index = $scope.grades.indexOf(grade);
+            var gradeToSave = $scope.grades[index];
+
+            console.log("attr ative before set");
+            console.log(gradeToSave.active);
+            gradeToSave.active = false; //update attr active
+            console.log("attr ative after set");
+            console.log(gradeToSave.active);
         };
 
 
