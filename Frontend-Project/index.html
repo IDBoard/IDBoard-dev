@@ -27,6 +27,9 @@
 
             <form>
                 Class Name: <input class="form-control" type="text" placeholder="" ng-model="className">
+               <ul class="list-group" ng-repeat="student in studentsInThisGrade">
+                   <li class="list-group-item">{{student.name}}</li>
+                </ul>
             </form>
 
             <button ng-click="newGrade()">

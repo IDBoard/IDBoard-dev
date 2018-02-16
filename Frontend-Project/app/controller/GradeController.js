@@ -56,6 +56,7 @@
             }
         ];
 
+         
         $scope.grades = gradeList;
         
         $scope.newGrade = function () {
@@ -76,9 +77,11 @@
         }
 
         var gradeSelected;
+
         $scope.selectGrade = function (grade) {
             console.log(grade.id);
             gradeSelected = grade;
+            $scope.studentsInThisGrade = grade.students;
         };
 
         $scope.deleteGrade = function (grade) {
