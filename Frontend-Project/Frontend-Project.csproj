@@ -77,7 +77,6 @@
     <Content Include="css\flat-ui\fonts\lato\lato-italic.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-light.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.svg" />
-    <Content Include="forget_password.html" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\icons\png\Book.png" />
     <Content Include="images\icons\png\Calendar.png" />
