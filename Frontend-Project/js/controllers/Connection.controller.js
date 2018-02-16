@@ -3,6 +3,7 @@
     // Initialisation du numéro d'IDBoard et du mot de passe
     $scope.idboard_number = '';
     $scope.password = '';
+    $scope.cryptPassword = '';
 
     // Message d'erreur ou de success
     $scope.logs = '';
@@ -20,6 +21,8 @@
         if ($scope.idboard_number !== '' && $scope.password !== '') {
             $scope.logs = 'Vous êtes connectés, vous allez être rediriger.';
             $scope.color = 'green';
+            // mot de passe crypté en base 64
+            $scope.cryptPassword = btoa($scope.password);
         }
         else {
             $scope.logs = 'Votre numéro d\'IDBoard ou votre mot de passe est incorrecte.';
