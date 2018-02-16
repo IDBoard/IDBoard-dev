@@ -64,3 +64,19 @@ input::-o-outer-spin-button {
     -o-appearance: none;
     margin: 0
 }
+
+.checkbox .icon-checked:before {
+    color: darkred;
+}
+
+.link {
+    color: gray;
+}
+
+.link:hover {
+    color: darkred;
+}
+
+.input-group, .form-group {
+    margin-bottom: 15px;
+}

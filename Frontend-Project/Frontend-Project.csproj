@@ -77,6 +77,7 @@
     <Content Include="css\flat-ui\fonts\lato\lato-italic.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-light.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.svg" />
+    <Content Include="forget_password.html" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\icons\png\Book.png" />
     <Content Include="images\icons\png\Calendar.png" />
@@ -114,6 +115,7 @@
     <Content Include="images\tile\ribbon-2x.png" />
     <Content Include="images\tile\ribbon.png" />
     <Content Include="js\controllers\Connection.controller.js" />
+    <Content Include="js\controllers\Forget_password.controller.js" />
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
     <Content Include="js\modules\app.module.js" />
