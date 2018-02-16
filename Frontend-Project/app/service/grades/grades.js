@@ -1,8 +1,6 @@
-﻿(function (app) {
-    'use strict';
-    app.service('apiGrades', function ($http) {
+﻿(function (app) { 
+    var gradeService = function ($http) {
         var Grades = {};
-
         var gradeList = [
             {
                 id: '1',
@@ -82,7 +80,6 @@
         Grades.delete = function (id) {
 
         };
-
         // Show Students activated or not
         Grades.findStudentByActivation = function (gradeId, isActivated) {
             var grade = Grades.findById(gradeId);
@@ -92,7 +89,7 @@
                 return student.activated === isActivated;
             });
         };
-
-    });
-})();
+    };
+    app.factory("gradeService", gradeService);
+}(angular.module("App")));
 
