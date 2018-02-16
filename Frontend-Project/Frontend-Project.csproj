@@ -923,7 +923,6 @@
     <Content Include="js\dashboard.js" />
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
-    <Content Include="js\index.html" />
     <Content Include="js\less.min.js" />
     <Content Include="js\lib\chart-js\Chart.bundle.js" />
     <Content Include="js\lib\chart-js\chartjs-init.js" />
