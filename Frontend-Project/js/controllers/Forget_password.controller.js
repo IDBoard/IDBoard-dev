@@ -62,8 +62,4 @@
         }
         
     }
-
-    $scope.get_connexion = function () {
-        window.history.go(-1);
-    }
 });

@@ -2,8 +2,13 @@
     margin-bottom: 15px;
 }
 
-#title {
+.app-connection #title {
     font-size: 35px;
+    color: black;
+}
+
+.forget-password #title {
+    font-size: 25px;
     color: black;
 }
 

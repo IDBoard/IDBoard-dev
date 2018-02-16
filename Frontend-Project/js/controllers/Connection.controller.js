@@ -41,8 +41,4 @@
             document.querySelector('#password').setAttribute('type', 'password');
         }
     }
-
-    $scope.get_forget_password = function () {
-        window.location.href = 'forget_password.html';
-    }
 });
