@@ -5,16 +5,36 @@
     <meta charset="utf-8" />
     <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
     <script src="/Scripts/angular.min.js"></script>
-    <script src="/app/service/grades/grades.js"></script>
     <script src="/app/app.js"></script>
-
-    <script src="/app/controller/GradeController.js"></script>
+    <script src="app/controller/GradeController.js"></script>
     <title></title>
 </head>
 <body>
     <div ng-app="App">
         <div ng-controller="GradeController">
-            {{message}}
+
+            <ul class="list-group" ng-repeat="grade in grades">
+                <li class="list-group-item">
+                    <input type="checkbox" data-ng-click="selectGrade(grade)" />{{grade.name}}
+
+                    <button ng-click="deleteGrade(grade)">
+                        Delete a class
+                    </button>
+
+                </li>
+
+            </ul>
+
+
+            <form>
+                Class Name: <input class="form-control" type="text" placeholder="" ng-model="className">
+            </form>
+
+            <button ng-click="newGrade()">
+                Add new class
+            </button>
+
+
         </div>
         
     </div>

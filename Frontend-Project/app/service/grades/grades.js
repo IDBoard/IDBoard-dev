@@ -1,5 +1,5 @@
-﻿(function (app) {
-    app.service('apiGrades', function ($http) {
+﻿(function (app) { 
+    var gradeService = function ($http) {
         var Grades = {};
         var gradeList = [
             {
@@ -89,6 +89,7 @@
                 return student.activated === isActivated;
             });
         };
-    });
-})(angular.module("App"));
+    };
+    app.factory("gradeService", gradeService);
+}(angular.module("App")));
 

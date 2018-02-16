@@ -69,7 +69,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="app\service\grades\grades-service.js" />
     <Content Include="app\service\grades\grades.js" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular.min.js.map" />
