@@ -13,10 +13,10 @@ namespace Backend_Project
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class IdBoardDb : DbContext
+    public partial class IDBoardDb : DbContext
     {
-        public IdBoardDb()
-            : base("name=IdBoardDb")
+        public IDBoardDb()
+            : base("name=IDBoardDb")
         {
         }
     
