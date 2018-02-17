@@ -97,7 +97,6 @@
     <Content Include="IDBoardDb.edmx.diagram">
       <DependentUpon>IDBoardDb.edmx</DependentUpon>
     </Content>
-    <None Include="tata" />
     <Content Include="IDBoardDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IDBoardDb.Context.cs</LastGenOutput>
