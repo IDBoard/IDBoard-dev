@@ -13,7 +13,7 @@ namespace Backend_Project.Controllers
         // GET: api/Internship : Renvoie la liste des stages
         public IHttpActionResult Get()
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             var InternshipOffersList = (from t1 in iDBoard.InternshipOffers
                                         join t2 in iDBoard.TypesInternships
