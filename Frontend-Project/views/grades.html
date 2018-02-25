@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="../js/angularjs/angular.js"></script>
+    <script src="../js/modules/app.module.js"></script>
+    <script src="../js/services/grade.service.js"></script>
+    <script src="../js/controllers/Grade.controller.js"></script>
+    <title></title>
+</head>
+<body>
+    <div ng-app="IDBoard">
+        <div ng-controller="GradeController">
+
+            <ul class="list-group" ng-repeat="grade in grades">
+                <li class="list-group-item">
+                    <input type="checkbox" data-ng-click="selectGrade(grade)" />{{grade.name}}
+                    <button ng-click="deleteGrade(grade)">
+                        Delete a class
+                    </button>
+                </li>
+            </ul>
+
+            <form>
+                Class Name: <input class="form-control" type="text" placeholder="" ng-model="className">
+            </form>
+
+            <button ng-click="newGrade()">
+                Add new class
+            </button>
+
+            <label>Students</label>
+
+            <ul class="list-group" ng-repeat="student in students">
+                <li class="list-group-item">
+                    <input type="checkbox" data-ng-click="selectStudent(student)" />{{student.name}}
+                </li>
+            </ul>
+
+            <label> Students in this grade </label>
+
+            <ul class="list-group" ng-repeat="student in studentsInThisGrade">
+                <li class="list-group-item">{{student.name}}</li>
+            </ul>
+
+
+
+        </div>
+
+    </div>
+    </body>
+</html>
