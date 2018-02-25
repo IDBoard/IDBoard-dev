@@ -70,6 +70,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="app\service\grades\grades.js" />
+    <Content Include="index.html" />
     <Content Include="indexGrade.html" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Web.Debug.config">
