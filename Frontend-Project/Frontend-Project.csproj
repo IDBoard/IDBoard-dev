@@ -66,12 +66,90 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="app\service\grades\grades.js" />
+    <Content Include="css\flat-ui\flat-ui.css" />
+    <Content Include="css\flat-ui\flat-ui.min.css" />
+    <Content Include="css\flat-ui\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="css\flat-ui\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\flat-ui\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="css\flat-ui\fonts\lato\lato-black.svg" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bold.svg" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="css\flat-ui\fonts\lato\lato-italic.svg" />
+    <Content Include="css\flat-ui\fonts\lato\lato-light.svg" />
+    <Content Include="css\flat-ui\fonts\lato\lato-regular.svg" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\icons\png\Book.png" />
+    <Content Include="images\icons\png\Calendar.png" />
+    <Content Include="images\icons\png\Chat.png" />
+    <Content Include="images\icons\png\Clipboard.png" />
+    <Content Include="images\icons\png\Compas.png" />
+    <Content Include="images\icons\png\Gift-Box.png" />
+    <Content Include="images\icons\png\Infinity-Loop.png" />
+    <Content Include="images\icons\png\Mail.png" />
+    <Content Include="images\icons\png\Map.png" />
+    <Content Include="images\icons\png\Pensils.png" />
+    <Content Include="images\icons\png\Pocket.png" />
+    <Content Include="images\icons\png\Retina-Ready.png" />
+    <Content Include="images\icons\png\Toilet-Paper.png" />
+    <Content Include="images\icons\png\Watches.png" />
+    <Content Include="images\icons\svg\book.svg" />
+    <Content Include="images\icons\svg\calendar.svg" />
+    <Content Include="images\icons\svg\chat.svg" />
+    <Content Include="images\icons\svg\clipboard.svg" />
+    <Content Include="images\icons\svg\clocks.svg" />
+    <Content Include="images\icons\svg\compas.svg" />
+    <Content Include="images\icons\svg\gift-box.svg" />
+    <Content Include="images\icons\svg\loop.svg" />
+    <Content Include="images\icons\svg\mail.svg" />
+    <Content Include="images\icons\svg\map.svg" />
+    <Content Include="images\icons\svg\paper-bag.svg" />
+    <Content Include="images\icons\svg\pencils.svg" />
+    <Content Include="images\icons\svg\retina.svg" />
+    <Content Include="images\icons\svg\ribbon.svg" />
+    <Content Include="images\icons\svg\toilet-paper.svg" />
+    <Content Include="images\login\icon.png" />
+    <Content Include="images\login\imac-2x.png" />
+    <Content Include="images\login\imac.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\tile\ribbon-2x.png" />
+    <Content Include="images\tile\ribbon.png" />
+    <Content Include="js\controllers\Connection.controller.js" />
+    <Content Include="js\controllers\Forget_password.controller.js" />
+    <Content Include="js\flat-ui\flat-ui.js" />
+    <Content Include="js\flat-ui\flat-ui.min.js" />
+    <Content Include="js\modules\app.module.js" />
+    <Content Include="js\flat-ui\vendor\jquery.min.map" />
+    <Content Include="css\flat-ui\flat-ui.css.map" />
+    <Content Include="css\flat-ui\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\flat-ui\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\flat-ui\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\flat-ui\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="css\flat-ui\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="css\flat-ui\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="css\flat-ui\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="css\flat-ui\fonts\glyphicons\selection.json" />
+    <Content Include="css\flat-ui\fonts\lato\lato-black.eot" />
+    <Content Include="css\flat-ui\fonts\lato\lato-black.ttf" />
+    <Content Include="css\flat-ui\fonts\lato\lato-black.woff" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bold.eot" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bold.ttf" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bold.woff" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="css\flat-ui\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="css\flat-ui\fonts\lato\lato-italic.eot" />
+    <Content Include="css\flat-ui\fonts\lato\lato-italic.ttf" />
+    <Content Include="css\flat-ui\fonts\lato\lato-italic.woff" />
+    <Content Include="css\flat-ui\fonts\lato\lato-light.eot" />
+    <Content Include="css\flat-ui\fonts\lato\lato-light.ttf" />
+    <Content Include="css\flat-ui\fonts\lato\lato-light.woff" />
+    <Content Include="css\flat-ui\fonts\lato\lato-regular.eot" />
+    <Content Include="css\flat-ui\fonts\lato\lato-regular.ttf" />
+    <Content Include="css\flat-ui\fonts\lato\lato-regular.woff" />
+    <None Include="packages.config" />
+    <Content Include="css\style.css" />
     <Content Include="index.html" />
-    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="js\angularjs\angular.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -81,23 +159,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="app\app.js" />
-    <Content Include="app\controller\GradeController.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="js\angularjs\angular-mocks.js" />
+    <Content Include="js\angularjs\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="js\angularjs\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="js\angularjs\angular-ui\ui-bootstrap.js" />
+    <Content Include="js\angularjs\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="js\angularjs\angular.js" />
+    <Content Include="js\angularjs\angular.min.js" />
+    <Content Include="js\flat-ui\vendor\html5shiv.js" />
+    <Content Include="js\flat-ui\vendor\jquery.min.js" />
+    <Content Include="js\flat-ui\vendor\respond.min.js" />
+    <Content Include="js\flat-ui\vendor\video-js.swf" />
+    <Content Include="js\flat-ui\vendor\video.js" />
+    <Content Include="views\main.html" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="js\directives\" />
+    <Folder Include="js\factories\" />
+    <Folder Include="js\filtres\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
