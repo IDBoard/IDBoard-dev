@@ -4,7 +4,7 @@
         var gradeList = [
             {
                 id: '1',
-                name: 'Jane',
+                name: 'M2',
                 active: true,
                 students: [
                     {
@@ -23,8 +23,9 @@
             },
             {
                 id: '88',
-                name: 'Bob',
+                name: 'B1',
                 active: true,
+                checked: false,
                 students: [
                     {
                         name: "Pepe1",
@@ -34,8 +35,9 @@
             },
             {
                 id: '3',
-                name: 'Jim',
+                name: 'B2',
                 active: true,
+                checked: false,
                 students: [
                     {
                         name: "Pepe11",
@@ -45,8 +47,9 @@
             },
             {
                 id: '4',
-                name: 'Bill',
+                name: 'B3',
                 active: true,
+                checked: false,
                 students: [
                     {
                         name: "Pepe77",
@@ -55,10 +58,52 @@
                 ]
             }
         ];
+        var studentsList = [
+            {
+                id: '1',
+                name: 'Pepito',
+                lastName: 'LL'
+            },
+            {
+                id: '55',
+                name: 'Juan',
+                lastName: 'LL'
+            },
+            {
+                id: '77',
+                name: 'Pepito4',
+                lastName: 'LL'
+            },
+            {
+                id: '47',
+                name: 'Pepito44',
+                lastName: 'LL'
+            },
+            {
+                id: '74',
+                name: 'PepitoL',
+                lastName: 'LL'
+            },
+            {
+                id: '11',
+                name: 'Pepito',
+                lastName: 'LL'
+            },
+            {
+                id: '85',
+                name: 'PepitoMo',
+                lastName: 'LL'
+            },
+            {
+                id: '96',
+                name: 'Pepito',
+                lastName: 'LL'
+            }
+        ];
 
-         
         $scope.grades = gradeList;
-        
+        $scope.students = studentsList;
+
         $scope.newGrade = function () {
             console.log("add new grade");
             gradeList.push(
@@ -69,7 +114,8 @@
                     students: [
                         {
                             name: "Antuanett",
-                            activated: true
+                            activated: true,
+                            checked: false,
                         }
                     ]
                 }   
@@ -82,6 +128,7 @@
             console.log(grade.id);
             gradeSelected = grade;
             $scope.studentsInThisGrade = grade.students;
+            var index = $scope.grades.indexOf(gradeSelected);
         };
 
         $scope.deleteGrade = function (grade) {
@@ -103,6 +150,18 @@
             console.log(gradeToSave.active);
         };
 
+        $scope.selectStudent = function (studient) {
+            console.log(studient.id);
+            var studientSelected = studient;
+            if (gradeSelected)
+            {
+                console.log("grade selected");
+                console.log(gradeSelected);
+                var index = $scope.grades.indexOf(gradeSelected);
+                $scope.grades[index].students.push(studient);
+            }
+        };
+        
 
     };
     app.controller("GradeController", GradeController);
