@@ -18,7 +18,8 @@
                     name: "Pepe",
                     activated: true
                 }
-            ]
+            ],
+            contents: []
         },
         {
             id: '88',
@@ -29,6 +30,12 @@
                 {
                     name: "Pepe1",
                     activated: true
+                }
+            ],
+            contents: [
+                {
+                    id: "1",
+                    name: "contents1"
                 }
             ]
         },
@@ -42,6 +49,12 @@
                     name: "Pepe11",
                     active: false
                 }
+            ],
+            contents: [
+                {
+                    id: "2",
+                    name: "contents2"
+                }
             ]
         },
         {
@@ -54,6 +67,17 @@
                     name: "Pepe77",
                     active: false
                 }
+            ],
+            contents: [
+                {
+                    id: "3",
+                    name: "contents3"
+                },
+                {
+                    id: "4",
+                    name: "contents4"
+                },
+
             ]
         }
     ];
@@ -68,37 +92,44 @@
         {
             id: '55',
             name: 'Juan',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         },
         {
             id: '77',
             name: 'Pepito4',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         },
         {
             id: '47',
             name: 'Pepito44',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         },
         {
             id: '74',
             name: 'PepitoL',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         },
         {
             id: '11',
             name: 'Pepito',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         },
         {
             id: '85',
             name: 'PepitoMo',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         },
         {
             id: '96',
             name: 'Pepito',
-            lastName: 'LL'
+            lastName: 'LL',
+            active: false
         }
     ];
 
@@ -112,6 +143,34 @@
 
     this.getStudentsInThisGrade = function(grade){
         return grade.students;
+    }
+
+    this.duplicateGrade = function (grade, nameNewGrade) {
+        console.log(grade.name);
+        var newGrade = {
+            id: '44',
+            name: nameNewGrade,
+            active: true,
+            students: [],
+            contents: grade.contents
+        };
+        gradeList.push(newGrade);
+    }
+
+    this.archiverGrade = function (grade) {
+        if (grade.active === true) {
+            grade.active = false;
+        }
+        console.log(grade);
+    }
+
+    this.deleteGrade = function (grade) {
+        var index = gradeList.indexOf(grade);
+        gradeList.splice(index, 1)
+    }
+
+    this.addStudent = function (grade, student) {
+        grade.students.push(student);
     }
 
 });
