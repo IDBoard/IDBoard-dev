@@ -63,6 +63,7 @@
     $scope.duplicateGrade = function(grade) {
         console.log("duplicateGrade method");
         grade = gradeSelected;
+
         var nameNewGrade = $scope.nameNewGrade;
         GradeService.duplicateGrade(grade, nameNewGrade);
     };

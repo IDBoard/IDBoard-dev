@@ -107,7 +107,7 @@
     }
 
     this.duplicateGrade = function (grade, nameNewGrade) {
-        console.log(grade.name);
+        console.log(grade.name);=
         var newGrade = {
             id: '44',
             name: nameNewGrade,
@@ -115,7 +115,7 @@
             students: [],
             contents: grade.contents
         };
-        gradeList.push(newGrade);
+        gradeList.push(newGrade);      
     }
 
     this.archiverGrade = function (grade) {
