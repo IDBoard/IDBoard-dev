@@ -1,4 +1,4 @@
-﻿idboard.service('GradeService', function () {
+﻿idboard.service('GradeService', function (StudentService) {
 
     var gradeList = [
         {
@@ -8,15 +8,15 @@
             students: [
                 {
                     name: "Jorge",
-                    activated: false
+                    active: false
                 },
                 {
                     name: "Antuanett",
-                    activated: true
+                    active: true
                 },
                 {
                     name: "Pepe",
-                    activated: true
+                    active: true
                 }
             ],
             contents: []
@@ -29,8 +29,17 @@
             students: [
                 {
                     name: "Pepe1",
-                    activated: true
-                }
+                    active: true
+                },
+                {
+                    name: "Pepe33",
+                    active: true
+                },
+                {
+                    name: "Pepe44",
+                    active: true
+                },
+
             ],
             contents: [
                 {
@@ -83,55 +92,7 @@
     ];
 
     // Student do not belong to a grade
-    var studentsNotBelongToGradeList = [
-        {
-            id: '1',
-            name: 'Pepito',
-            lastName: 'LL'
-        },
-        {
-            id: '55',
-            name: 'Juan',
-            lastName: 'LL',
-            active: false
-        },
-        {
-            id: '77',
-            name: 'Pepito4',
-            lastName: 'LL',
-            active: false
-        },
-        {
-            id: '47',
-            name: 'Pepito44',
-            lastName: 'LL',
-            active: false
-        },
-        {
-            id: '74',
-            name: 'PepitoL',
-            lastName: 'LL',
-            active: false
-        },
-        {
-            id: '11',
-            name: 'Pepito',
-            lastName: 'LL',
-            active: false
-        },
-        {
-            id: '85',
-            name: 'PepitoMo',
-            lastName: 'LL',
-            active: false
-        },
-        {
-            id: '96',
-            name: 'Pepito',
-            lastName: 'LL',
-            active: false
-        }
-    ];
+    var studentsNotBelongToGradeList = StudentService.getStudents();
 
     this.getGrades = function () {
         return gradeList;
@@ -171,6 +132,26 @@
 
     this.addStudent = function (grade, student) {
         grade.students.push(student);
+    }
+
+    this.deleteStudent = function (grade, student)
+    {
+        var index = grade.students.indexOf(student);
+        console.log("position student to delete");
+        console.log(index);
+        console.log(student.name);
+        grade.students.splice(index, 1)
+    }
+
+    this.inactiveStudentPassage = function (student) {
+        //var index = grade.students.indexOf(student);
+        console.log("before set active student");
+        console.log(student.active);
+        console.log(student.name);
+        //grade.students[index].active = false;
+        student.active = false;
+        console.log("after set active student");
+        console.log(student.active);
     }
 
 });

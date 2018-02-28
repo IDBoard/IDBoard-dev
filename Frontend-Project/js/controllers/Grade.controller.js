@@ -72,6 +72,16 @@
         GradeService.archiverGrade(grade);
     }
 
+    $scope.deleteStudent = function (student) {
+        console.log("deleteStudent method");
+        GradeService.deleteStudent(gradeSelected, student);
+    }
+
+    $scope.inactiveStudentPassage = function (student) {
+        console.log("inactiveStudentPassage method");
+        GradeService.inactiveStudentPassage(student);
+    }
+
 
     
 });

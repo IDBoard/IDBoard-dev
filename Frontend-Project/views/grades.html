@@ -7,6 +7,7 @@
             crossorigin="anonymous"></script>
     <script src="../js/angularjs/angular.js"></script>
     <script src="../js/modules/app.module.js"></script>
+    <script src="../js/services/student.service.js"></script>
     <script src="../js/services/grade.service.js"></script>
     <script src="../js/controllers/Grade.controller.js"></script>
     <title></title>
@@ -49,7 +50,11 @@
             <label> Students in this grade </label>
 
             <ul class="list-group" ng-repeat="student in studentsInThisGrade">
-                <li class="list-group-item">{{student.name}}</li>
+                <li class="list-group-item">
+                    {{student.name}}
+                    <button ng-click="deleteStudent(student)">Delete Student </button>
+                    <button ng-click="inactiveStudentPassage(student)"> inactiveStudentPassage</button>
+                </li>
             </ul>
 
 
@@ -59,6 +64,7 @@
             <button ng-click="duplicateGrade(grade, '')">
                 duplicateGrade
             </button>
+            
 
 
         </div>
