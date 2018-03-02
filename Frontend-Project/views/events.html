@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="../js/angularjs/angular.js"></script>
+    <script src="../js/modules/app.module.js"></script>
+    <script src="../js/services/events.service.js"></script>
+    <script src="../js/services/student.service.js"></script>
+    <script src="../js/controllers/Events.controller.js"></script>
+</head>
+<body>
+    <div ng-app="IDBoard">
+        <div ng-controller="EventsController">
+
+            <form>
+                Student <input class="form-control" type="text" placeholder="" ng-model="currentStudentId">
+            </form>
+
+            <ul class="list-group" ng-repeat="event in events">
+                <li class="list-group-item">
+                    {{event.msg}} ----  {{event.date}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

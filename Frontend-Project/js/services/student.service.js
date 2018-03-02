@@ -54,4 +54,21 @@
         return students;
     }
 
+    this.getStudentById = function (id) {
+        console.log("getStudentById method");
+        console.log(id);
+
+        var student;
+
+        for (var i = 0; i < students.length; i++)
+        {
+            if (students[i].id == id)
+            {
+                student = students[i];
+                break;
+            }
+        }
+        return student;
+    }
+
 });
