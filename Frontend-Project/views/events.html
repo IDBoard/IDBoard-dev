@@ -14,14 +14,17 @@
 <body>
     <div ng-app="IDBoard">
         <div ng-controller="EventsController">
-
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell"></i>
+                <span class="count bg-danger">5</span>
+            </button>
             <form>
                 Student <input class="form-control" type="text" placeholder="" ng-model="currentStudentId">
             </form>
-
-            <ul class="list-group" ng-repeat="event in events">
+            <label>Current Student: {{currentStudent.name}} {{currentStudent.lastName}}</label>
+            <ul class="list-group" ng-repeat="event in events| orderBy:'date':true">
                 <li class="list-group-item">
-                    {{event.msg}} ----  {{event.date}}
+                    {{event.msg}} ----  {{event.date | date:'yyyy-MM-dd'}}
                 </li>
             </ul>
         </div>

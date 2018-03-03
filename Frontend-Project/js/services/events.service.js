@@ -1,6 +1,12 @@
 ﻿idboard.service('EventsService', function () {
     var eventsList = [
         {
+            id: '48',
+            msg: "Convocation à l'entretien d'admission",
+            date: new Date("10, 12, 2016"),
+            student: '55'
+        },
+        {
             id: '1',
             msg: "Admissible M1 ESD Sophia Antipolis",
             date: new Date("10,13, 2016"),
@@ -10,12 +16,6 @@
             id: '44',
             msg: "Examen Admission Oral",
             date: new Date("10,13, 2016"),
-            student: '55'
-        },
-        {
-            id: '48',
-            msg: "Convocation à l'entretien d'admission",
-            date: new Date("10, 12, 2016"),
             student: '55'
         },
         {
@@ -54,5 +54,20 @@
 
     this.getEvents = function () {
         return eventsList;
+    }
+
+    this.getEventsByStudent = function (id)
+    {
+        var events = [];
+        for (var i = 0; i < eventsList.length; i++)
+        {
+            if (eventsList[i].student == id)
+            {
+                events.push(eventsList[i]);
+            }
+        }
+        console.log("events");
+        console.log(events);
+        return events;
     }
 });

@@ -1,9 +1,7 @@
 ﻿idboard.controller('EventsController', function ($scope, EventsService, StudentService) {
-
-    $scope.events = EventsService.getEvents();
-
+    
+    $scope.currentStudentId = 55;
     var currentStudentId = $scope.currentStudentId;
-    console.log($scope.currentStudentId);
 
     if (currentStudentId !== 'undefined' && currentStudentId !== null )
     {
@@ -12,8 +10,8 @@
         var currentStudent = StudentService.getStudentById(currentStudentId);
 
         if (currentStudent !== null) {
-            console.log(currentStudent);
-            console.log("currentStudent != null");
+            $scope.currentStudent = currentStudent;
+            $scope.events = EventsService.getEventsByStudent(currentStudentId);
         }
 
 
