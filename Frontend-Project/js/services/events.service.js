@@ -66,8 +66,17 @@
                 events.push(eventsList[i]);
             }
         }
-        console.log("events");
-        console.log(events);
         return events;
+    }
+
+    this.addEvents = function (event)
+    {
+        event = {
+            id: '96',
+            msg: "Event Test",
+            date: new Date("03, 03, 2018"),
+            student: '55'
+        }
+        eventsList.push(event);
     }
 });

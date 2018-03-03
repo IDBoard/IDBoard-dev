@@ -16,12 +16,13 @@
         <div ng-controller="EventsController">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-bell"></i>
-                <span class="count bg-danger">5</span>
+                <span class="count bg-danger">{{eventsNotViewed}}</span>
             </button>
             <form>
-                Student <input class="form-control" type="text" placeholder="" ng-model="currentStudentId">
+                Student <input class="form-control" type="text" placeholder="student id" ng-model="currentStudentId">
             </form>
-            <label>Current Student: {{currentStudent.name}} {{currentStudent.lastName}}</label>
+            <label> Student Id: {{currentStudentId}}</label>
+            <label>Current Student:{{currentStudent.name}} {{currentStudent.lastName}}</label>
             <ul class="list-group" ng-repeat="event in events| orderBy:'date':true">
                 <li class="list-group-item">
                     {{event.msg}} ----  {{event.date | date:'yyyy-MM-dd'}}
