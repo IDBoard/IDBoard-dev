@@ -8,7 +8,7 @@
             students: [
                 {
                     name: "Jorge",
-                    active: false
+                    active: true
                 },
                 {
                     name: "Antuanett",
@@ -29,15 +29,18 @@
             students: [
                 {
                     name: "Pepe1",
-                    active: true
+                    active: true,
+                    grade: true
                 },
                 {
                     name: "Pepe33",
-                    active: true
+                    active: true,
+                    grade: true
                 },
                 {
                     name: "Pepe44",
-                    active: true
+                    active: true,
+                    grade: true
                 },
 
             ],
@@ -56,7 +59,8 @@
             students: [
                 {
                     name: "Pepe11",
-                    active: false
+                    active: true,
+                    grade: true
                 }
             ],
             contents: [
@@ -74,7 +78,8 @@
             students: [
                 {
                     name: "Pepe77",
-                    active: false
+                    active: true,
+                    grade: true
                 }
             ],
             contents: [
@@ -90,20 +95,14 @@
             ]
         }
     ];
-
-    // Student do not belong to a grade
-    var studentsNotBelongToGradeList = StudentService.getStudents();
-
+    
     this.getGrades = function () {
         return gradeList;
     }
 
-    this.getStudentsNotBelongToGrade = function () {
-        return studentsNotBelongToGradeList;
-    }
-
-    this.getStudentsInThisGrade = function(grade){
-        return grade.students;
+    this.getStudentsInThisGrade = function (grade) {
+        if (grade)
+            return grade.students;
     }
 
     this.duplicateGrade = function (grade, nameNewGrade) {
@@ -127,11 +126,31 @@
 
     this.deleteGrade = function (grade) {
         var index = gradeList.indexOf(grade);
-        gradeList.splice(index, 1)
+        gradeList.splice(index, 1);
     }
 
     this.addStudent = function (grade, student) {
-        grade.students.push(student);
+        console.log('student added id', student.id);
+        if (!this.studentExisted(grade, student)) {
+            console.log('this student not existed', student.id );
+            grade.students.push(student);
+        }
+    }
+
+    this.studentExisted = function (grade, student)
+    { 
+        var existed = false;
+        var studentList = grade.students;
+        for (var i = 0; i < studentList.length; i++)
+        {
+            if (studentList[i].id == student.id)
+            {
+                existed = true;
+                break;
+            }
+        }
+
+        return existed;
     }
 
     this.deleteStudent = function (grade, student)

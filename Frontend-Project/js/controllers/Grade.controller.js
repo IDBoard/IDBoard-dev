@@ -1,8 +1,10 @@
-﻿idboard.controller('GradeController', function ($scope, GradeService) {
+﻿idboard.controller('GradeController', function ($scope, GradeService, StudentService) {
 
+    $scope.gradeService = GradeService;
+    var students    = StudentService.getStudents();
     $scope.grades   = GradeService.getGrades();
-    $scope.students = GradeService.getStudentsNotBelongToGrade();
-
+    $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
+   
     $scope.newGrade = function () {
         console.log("add new grade");
         GradeService.getGrades().push(
@@ -24,9 +26,8 @@
     var gradeSelected;
 
     $scope.selectGrade = function (grade) {
-        console.log(grade.id);
+        console.log("selectGrade");
         gradeSelected = grade;
-        //$scope.studentsInThisGrade = grade.students;
         $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
         var index = $scope.grades.indexOf(gradeSelected);
     };
@@ -35,35 +36,21 @@
         console.log("deleteGrade");
         console.log(grade.id);
         GradeService.deleteGrade(grade);
-        /*var index = $scope.grades.indexOf(grade);
-        $scope.grades.splice(index, 1);*/
     };
 
-   /* $scope.saveGrade = function (grade) {
-        console.log("saveGrade");
-        var index = $scope.grades.indexOf(grade);
-        var gradeToSave = $scope.grades[index];
-
-        console.log("attr ative before set");
-        console.log(gradeToSave.active);
-        gradeToSave.active = false; //update attr active
-        console.log("attr ative after set");
-        console.log(gradeToSave.active);
-    };*/
-
     $scope.addStudent = function (student) {
-        console.log(student.id);
         if (gradeSelected) {
             console.log("grade selected");
             console.log(gradeSelected);
             GradeService.addStudent(gradeSelected, student);
+            student.grade = true;
+            StudentService.changeGradeStudent(student);
         }
     };
 
     $scope.duplicateGrade = function(grade) {
         console.log("duplicateGrade method");
         grade = gradeSelected;
-
         var nameNewGrade = $scope.nameNewGrade;
         GradeService.duplicateGrade(grade, nameNewGrade);
     };
@@ -76,6 +63,8 @@
     $scope.deleteStudent = function (student) {
         console.log("deleteStudent method");
         GradeService.deleteStudent(gradeSelected, student);
+        student.grade = false;
+        StudentService.changeGradeStudent(student);
     }
 
     $scope.inactiveStudentPassage = function (student) {
@@ -84,7 +73,13 @@
     }
 
 
+    $scope.$watch('studentsInThisGrade.length', function (newVal, oldVal) {
+        console.log('watch studentsInThisGrade');
+
+        $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
+        console.log('Watch: studentNotBelongTo', $scope.students);
+    });
+
     
 });
-
 
