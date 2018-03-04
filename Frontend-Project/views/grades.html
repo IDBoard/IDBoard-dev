@@ -200,95 +200,90 @@
         </header><!-- /header -->
         <!-- Header-->
         <div class="breadcrumbs">
-            <div><!--class="col-sm-4"-->
-                <!--<div class="page-header float-left">-->
-            <div>
-                    <!--class="page-title"-->
-                    <div ng-app="IDBoard">
-                        <!--GradeController--->
-                        <div ng-controller="GradeController">
-                            <div class="row">
-                                <div class="col-sm-6 form-group">
-                                    <span class="label label-primary">Class Name:</span>
-                                    <input class="form-control" type="text" placeholder="" ng-model="gradeNameToAdd">
-                                    <button type="button" class="btn btn-primary" ng-click="newGrade()" style="margin-top: 2px;">
-                                        Add new class
-                                    </button>
-                                </div>
+            <div ng-app="IDBoard">
+                <!--GradeController--->
+                <div ng-controller="GradeController">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <span class="label label-primary">Class Name:</span>
+                            <input class="form-control" type="text" placeholder="" ng-model="gradeNameToAdd">
+                            <button type="button" class="btn btn-primary" ng-click="newGrade()" style="margin-top: 2px;">
+                                Add new class
+                            </button>
+                        </div>
 
-                                <div class="col-sm-6 form-group">
-                                    <span class="label label-primary">Class Name For Duplicate :</span>
-                                    <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
-                                    <button type="button" class="btn btn-primary" ng-click="duplicateGrade(grade, '')" style="margin-top: 2px;">
-                                        duplicateGrade
+                        <div class="col-sm-6 form-group">
+                            <span class="label label-primary">Class Name For Duplicate :</span>
+                            <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
+                            <button type="button" class="btn btn-primary" ng-click="duplicateGrade(grade, '')" style="margin-top: 2px;">
+                                duplicateGrade
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Grade List -->
+                        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item active">
+                                    Grades
+                                </a>
+                            </div>
+                            <div class="list-group" ng-repeat="grade in grades">
+                                <div class="list-group-item">
+                                    <a href="javascript: void(0);"
+                                        class="list-group-item"
+                                        data-ng-click="selectGrade(grade)">
+                                        {{grade.name}}
+                                    </a>
+                                    <button type="button" class="btn btn-danger float-right" ng-click="deleteGrade(grade)" aria-label="Left Align">
+                                        Supprimer
                                     </button>
                                 </div>
                             </div>
-                            <div class="row">
-                                <!-- Grade List -->
-                                <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item active">
-                                            Grades
-                                        </a>
-                                    </div>
-                                    <div class="list-group" ng-repeat="grade in grades">
-                                        <div class="list-group-item">
-                                            <a href="javascript: void(0);"
-                                               class="list-group-item"
-                                               data-ng-click="selectGrade(grade)">
-                                                {{grade.name}}
-                                            </a>
-                                            <button type="button" class="btn btn-danger float-right" ng-click="deleteGrade(grade)" aria-label="Left Align">
-                                                Supprimer
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Student without grade List -->
-                                <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item active">
-                                            Students
-                                        </a>
-                                    </div>
-                                    <div class="list-group" ng-repeat="student in studentsNotBelongToGrade">
-                                        <a href="javascript: void(0);"
-                                           class="list-group-item"
-                                           data-ng-click="addStudent(student)">
-                                            {{student.name}}
-                                        </a>
-                                    </div>
-                                </div>
+                        </div>
+                        <!-- Student without grade List -->
+                        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item active">
+                                    Students
+                                </a>
                             </div>
-                          
-                            <!-- Students on selected grade -->
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item active">
-                                            Students in this grade
-                                        </a>
-                                    </div>
-                                    <div class="list-group" ng-repeat="student in studentsInThisGrade">
-                                        <div class="list-group-item">
-                                            <a href="javascript: void(0);"
-                                               data-ng-click="addStudent(student)">
-                                                {{student.name}}
-                                            </a>
-                                            <button type="button" class="btn btn-danger float-right" ng-click="deleteStudent(student)" aria-label="Left Align">
-                                                Supprimer
-                                            </button>
-                                            <button type="button" class="btn btn-warning float-right" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
-                                                Innactivate
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="list-group" ng-repeat="student in studentsNotBelongToGrade">
+                                <a href="javascript: void(0);"
+                                    class="list-group-item"
+                                    data-ng-click="addStudent(student)">
+                                    {{student.name}}
+                                </a>
                             </div>
-                        </div>          
+                        </div>
                     </div>
-                </div>
+                          
+                    <!-- Students on selected grade -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item active">
+                                    Students in this grade
+                                </a>
+                            </div>
+                            <div class="list-group" ng-repeat="student in studentsInThisGrade">
+                                <div class="list-group-item">
+                                    <a href="javascript: void(0);"
+                                        data-ng-click="addStudent(student)">
+                                        {{student.name}}
+                                    </a>
+                                    <button type="button" class="btn btn-danger float-right" ng-click="deleteStudent(student)" aria-label="Left Align">
+                                        Supprimer
+                                    </button>
+                                    <button type="button" class="btn btn-warning float-right" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
+                                        Innactivate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
                     <div class="page-title">
@@ -297,7 +292,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div> <!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
