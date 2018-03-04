@@ -181,10 +181,9 @@
     <Content Include="js\flat-ui\vendor\video.js" />
     <Content Include="js\services\grade.service.js" />
     <Content Include="js\services\student.service.js" />
-    <Content Include="views\events.html" />
     <Content Include="views\main.html" />
     <Content Include="views\grades.html" />
-    <Content Include="views\main_events.html" />
+    <Content Include="views\events.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
