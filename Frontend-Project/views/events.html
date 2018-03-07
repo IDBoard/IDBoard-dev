@@ -195,8 +195,8 @@
                 <div class="col-sm-12 col-lg-12 col-md-12 list-fix-height">
                     <div class="list-group">
                         <div href="#" class="list-group-item active">
-                            <label> Student Id: {{currentStudentId}}</label> <br />
-                            <label>Current Student:{{currentStudent.name}} {{currentStudent.lastName}}</label>
+                            <label> Id Etudiant: {{currentStudentId}}</label> <br />
+                            <label>Etudiant connecté:  {{currentStudent.name}} {{currentStudent.lastName}}</label>
                         </div>
                     </div>
                     <div class="list-group" ng-repeat="event in events| orderBy:'date':true">
@@ -209,7 +209,7 @@
             </div>
 
             <div>
-                <button ng-click="addEvent()">add Event</button>
+                <button ng-click="addEvent()">Declancher l'Événement</button>
             </div>
             
         </div>

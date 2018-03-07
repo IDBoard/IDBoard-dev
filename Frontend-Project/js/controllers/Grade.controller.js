@@ -55,9 +55,9 @@
         GradeService.duplicateGrade(grade, nameNewGrade);
     };
 
-    $scope.archiverGrade = function (grade) {
+    $scope.archiveGrade = function (grade) {
         console.log("archiverGrade method");
-        GradeService.archiverGrade(grade);
+        GradeService.archiveGrade(grade);
     }
 
     $scope.deleteStudent = function (student) {

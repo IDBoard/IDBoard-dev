@@ -106,7 +106,8 @@
     }
 
     this.duplicateGrade = function (grade, nameNewGrade) {
-        console.log(grade.name);
+        console.log('grade to duplique', grade.name);
+        console.log('content of grade to duplique', grade.contents);
         var newGrade = {
             id: '44',
             name: nameNewGrade,
@@ -114,14 +115,17 @@
             students: [],
             contents: grade.contents
         };
-        gradeList.push(newGrade);      
+        gradeList.push(newGrade);
+        console.log("new grade dupliqued", nameNewGrade);
+        console.log("content new grade dupliqued", newGrade.contents);
     }
 
-    this.archiverGrade = function (grade) {
+    this.archiveGrade = function (grade) {
+        console.log('grade is active before archive',grade.active);
         if (grade.active === true) {
             grade.active = false;
         }
-        console.log(grade);
+        console.log('grade is active after archive method', grade.active);
     }
 
     this.deleteGrade = function (grade) {
