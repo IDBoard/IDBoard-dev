@@ -1,15 +1,19 @@
-﻿#logo {
+﻿.logo {
     margin-bottom: 15px;
 }
 
-.app-connection #title {
+.app-connection .title {
     font-size: 35px;
     color: black;
 }
 
-.forget-password #title {
+.forget-password .title {
     font-size: 25px;
     color: black;
+}
+
+.link:focus {
+    color: darkred;
 }
 
 .connectionBtn {
@@ -43,8 +47,17 @@
     border-color: gray;
 }
 
+.overflow-main {
+    height: 150px;
+}
+
+.phrase-titre {
+    margin-left: 60px;
+    margin-bottom: -20px;
+}
+
 .panel-footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
