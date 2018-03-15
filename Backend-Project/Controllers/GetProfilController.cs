@@ -17,6 +17,7 @@ namespace Backend_Project.Controllers
             public string Postal { get; set; }
             public string City { get; set; }
             public string Country { get; set; }
+
         }
        public class Student
         {
