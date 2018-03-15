@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,7 +20,7 @@ namespace Backend_Project.Controllers
             public Boolean AdminRequ { get; set; }
             public Boolean ModifReq { get; set; }
         }
-
+        
         public IHttpActionResult Get(int id)
         {
             IDBoardDb idBoard = new IDBoardDb(); //Context
@@ -31,19 +32,21 @@ namespace Backend_Project.Controllers
 
             foreach (var idmsg in count)
             {
-                //bah justement... je regarde, t'as tous les droits, mais en fait, c'est comme si t'étais comme "déco"
-              
+            //bon c'est chiant, je vais continuer ma fct et régler ce bug so'              
                 Message message = new Message();
                 message.Title = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.Title).FirstOrDefault();
                 message.BBCODE = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.Title).FirstOrDefault();
                 message.DateStart = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.DateStart).FirstOrDefault();
-                message.DateEnd = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.DateEnd).FirstOrDefault();
+                message.DateEnd = DateTime.Now;
+                message.DateEnd = (from msg in idBoard.Messages where (msg.idMessage == idmsg && msg.DateEnd != null) select msg.DateEnd).FirstOrDefault() ;
+                if (message.DateEnd.Equals(null))
+                    message.DateEnd = DateTime.Now;
                 message.Priority = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.Priority).FirstOrDefault();
                 message.AdminRequ = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.AdministrativeRequest).FirstOrDefault();
                 message.ModifReq = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.ModificationRequest).FirstOrDefault();
                 messages.Add(message);
             }
-            return Ok();
+            return Ok(JsonConvert.SerializeObject(messages));
         }
     }
 }

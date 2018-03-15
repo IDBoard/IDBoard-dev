@@ -25,7 +25,7 @@ namespace Backend_Project
         public string Title { get; set; }
         public string BBCode { get; set; }
         public System.DateTime DateStart { get; set; }
-        public Nullable<System.DateTime> DateEnd { get; set; }
+        public System.DateTime DateEnd { get; set; }
         public bool Priority { get; set; }
         public bool AdministrativeRequest { get; set; }
         public bool ModificationRequest { get; set; }
