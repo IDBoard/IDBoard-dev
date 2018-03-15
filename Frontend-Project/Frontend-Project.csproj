@@ -110,6 +110,7 @@
     <Content Include="images\login\icon.png" />
     <Content Include="images\login\imac-2x.png" />
     <Content Include="images\login\imac.png" />
+      <Content Include="images\logo-noir.png"/>
     <Content Include="images\logo.png" />
     <Content Include="images\tile\ribbon-2x.png" />
     <Content Include="images\tile\ribbon.png" />
@@ -117,6 +118,7 @@
     <Content Include="js\controllers\Forget_password.controller.js" />
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
+      <Content Include="js\idboard-router.js"/>
     <Content Include="js\modules\app.module.js" />
     <Content Include="js\flat-ui\vendor\jquery.min.map" />
     <Content Include="css\flat-ui\flat-ui.css.map" />
