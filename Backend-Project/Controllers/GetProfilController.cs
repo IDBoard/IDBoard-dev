@@ -10,11 +10,17 @@ namespace Backend_Project.Controllers
 {
     public class GetProfilController : ApiController
     {
-
+        public class Adresse
+        {
+            public string Addresse1 { get; set; }
+            public string Addresse2 { get; set; }
+            public string Postal { get; set; }
+            public string City { get; set; }
+            public string Country { get; set; }
+        }
        public class Student
         {
-            public string adresse1 { get; set; }
-            public string adresse2 { get; set; }
+            public Adresse adresseInfo { get; set; }
             public string phtoPath { get; set; }
             public List<string> messagesTab { get; set; } // A voir si on fait une classe
             public List<string> eventsTab { get; set; } // pareil
@@ -25,8 +31,13 @@ namespace Backend_Project.Controllers
             IDBoardDb idBoard = new IDBoardDb(); //Context
             Student student = new Student();
 
-            student.adresse1 = (from adresse in idBoard.ContactDetails where (adresse.idBusinessEntity == id) select adresse.Address1).FirstOrDefault();
-            student.adresse2 = (from adresse in idBoard.ContactDetails where (adresse.idBusinessEntity == id) select adresse.Address2).FirstOrDefault();
+            student.adresseInfo = new Adresse();
+            student.adresseInfo.Addresse1 = (from addresse in idBoard.ContactDetails where (addresse.idBusinessEntity == id) select addresse.Address1).FirstOrDefault();
+            student.adresseInfo.Addresse2 = (from addresse in idBoard.ContactDetails where (addresse.idBusinessEntity == id) select addresse.Address2).FirstOrDefault();
+            student.adresseInfo.Postal = (from adresse in idBoard.ContactDetails where adresse.idBusinessEntity == id select adresse.PostalCode).FirstOrDefault();
+            student.adresseInfo.City = (from adresse in idBoard.ContactDetails where adresse.idBusinessEntity == id select adresse.City).FirstOrDefault();
+            student.adresseInfo.Country = (from adresse in idBoard.ContactDetails where adresse.idBusinessEntity == id select adresse.Country).FirstOrDefault(); ;
+
             student.phtoPath = (from photo in idBoard.BusinessEntities where (photo.idBusinessEntity == id) select photo.PhotoPath).FirstOrDefault();
 
           
