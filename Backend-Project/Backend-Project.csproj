@@ -185,6 +185,7 @@
     <Compile Include="ContactDetails.cs">
       <DependentUpon>IdboardDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\GetMessagesController.cs" />
     <Compile Include="Controllers\GetProfilController.cs" />
     <Compile Include="Controllers\GetTrombi2Controller.cs" />
     <Compile Include="Controllers\GetTrombiController.cs" />
