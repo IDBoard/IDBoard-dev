@@ -4,264 +4,239 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Css/MyCss.css" rel="stylesheet" />
-    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Css/MyCss.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular.min.js"></script>
-</head>
+    <script>
+        function toggleEmail(element) {       
+            if (document.getElementById("hideEmail").style.display == 'none') {
+                
+                document.getElementById("hideEmail").style.display = 'table-row'; // set to table-row instead of an empty string
+                var table = document.getElementById("tableEmail");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myEmail = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationEmail")
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myEmail();
+                } else {
+                document.getElementById("hideEmail").style.display = 'none';
+                }
+        }
+
+        function toggleAddresse(element) {
+            if (document.getElementById("hideAddresse").style.display == 'none') {
+                document.getElementById("hideAddresse").style.display = 'table-row';// set to table-row instead of an empty string
+                var table = document.getElementById("tableAddresse");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myNumero = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationAddresse");
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myNumero();
+               
+            } else {
+                document.getElementById("hideAddresse").style.display = 'none';
+            }
+        }
+
+        function toggleNumero(element) {
+          //  alert("row" + element.parentNode.parentNode.rowIndex +
+          //      " - column" + element.parentNode.cellIndex);
+            if (document.getElementById("hideNumero").style.display == 'none') {
+                document.getElementById("hideNumero").style.display = 'table-row';
+                var table = document.getElementById("tableNumeros");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myNumero = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationNumero")
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myNumero();
+                // set to table-row instead of an empty string
+            } else {
+                document.getElementById("hideNumero").style.display = 'none';
+            }       
+        }
+    </script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
 <body>
-
-    <div class="rectangletop"></div>
-    <div class="rectangleleft"></div>
-
-    
-        <div class="mypagecontainer">
-
-            <div class="container ">
-
-                <div class="row" id="main">
-                    <div class="col-md-3 well" id="leftPanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div>
-                                    <img class="img-responsive" style="border:2px solid black" src="http://www.effe-siti-torino.com/img_puzzle/Johnny_Depp_2/272/Johnny_Depp_rid.jpg" />
-                                    <ul class="py-3">
-                                        <li>Ecole : Sophia Antipolis</li>
-                                        <li>Eleve de B3</li>
-                                    </ul>
-
-                                </div>
-                                <!--  <div class="table-responsive">
-                                    <table class="table">
-                                        <tr>
-                                            <td style="text-align:left"><span class="glyphicon glyphicon-home"></span> Addresse</td>
-                                            <td >Place de Gaulle</td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <td style="text-align:left"><span class="glyphicon glyphicon-phone-alt"></span> Telephone</td>
-                                            <td>+33098097</td>
-                                        </tr>
-
-
-
-                                        <tr>
-                                            <td style="text-align:left"><span class="glyphicon glyphicon-envelope"></span> Mail</td>
-                                            <td>2502@campusid.eu</td>
-
-                                        </tr>
-                                        <tr><td>davide.gagliardi94@libero.it</td>  </tr>
-                                    </table>
-                                </div>-->
-                                <hr />
-                                <div style="text-align:left">
-                                    <span class="glyphicon glyphicon-home"></span>
-                                    <span> Addresse</span>
-                                </div>
-                                <ul>
-                                    <li>Antibes</li>
-                                </ul>
-
-                                <hr />
-
-                                <div style="text-align:left">
-                                    <span class="glyphicon glyphicon-phone-alt"></span>
-                                    <span>Telephone</span>
-                                </div>
-                                <ul>
-                                    <li>+33098097</li>
-                                </ul>
-
-                                <hr />
-
-                                <div style="text-align:left">
-                                    <span style="text-align:left" class="glyphicon glyphicon-envelope"> </span>
-                                    <span>Mail</span>
-                                    <ul>
-                                        <li>2502@campusid.eu</li>
-                                    </ul>
-                                </div>
-
-
-
-
+    <div style="margin-top:120px;margin-left:140px;">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center ">
+                    <div class="panel panel-default">
+                        <div class="userprofile social ">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+                                <div class="ratio img-circle" style="background-image: url(https://data.whicdn.com/images/59274389/large.jpg)"></div>
+                            </div>
+                            <div style="width:70%; margin-left:30%;text-align:left;">
+                                <h3 class="username">Bienvenue, Nom et Prenom</h3>
+                                <p>{{role}}</p>
+                                <p>Sophia Antipolis, B3<p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-8 well" id="rightPanel" style="margin-left:8px;">
-                        <div class="row">
-                            <div class="col-md-12 px-3">
-                                <div class="card-block px-3">
-                                    <h3 class="py-5 px-lg-5 text-left">Bienvenue, Prenom Nom</h3>
-
-                                </div>
-                            </div>
-
+                        <div class="col-md-12" style="background-color:rgb(213, 213, 213);">
                         </div>
-
-                        <div class="   py-5 ">
-                            <ul class="navigation ">
-                                <li class="  ">
+                        <div class="navigationPosition">
+                            <ul class="navigation" style="margin-right:30px">
+                                <li class="">
                                     <a data-toggle="tab" href="#information">
-                                        Mon Profile
-                                        <span class="glyphicon glyphicon-user "></span>
+                                        <h5>
+                                            Mon Profil
+                                            <span class="glyphicon glyphicon-user "></span>
+                                        </h5>
                                     </a>
                                 </li>
-                                <li class="  ">
-                                    <a data-toggle="tab" href="#settings ">
-                                        Mofier
-                                        <span class="glyphicon  glyphicon-cog"></span>
-                                    </a>
-                                </li>
-                                <li class=" ">
+                                <li class="">
                                     <a data-toggle="tab" href="#messages">
-                                        Mes messages
-                                        <span class="glyphicon glyphicon-envelope"></span>
+                                        <h5>
+                                            Mes messages
+                                            <span class="glyphicon glyphicon-envelope"></span>
+                                        </h5>
+
                                     </a>
                                 </li>
-                                <li class="  ">
+                                <li class="">
                                     <a data-toggle="tab" href="#allEvents">
-                                        Evenements
-                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        <h5>
+                                            Evenements
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </h5>
+
                                     </a>
                                 </li>
                             </ul>
-
                         </div>
+
                         <div class="user-body">
                             <div class="tab-content ">
 
-                                <!-------------------------------------------------------------------MODIFIER------------------------------------------------------------------------------------------------------------>
-                                <div id="settings" class="tab-pane ">
-
-                                    <div class="card mybox">
-                                        <div class="card-header">
-                                            <h4>Modifier email</h4>
-                                        </div>
-                                        <div class="card-block">
-                                            <br />
-                                            <form class="form-inline" style="margin-left:5%;padding-bottom:10px;" action="">
-                                                <select class="form-control" style="height:auto; margin-right:5px; width:30%;">
-                                                    <option value="ajouter">ajouter</option>
-                                                    <option value="one">{{email à modifier}}</option>
-                                                </select>
-
-                                                <input type="email" placeholder="nouvelle email" class="form-control" id="email" style="width:50%;">
-                                                <button type="submit" class="btn btn-danger" style="margin-left:15px">Envoyer</button>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="card mybox">
-
-                                        <div class="card-header">
-                                            <h4>Modifier l'adresse</h4>
-                                        </div>
-                                        <div class="card-block">
-                                            <br />
-                                            <form class="form-inline" style="margin-left:5%;padding-bottom:10px;" action="">
-                                                <select class="form-control" style="height:auto; margin-right:5px; width:30%;">
-                                                    <option value="ajouter">ajouter</option>
-                                                    <option value="one">{{adresse à modifier}}</option>
-                                                </select>
-
-                                                <input type="email" placeholder="nouveau addresse" class="form-control" id="email" style="width:50%;">
-                                                <button type="submit" class="btn btn-danger" style="margin-left:15px">Envoyer</button>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="card mybox">
-                                        <div class="card-header">
-                                            <h4>Modifier le numero de telephone</h4>
-                                        </div>
-                                        <div class="card-block">
-                                            <br />
-                                            <form class="form-inline" style="margin-left:5%;padding-bottom:10px;" action="">
-                                                <select class="form-control" style="height:auto; margin-right:5px; width:30%;">
-                                                    <option value="ajouter">ajouter</option>
-                                                    <option value="one">{{telephone à modifier}}</option>
-                                                </select>
-                                                <input type="text" placeholder="nouveau numero" class="form-control" id="email" style="width:50%;">
-                                                <button type="submit" class="btn btn-danger" style="margin-left:15px">Envoyer</button>
-                                            </form>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
+                                
                                 <!------------------------------------------------------------------------SETTINGs------------------------------------------------------------------------------------------------------->
                                 <div id="information" class="tab-pane">
+                                    <br />
+                                    <br />
+                                    <div class="panel-group" style="width: 80%; margin-left:auto;margin-right:auto;">
+                                        <div class="panel panel-default" style="border-top:40px;">
+                                            <div class="panel-heading">Donnes personnels</div>
+                                            <table class="table table-user-information">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Nom:</td>
+                                                        <td>{{nom}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Prenom:</td>
+                                                        <td>{{prenom}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Date de neissance</td>
+                                                        <td>{{date}}</td>
+                                                    </tr>
 
-                                    <!-- <div>
-                                        <object type="text/html" data="http://validator.w3.org/" style="overflow:auto;border:5px ridge blue"></object>
-                                    </div> -->
-                                    <div class="distanceTop">
-                                        <div class="card ">
-                                            <div class="car card-danger">
-                                                <div class="card-header">
-                                                    <h3>Personal Informations</h3>
-                                                </div>
-                                                <div class="card-block">
-                                                    <div class="myLittleContainer">
-                                                        <table class="table table-user-information">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>Nom:</td>
-                                                                    <td>{{nom}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Prenom:</td>
-                                                                    <td>{{prenom}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Date de naissance</td>
-                                                                    <td>{{dateN}}</td>
-                                                                </tr>
+                                                    <tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
-                                                                <tr>
-                                                                <tr>
-                                                                    <td>lieu de naissance</td>
-                                                                    <td>{{lieuN}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Address</td>
-                                                                    <td>{{addresse}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Email</td>
-                                                                    <td>{{email}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Numero de telephone</td>
-                                                                    <td>{{numeroT}}</td>
-                                                                </tr>
+                                        <div class="panel panel-default" style="border-top:40px;">
+                                            <div class="panel-heading">Mes Numeros de telephone</div>
+                                            <table class="table table-user-information" id="tableNumeros">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><label>Numero:</label></td>
+                                                        <td><label typeof="numero">{{numero2}}</label></td>
+                                                        <td><input type="button"  style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>Numero:</label></td>
+                                                        <td><label typeof="numero">{{numero3}}</label></td>
+                                                        <td><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                                    </tr>
+                                                    <tr id="hideNumero" style="display:none;">
+                                                        <td><label id="modificationNumero">{{numero}}</label></td>
+                                                        <td><input  required type="text" class="form-control" id="newNumero"></td>
+                                                        <td><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
-                                                            </tbody>
-                                                        </table>
 
-                                                        <span class="pull-right">
-                                                            <a href="#settings" data-original-title="Edit this user" data-toggle="tab" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit">Modifier</i></a>
-                                                        </span>
 
-                                                    </div>
-                                                </div>
 
-                                            </div>
+                                        <div class="panel panel-default" style="border-top:40px;">
+                                            <div class="panel-heading">Mes Emails</div>
+                                            <table class="table table-user-information" id="tableEmail">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Email personnel:</td>
+                                                        <td>{{email}}</td>
+                                                        <td><input style="margin-right:4%; float:right"  onClick="toggleEmail(this);" id ="email" type="button" class="btn btn-danger" value="demander une modification" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email personnel:</td>
+                                                        <td>{{email2}}</td>
+                                                        <td><input style="margin-right:4%; float:right" onClick="toggleEmail(this);" id="email" type="button" class="btn btn-danger" value="demander une modification" /></td>
+                                                    </tr>
+                                                    <tr id="hideEmail" style="display:none;">
+                                                        <td><label id="modificationEmail">{{email}}</label></td>
+                                                        <td><input required type="email"  class="form-control" id="newEmail"></td>
+                                                        <td><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                        <div class="panel panel-default" style="border-top:40px;">
+                                            <div class="panel-heading">Mes Addresses</div>
+                                            <table class="table table-user-information" id="tableAddresse">
+                                                <tbody>
+                                                    <tr >
+                                                        <td>mon Addresse :</td>
+                                                        <td>{{addresse1}}</td>
+                                                        <td><input type="button"  style="margin-right:4%; float:right" onclick="toggleAddresse(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>mon Addresse :</td>
+                                                        <td>{{addresse2}}</td>
+                                                        <td><input type="button" style="margin-right:4%; float:right" onclick="toggleAddresse(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                                    </tr>
+                                                    <tr id="hideAddresse" style="display:none;">
+                                                        <td><label id="modificationAddresse">{{addresse}}</label></td>
+                                                        <td><input required type="text"  class="form-control" id="newAddresse"></td>
+                                                        <td><input type="button" class="btn btn-primary" value="Envoyer"  style="margin-right:4%; float:right"/></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-
 
 
 
@@ -269,36 +244,31 @@
                                 <div id="messages" class="tab-pane">
 
                                     <div class="distanceTop">
-                                        <div class="wrapMessage">
-                                            <input type="checkbox" class="read-more-state  " id="post-1" />
-
-                                            <p class="read-more-wrap message">{{date}}, {{Title}}<span class="read-more-target">Libero fuga facilis vel consectetur quos sapiente deleniti eveniet dolores tempore eos deserunt officia quis ab? Excepturi vero tempore minus beatae voluptatem!</span></p>
-
-                                            <label for="post-1" class="read-more-trigger btn-danger" style="float:right"></label>
-                                            <br />
-
+                                        <div class="card bg-light mb-6" style="border-left:2px solid darkblue; width:80%;margin-right:auto;margin-left:auto;margin-top:40px;">
+                                            <div class="card-header">Title</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">From : Amministration</h5>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
                                         </div>
-                                        <hr />
-                                        <div class="wrapMessage">
-                                            <input type="checkbox" class="read-more-state  " id="post-2" />
-
-                                            <p class="read-more-wrap message">{{date}}, {{Title}}<span class="read-more-target">Libero fuga facilis vel consectetur quos sapiente deleniti eveniet dolores tempore eos deserunt officia quis ab? Excepturi vero tempore minus beatae voluptatem!</span></p>
-
-                                            <label for="post-2" class="read-more-trigger btn-danger" style="float:right;"></label>
-                                            <br />
-
+                                   </div>
+                                    <div class="distanceTop">
+                                        <div class="card bg-light mb-6" style="border-left:2px solid darkblue; width:80%;margin-right:auto;margin-left:auto;margin-top:40px;">
+                                            <div class="card-header">Title</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">From : Amministration</h5>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
                                         </div>
-                                        <hr />
-                                        <div class="wrapMessage">
-                                            <input type="checkbox" class="read-more-state  " id="post-3" />
-
-                                            <p class="read-more-wrap message">{{date}}, {{Title}}<span class="read-more-target">Libero fuga facilis vel consectetur quos sapiente deleniti eveniet dolores tempore eos deserunt officia quis ab? Excepturi vero tempore minus beatae voluptatem!</span></p>
-
-                                            <label for="post-3" class="read-more-trigger btn-danger" style="float:right;"></label>
-                                            <br />
-
+                                    </div>
+                                    <div class="distanceTop">
+                                        <div class="card bg-light mb-6" style="border-left:2px solid darkblue; width:80%;margin-right:auto;margin-left:auto;margin-top:40px;">
+                                            <div class="card-header">Title</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">From : Amministration</h5>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
                                         </div>
-                                        <hr />
                                     </div>
                                 </div>
 
@@ -312,22 +282,48 @@
 
                                 <div id="allEvents" class="tab-pane">
                                     <h4>Evenements</h4>
-
-
+                                    <div class="card card bg-light mb-6 " style="border-left:2px solid darkred; width:80%;margin-left:auto;margin-right:auto;margin-top:40px;">
+                                        <div class="card-block">
+                                            <div class="card-title">
+                                                <p>11/04/2017 :<b>Paiement reçu</b> </p>  
+                                            </div>
+                                            <div class="card-text">
+                                                préinscription, virement reçu de 590 euros
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-light mb-6" style="border-left:2px solid darkred;width:80%;margin-left:auto;margin-right:auto;margin-top:40px;">
+                                        <div class="card-block">
+                                            <div class="card-title">
+                                                <p> 08/04/2017 : <b>Réception du dossier de préinscription</b></p>
+                                            </div>
+                                            <div class="card-text">
+                                                Dossier reçu par mail le 08/04/2017
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-light mb-6" style="border-left:2px solid darkred;width:80%;margin-left:auto;margin-right:auto;margin-top:40px;">
+                                        <div class="card-block">
+                                            <div class="card-title">
+                                                <p style="margin-left:15px;"> 16/03/2017 : <b>Admissible B3 ESD Sophia Antipolis</b></p>
+                                            </div>
+                                            <div class="card-text">
+                                                Année 2017/2018 en contrat de professionnalisation
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            .
+            .
         </div>
-    </div>
-
-
-
-
-</body>
+    </div>       
+    </body>
 </html>
-
