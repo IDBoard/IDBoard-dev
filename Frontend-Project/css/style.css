@@ -98,3 +98,7 @@ input::-o-outer-spin-button {
 .input-group, .form-group {
     margin-bottom: 15px;
 }
+
+span.menu-link {
+    cursor: pointer;
+}

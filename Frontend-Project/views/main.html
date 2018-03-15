@@ -11,8 +11,8 @@
     <title>CampusID</title>
     <meta name="description" content="Grande école du numérique">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="images.ico">
+    <link rel="apple-touch-icon" href="../images/favicon.ico">
+    <link rel="shortcut icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
@@ -24,8 +24,72 @@
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script src="../js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/widgets.js"></script>
+    <script src="../js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="../js/angularjs/angular.js"></script>
+
+    <script src="../js/modules/app.module.js"></script>
+    <script src="../js/controllers/Trombinoscope.controller.js"></script>
+
+    <script>
+
+        $(window).ready(function () {
+
+            function go_to(id_div = 'index', page_title = 'CampusID', breadcrumb = null) {
+                let step1 = '';
+                let step2 = '';
+
+                if (breadcrumb) {
+                    if (breadcrumb.step1 !== undefined) {
+                        step1 = breadcrumb.step1;
+                    }
+                    if (breadcrumb.step2 !== undefined) {
+                        step2 = breadcrumb.step2;
+                    }
+                }
+                else {
+                    step1 = 'Bienvenu sur l\'IDBoard';
+                }
+
+                $('#fst_step').text(step1);
+                $('#snd_step').text(step2);
+
+                $('.right-panel .content').css('display', 'none');
+                $('#' + id_div).css('display', 'block');
+                $('title').text(page_title);
+            }
+
+            go_to();
+
+            $('.menu-link').click(function () {
+                go_to(
+                    $(this).attr('data-id'),
+                    $(this).attr('data-page-title'),
+                    {
+                        step1: $(this).attr('data-breadcrumb-step1'),
+                        step2: $(this).attr('data-breadcrumb-step2')
+                    }
+                );
+            });
+
+        });
+
+    </script>
 </head>
-<body>
+ <body ng-app="IDBoard">
 
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -40,7 +104,9 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-home"></i>Accueil</a>
+                        <a href="#" data-id="index" data-breadcrumb-step1="Bienvenu sur l'IDBoard"
+                           data-breadcrumb-step2="" data-page-title="CampusID" class="menu-link"> <i
+                                class="menu-icon fa fa-home"></i>Accueil</a>
                     </li>
                     <h3 class="menu-title"></h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -63,7 +129,12 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="#">Offre de stages</a></li>
                             <li><i class="menu-icon fa fa-table"></i><a href="#">Planning</a></li>
                             <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#">Notes</a></li>
-                            <li><i class="menu-icon fa fa-camera-retro"></i><a href="#">Trombinoscope</a></li>
+                            <li><i class="menu-icon fa fa-camera-retro"></i><a href="#" class="menu-link"
+                                                                               data-id="trombinoscope"
+                                                                               data-breadcrumb-step1="Vie Étudiante"
+                                                                               data-breadcrumb-step2="Trombinoscope"
+                                                                               data-page-title="Détail de la classe">Trombinoscope</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -75,7 +146,7 @@
                             <li><i class="menu-icon fa fa-windows"></i><a href="#">Microsoft(MSDNAA)</a></li>
                         </ul>
                     </li>
-                    <li>
+                </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -197,14 +268,39 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Bienvenue sur le site de CampusID </h1>
+                        <h1 id="fst_step">Bienvenue sur l'IDBoard </h1>
                     </div>
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title"></li>
-                        </ol>
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1 id="snd_step"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content mt-3" id="index">
+            <h3>Accueil</h3>
+        </div>
+        <div class="content mt-3" id="trombinoscope" ng-load="{{get_id_class(); get_trombi()}}"
+             ng-controller="Trombinoscope">
+            <input type="hidden" ng-model="id_classe" value="{{id_classe}}"/>
+            <div class="row">
+                <div class="col-sm-12 font-weight-bold">
+                    {{nbr_etudiants}} étudiants dans la classe : {{class_name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" ng-repeat="etudiant in etudiants">
+                    <img src="http://idboard.net/{{etudiant.picture}}" class="img-fluid rounded" style="width: 100px;"/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{etudiant.id}}
+                        </div>
+                        <div class="col-sm-12">
+                            {{etudiant.firstname + ', ' + etudiant.lastname}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -571,37 +667,6 @@
     </div>-->
 
     </div> <!-- .content -->
-    </div><!-- /#right-panel -->
     <!-- Right Panel -->
-    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
-
-    <script src="../js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="../js/dashboard.js"></script>
-    <script src="../js/widgets.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        ( function ( $ ) {
-            "use strict";
-
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
 </body>
 </html>

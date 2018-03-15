@@ -116,9 +116,9 @@
     <Content Include="images\tile\ribbon.png" />
     <Content Include="js\controllers\Connection.controller.js" />
     <Content Include="js\controllers\Forget_password.controller.js" />
+      <Content Include="js\controllers\Trombinoscope.controller.js"/>
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
-      <Content Include="js\idboard-router.js"/>
     <Content Include="js\modules\app.module.js" />
     <Content Include="js\flat-ui\vendor\jquery.min.map" />
     <Content Include="css\flat-ui\flat-ui.css.map" />
