@@ -23,6 +23,7 @@
             $scope.color = 'green';
             // mot de passe crypté en base 64
             $scope.cryptPassword = btoa($scope.password);
+            window.location.href = 'views/main.html';
         }
         else {
             $scope.logs = 'Votre numéro d\'IDBoard ou votre mot de passe est incorrect.';

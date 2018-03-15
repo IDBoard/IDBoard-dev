@@ -173,6 +173,7 @@
     <Content Include="js\flat-ui\vendor\respond.min.js" />
     <Content Include="js\flat-ui\vendor\video-js.swf" />
     <Content Include="js\flat-ui\vendor\video.js" />
+      <Content Include="js\modules\idboardControllers.js"/>
     <Content Include="views\main.html" />
     <Content Include="Web.config" />
   </ItemGroup>
