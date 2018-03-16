@@ -10,36 +10,34 @@ namespace Backend_Project.Controllers
 {
     public class MatterController : ApiController
     {
-        public IHttpActionResult Get()
+        //Get modules list from classe name (ex : /Matter/B3)
+        public IHttpActionResult Get(String ClasseName)
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
-            var InternshipOffersList = (from t1 in iDBoard.InternshipOffers
-                                        join t2 in iDBoard.TypesInternships
-                                        on t1.idTypeInternship equals t2.idTypeInternship
-                                        select new
-                                        {
-                                            t1.Reference,
-                                            t1.Title,
-                                            t1.MissionSummary,
-                                            t1.CompanyName,
-                                            t1.Duration,
-                                            t1.DateStart,
-                                            t1.DateEnd,
-                                            t1.Contact,
-                                            t1.ContactPhone,
-                                            t1.ContactMail,
-                                            t1.Address1,
-                                            t1.Address2,
-                                            t1.PostalCode,
-                                            t1.City,
-                                            t1.Country,
-                                            t2.TypeDefaultValue,
-                                        }).ToList();
+            int idClasse = (from Classes in iDBoard.Classes where Classes.Name == ClasseName select Classes.idClass).FirstOrDefault(); ;
 
-            return Ok(JsonConvert.SerializeObject(InternshipOffersList, Formatting.Indented, new JsonSerializerSettings()
+            var MatterList = (from Matters in iDBoard.Matters where Matters.idClass == idClasse select Matters).ToList();
+
+            return Ok(JsonConvert.SerializeObject(MatterList, Formatting.Indented, new JsonSerializerSettings()
             { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore }
             ));
         }
+
+        //Edit credits ECTS from module reference
+        [HttpPost]
+        public IHttpActionResult EditECTS(String reference, double credits)
+        {
+            IdBoardDb iDBoard = new IdBoardDb();
+
+            var updateRow = (from Matters in iDBoard.Matters where Matters.Reference == reference select Matters).FirstOrDefault();
+
+            updateRow.ECTSCredits = credits;
+
+            iDBoard.SaveChanges);
+
+            return Ok();
+        }
+
     }
 }
