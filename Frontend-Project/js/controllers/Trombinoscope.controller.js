@@ -4,8 +4,8 @@ idboard.controller('Trombinoscope', function ($scope, $http) {
         $scope.id_classe = 5;
     };
 
-    $scope.get_trombi = function () {
-        /*$http.get('http://localhost:4725/api/GetTrombi/' + $scope.id_classe)
+    /*$scope.get_trombi = function () {
+        $http.get('http://localhost:4725/api/GetTrombi/' + $scope.id_classe)
             .then(function(data) {
                 console.log(data);
             },

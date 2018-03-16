@@ -293,13 +293,24 @@
             </div>
             <div class="row">
                 <div class="col-sm-4" ng-repeat="etudiant in etudiants">
-                    <img src="http://idboard.net/{{etudiant.picture}}" class="img-fluid rounded" style="width: 100px;"/>
                     <div class="row">
-                        <div class="col-sm-12">
-                            {{etudiant.id}}
+                        <div class="col-12 profilimage img-thumbnail" id="eleve_{{etudiant.id}}">
+                            <center>
+                                <img src="http://192.168.0.171/{{etudiant.picture}}" class="img-fluid rounded"
+                                     style="width: 50%;"/>
+                            </center>
                         </div>
-                        <div class="col-sm-12">
-                            {{etudiant.firstname + ', ' + etudiant.lastname}}
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {{etudiant.id}}
+                                </div>
+                                <div class="col-sm-12">
+                                    {{etudiant.firstname + ' ' + etudiant.lastname}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -102,3 +102,7 @@ input::-o-outer-spin-button {
 span.menu-link {
     cursor: pointer;
 }
+
+.profilimage {
+    height: 50px;
+}
