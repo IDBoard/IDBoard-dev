@@ -294,21 +294,25 @@
             <div class="row">
                 <div class="col-sm-4" ng-repeat="etudiant in etudiants">
                     <div class="row">
-                        <div class="col-12 profilimage img-thumbnail" id="eleve_{{etudiant.id}}">
-                            <center>
-                                <img src="http://192.168.0.171/{{etudiant.picture}}" class="img-fluid rounded"
-                                     style="width: 50%;"/>
-                            </center>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-sm-12" style="padding-left: 25px;">
-                                    {{etudiant.id}}
+                                <div class="col-12 profilimage img-thumbnail" id="eleve_{{etudiant.id}}">
+                                    <center>
+                                        <img src="http://192.168.0.171/{{etudiant.picture}}" class="img-fluid rounded"
+                                             style="width: 50%;"/>
+                                    </center>
                                 </div>
-                                <div class="col-sm-12" style="padding-left: 25px;">
-                                    {{etudiant.firstname + ' ' + etudiant.name}}
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-sm-12" style="padding-left: 25px;">
+                                            {{etudiant.id}}
+                                        </div>
+                                        <div class="col-sm-12" style="padding-left: 25px;">
+                                            {{etudiant.firstname + ' ' + etudiant.name}}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
