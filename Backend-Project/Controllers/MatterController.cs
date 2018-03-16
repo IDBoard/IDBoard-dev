@@ -34,7 +34,7 @@ namespace Backend_Project.Controllers
 
             updateRow.ECTSCredits = credits;
 
-            iDBoard.SaveChanges);
+            iDBoard.SaveChanges();
 
             return Ok();
         }
