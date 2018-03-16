@@ -287,7 +287,7 @@
              ng-controller="Trombinoscope">
             <input type="hidden" ng-model="id_classe" value="{{id_classe}}"/>
             <div class="row">
-                <div class="col-sm-12 font-weight-bold">
+                <div class="col-sm-12 font-weight-bold text-center classname">
                     {{nbr_etudiants}} étudiants dans la classe : {{class_name}}
                 </div>
             </div>
@@ -304,11 +304,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-12" style="padding-left: 25px;">
                                     {{etudiant.id}}
                                 </div>
-                                <div class="col-sm-12">
-                                    {{etudiant.firstname + ' ' + etudiant.lastname}}
+                                <div class="col-sm-12" style="padding-left: 25px;">
+                                    {{etudiant.firstname + ' ' + etudiant.name}}
                                 </div>
                             </div>
                         </div>
