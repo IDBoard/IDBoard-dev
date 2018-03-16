@@ -19,7 +19,7 @@
         countEventsOfStudent = $scope.events.length;
     }
 
-    $scope.addEvent = function () {
+    $scope.addEvent = function (event) {
         console.log('addEvent');
         var eventToAdd = {
             id: '96',

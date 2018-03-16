@@ -1,4 +1,4 @@
-﻿idboard.service('GradeService', function (StudentService) {
+﻿idboard.service('GradeService', function () {
 
     var gradeList = [
         {
@@ -19,7 +19,15 @@
                     active: true
                 }
             ],
-            contents: []
+            contents: [],
+            modules: [
+                {
+                    id: 3
+                },
+                {
+                    id: '5'
+                }
+            ]
         },
         {
             id: '88',
@@ -49,6 +57,17 @@
                     id: "1",
                     name: "contents1"
                 }
+            ],
+            modules: [
+                {
+                    id: '1'
+                },
+                {
+                    id: '2'
+                },
+                {
+                    id: '3'
+                }
             ]
         },
         {
@@ -67,6 +86,14 @@
                 {
                     id: "2",
                     name: "contents2"
+                }
+            ],
+            modules: [
+                {
+                    id: '4'
+                },
+                {
+                    id: '5'
                 }
             ]
         },
@@ -90,8 +117,15 @@
                 {
                     id: "4",
                     name: "contents4"
+                }
+            ],
+            modules: [
+                {
+                    id: '1'
                 },
-
+                {
+                    id: '5'
+                }
             ]
         }
     ];
@@ -167,14 +201,20 @@
     }
 
     this.inactiveStudentPassage = function (student) {
-        //var index = grade.students.indexOf(student);
         console.log("before set active student");
         console.log(student.active);
         console.log(student.name);
-        //grade.students[index].active = false;
         student.active = false;
         console.log("after set active student");
         console.log(student.active);
     }
 
+    this.addModule = function (grade, module) {
+        console.log("addModuleToGrade", grade, module);
+        var _module = {
+            id : module.id
+        };
+        grade.modules.push(_module);
+        console.log("modulesInthisgrade", grade.modules);
+    }
 });

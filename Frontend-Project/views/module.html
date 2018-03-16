@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="../js/angularjs/angular.js"></script>
+    <script src="../js/modules/app.module.js"></script>
+    <script src="../js//services//module.service.js"></script>
+    <script src="../js/services/grade.service.js"></script>
+    <script src="../js/controllers/Module.controller.js"></script>
+    <title></title>
+</head>
+<body>
+    <div ng-app="IDBoard">
+
+        <div ng-controller="ModuleController">
+
+            <div ng-repeat="grade in grades">
+                <a href="javascript: void(0);"
+                   class="list-group-item"
+                   data-ng-click="showModuleByGrade(grade)">
+                    {{grade.name}}
+                </a>
+            </div>
+            <div ng-repeat="module in modulesOfGradeSelected">
+                <a href="javascript: void(0);"
+                   class="list-group-item">
+                    {{module.name}}
+                </a>
+            </div>
+            -----------------------------------------------
+            <div ng-repeat="module in modules">
+                <a href="javascript: void(0);"
+                   class="list-group-item"
+                   data-ng-click="setModuleSelected(module)">
+                    {{module.name}}
+                </a>
+            </div>
+
+            Name : <input type="text" ng-model="moduleNameToAdd" />
+            Creadits ETC : <input type="text" ng-model="moduleCreditsETCToAdd" />
+            <input type="button" ng-click="addModuleToGrade()" value="AddModule" />
+
+        </div>
+
+    </div>
+</body>
+</html>

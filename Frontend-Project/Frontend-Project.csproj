@@ -118,6 +118,7 @@
     <Content Include="js\controllers\Events.controller.js" />
     <Content Include="js\controllers\Forget_password.controller.js" />
     <Content Include="js\controllers\Grade.controller.js" />
+    <Content Include="js\controllers\Module.controller.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
@@ -180,10 +181,12 @@
     <Content Include="js\flat-ui\vendor\video-js.swf" />
     <Content Include="js\flat-ui\vendor\video.js" />
     <Content Include="js\services\grade.service.js" />
+    <Content Include="js\services\module.service.js" />
     <Content Include="js\services\student.service.js" />
     <Content Include="views\main.html" />
     <Content Include="views\grades.html" />
     <Content Include="views\events.html" />
+    <Content Include="views\module.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
