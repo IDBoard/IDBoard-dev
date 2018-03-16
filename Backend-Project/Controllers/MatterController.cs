@@ -24,7 +24,7 @@ namespace Backend_Project.Controllers
             ));
         }
 
-        //Edit credits ECTS from module reference
+        //Edit credits ECTS from a module reference
         [HttpPost]
         public IHttpActionResult EditECTS(String reference, double credits)
         {
