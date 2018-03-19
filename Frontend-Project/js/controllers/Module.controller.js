@@ -1,9 +1,9 @@
 ﻿idboard.controller('ModuleController', function ($scope, GradeService, ModuleService) {
 
-    $scope.grades = GradeService.getGrades();
+    $scope.grades  = GradeService.getGrades();
     $scope.modules = ModuleService.getModules();
 
-    var gradeSelected;
+    
     var moduleToShow;
     var moduleSelected;
 
@@ -12,7 +12,7 @@
     $scope.showModuleByGrade = function (grade) {
         $scope.modulesOfGradeSelected = ModuleService.allModulesByGrade(grade);
         moduleToShow = $scope.modulesOfGradeSelected;
-        gradeSelected = grade;
+        $scope.gradeSelected = grade;
     };
 
 
@@ -21,13 +21,34 @@
     }
 
     $scope.addModuleToGrade = function (grade, module) {
-        if (moduleSelected != null && gradeSelected != null)
+        console.log("addModuleToGrade");
+        console.log("addModuleToGrade name", $scope.moduleNameToAdd);
+        if ($scope.gradeSelected != null)
         {
-            
-            GradeService.addModule(gradeSelected, moduleSelected);
+            var moduleToAdd = {
+                id: Date.now(),
+                name: $scope.moduleNameToAdd,
+                creditsETC: $scope.moduleCreditsETCToAdd,
+                cours: []
+            }
+            GradeService.addModule($scope.gradeSelected, moduleToAdd);
+            ModuleService.getModules().push(moduleToAdd);
         }
         
     }
 
+    $scope.$watch('gradeSelected.modules.length', function (newVal, oldVal) {
+        console.log('watch gradeSelected.modules');
+        if ($scope.gradeSelected != null) {
+            if ($scope.gradeSelected.modules.length > 0) {
+                console.log("modulesOfGradeSelected", $scope.modulesOfGradeSelected);
+                if (newVal > oldVal)
+                {
+                    $scope.modulesOfGradeSelected = ModuleService.allModulesByGrade($scope.gradeSelected);
+                }
+               
+            }
+        }
+    });
 
 });
