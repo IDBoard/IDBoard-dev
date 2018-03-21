@@ -8,6 +8,7 @@
     var moduleSelected;
 
     $scope.moduleNameToAdd;
+    $scope.coursToAdd;
 
     $scope.showModuleByGrade = function (grade) {
         $scope.modulesOfGradeSelected = ModuleService.allModulesByGrade(grade);
@@ -50,5 +51,18 @@
             }
         }
     });
+
+    $scope.addCoursToModule = function () {
+        console.log("moduleSelected", moduleSelected);
+        var coursToadd = {
+            id: Date.now(),
+            name: $scope.coursToAdd,
+        };
+
+        if (moduleSelected != null || moduleSelected == 'undefined') {
+            ModuleService.addCoursToModule(moduleSelected, coursToadd);
+        }
+     
+    }
 
 });

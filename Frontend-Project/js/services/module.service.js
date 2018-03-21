@@ -70,7 +70,6 @@
             {
                 console.log("modulesOfThisGrade", modulesOfThisGrade);
                 modulesOfThisGrade.forEach(function (_module) {
-                    //var module = moduleList.indexOf(_module);
                     var moduleToAdd = moduleList.find(function (__module) {
                         return __module.id == _module.id;
                     });
@@ -80,6 +79,11 @@
         }
         console.log("arrayResultModules", arrayResultModules);
         return arrayResultModules;
+    }
+
+    this.addCoursToModule = function (module, cours) {
+        console.log("addCoursToModule");
+        module.cours.push(cours);
     }
 
 });
