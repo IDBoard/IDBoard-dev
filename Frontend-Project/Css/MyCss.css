@@ -32,6 +32,28 @@
         position: relative;
     }
 
+    .info {
+        width: 70%;
+        margin-left: 30%;
+        text-align: left;
+    }
+
+    @media (max-width:780px){
+        .userprofile{
+            height:auto;
+        }
+
+        .info{
+            margin-top:10%;
+        }
+
+        .container{
+            width:300px;
+            height:auto;
+        }
+
+    }
+
         .userprofile .userpic .userpicimg {
             height: auto;
             width: 100%;
@@ -156,7 +178,7 @@
 
 .userprofile.social {
     background-color: rgb(213, 213, 213);
-    padding: 50px 0;
+    padding: 1px 0;
     margin: 0
 }
 
@@ -442,6 +464,7 @@
     position: absolute;
     width: 100%;
     margin-left:30px;
+    margin-top : -53%;
 }
 
 .img-circle {

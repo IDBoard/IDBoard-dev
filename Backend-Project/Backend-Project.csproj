@@ -154,7 +154,6 @@
     <Compile Include="Models\Repository\MyContext.cs" />
     <Compile Include="Models\ViewModel\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
-    <Compile Include="Owin\OAuthAuthorizationServerOptions.cs" />
     <Compile Include="Owin\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Owin\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

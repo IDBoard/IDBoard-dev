@@ -1,5 +1,6 @@
 ﻿using Backend_Project.Models.Repository;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
 using System.Linq;

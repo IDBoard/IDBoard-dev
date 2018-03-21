@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Backend_Project.Models;
+using Backend_Project.Models.Repository;
+using Backend_Project.Models.ViewModel;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Backend_Project.Controllers
