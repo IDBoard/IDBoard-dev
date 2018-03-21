@@ -14,9 +14,9 @@
         $scope.modulesOfGradeSelected = ModuleService.allModulesByGrade(grade);
         moduleToShow = $scope.modulesOfGradeSelected;
         $scope.gradeSelected = grade;
+        console.log("grade name", $scope.gradeSelected.name);
     };
-
-
+    
     $scope.setModuleSelected = function (module) {
         moduleSelected = module;
     }
@@ -34,6 +34,8 @@
             }
             GradeService.addModule($scope.gradeSelected, moduleToAdd);
             ModuleService.getModules().push(moduleToAdd);
+            $scope.moduleNameToAdd = "";
+            $scope.moduleCreditsETCToAdd = "";
         }
         
     }
@@ -61,6 +63,7 @@
 
         if (moduleSelected != null || moduleSelected == 'undefined') {
             ModuleService.addCoursToModule(moduleSelected, coursToadd);
+            $scope.coursToAdd = "";
         }
      
     }
