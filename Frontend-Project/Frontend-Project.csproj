@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\event.css" />
     <Content Include="css\flat-ui\flat-ui.css" />
     <Content Include="css\flat-ui\flat-ui.min.css" />
     <Content Include="css\flat-ui\vendor\bootstrap\css\bootstrap.min.css" />

@@ -240,7 +240,7 @@
                                     <div id="gradeActive" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                         <div class="card-body">
                                             <!----Grades actives -->
-                                            <div class="list-group" ng-repeat="grade in gradesActives">
+                                            <div class="list-group" ng-repeat="grade in gradesActives |orderBy:'+':true">
                                                 <div class="">
                                                     <a href="javascript: void(0);"
                                                        class=""
@@ -275,7 +275,7 @@
                                     <div id="gradeNActive" class="collapse" aria-labelledby="gradeNActive" data-parent="#accordion">
                                         <div class="card-body">
                                             <!----Grades nactives -->
-                                            <div class="list-group" ng-repeat="grade in gradesNActives">
+                                            <div class="list-group" ng-repeat="grade in gradesNActives |orderBy:'+':true">
                                                 <div class="">
                                                     <a href="javascript: void(0);"
                                                        class=""

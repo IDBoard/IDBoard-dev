@@ -7,7 +7,7 @@
 
     
     $scope.gradeSelected;
-    $scope.gradesActives  = GradeService.getGradesActives();
+    $scope.gradesActives = GradeService.getGradesActives();
     $scope.gradesNActives = GradeService.getGradesNActives();
 
     $scope.newGrade = function () {
@@ -33,7 +33,6 @@
         console.log("selectGrade");
         $scope.gradeSelected = grade;
         $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
-        var index = $scope.grades.indexOf(gradeSelected);
     };
 
     $scope.deleteGrade = function (grade) {
@@ -56,8 +55,10 @@
         console.log("duplicateGrade method");
         grade = $scope.gradeSelected;
         var nameNewGrade = $scope.nameNewGrade;
-        GradeService.duplicateGrade(grade, nameNewGrade);
-        $scope.nameNewGrade = "";
+        if (grade != null) {
+            GradeService.duplicateGrade(grade, nameNewGrade);
+            $scope.nameNewGrade = "";
+        }
     };
 
     $scope.archiveGrade = function (grade) {

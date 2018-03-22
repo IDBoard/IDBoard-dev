@@ -189,6 +189,7 @@
             contents: grade.contents
         };
         gradeList.push(newGrade);
+        gradesActives.push(newGrade);
         console.log("new grade dupliqued", nameNewGrade);
         console.log("content new grade dupliqued", newGrade.contents);
     }

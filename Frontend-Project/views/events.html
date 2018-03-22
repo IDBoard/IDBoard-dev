@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="../css/event.css">
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -101,7 +102,13 @@
                             </form>
                         </div>
                         <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="eventsViewed()">
+                            <button class="btn btn-secondary dropdown-toggle" 
+                                    type="button" 
+                                    id="notification" 
+                                    data-toggle="dropdown" 
+                                    aria-haspopup="true" 
+                                    aria-expanded="false" 
+                                    ng-click="eventsViewed()">
                                 <i class="fa fa-bell"></i>
                                 <!--<span class="count bg-danger">5</span>-->
                                 <span>{{countNotificationEvents}}</span>
@@ -156,6 +163,14 @@
                                 </a>
                             </div>
                         </div>
+
+                        <div ng-repeat="event in events">
+                            <p class="event"  style="float:right; font-size: 0.8em;">
+                                {{event.date | date:'yyyy-MM-dd'}} : {{event.msg}}  
+                            </p>
+                            <br>
+                            <div style="clear:both"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-5">
@@ -193,18 +208,12 @@
         <div class="breadcrumbs">
             <div class="row">
                 <div class="col-sm-12 col-lg-12 col-md-12 list-fix-height">
-                    <div class="list-group">
+                    <!--<div class="list-group">
                         <div href="#" class="list-group-item active">
                             <label> Id Etudiant: {{currentStudentId}}</label> <br />
                             <label>Etudiant connecté:  {{currentStudent.name}} {{currentStudent.lastName}}</label>
                         </div>
-                    </div>
-                    <div class="list-group" ng-repeat="event in events| orderBy:'date':true">
-                        <a href="javascript: void(0);"
-                           class="list-group-item">
-                            {{event.date | date:'yyyy-MM-dd'}} : {{event.msg}}
-                        </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
