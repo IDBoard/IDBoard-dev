@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -29,9 +30,6 @@
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
 
-    <script src="../js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="../js/dashboard.js"></script>
-    <script src="../js/widgets.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
@@ -43,6 +41,7 @@
 
     <script src="../js/modules/app.module.js"></script>
     <script src="../js/controllers/Trombinoscope.controller.js"></script>
+    <script src="../js/controllers/StudentReport.controller.js"></script>
 
     <script>
 
@@ -128,7 +127,12 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="#">Offre de stages</a></li>
                             <li><i class="menu-icon fa fa-table"></i><a href="#">Planning</a></li>
-                            <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#">Notes</a></li>
+                            <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#" class="menu-link"
+                                                                                 data-id="student_report"
+                                                                                 data-breadcrumb-step1="Vie Étudiante"
+                                                                                 data-breadcrumb-step2="Relevé de notes"
+                                                                                 data-page-title="Relevé de notes">Notes</a>
+                            </li>
                             <li><i class="menu-icon fa fa-camera-retro"></i><a href="#" class="menu-link"
                                                                                data-id="trombinoscope"
                                                                                data-breadcrumb-step1="Vie Étudiante"
@@ -157,7 +161,7 @@
         <header id="header" class="header">
             <div class="header-menu">
                 <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-bars"></i></a>
                     <div class="header-left">
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
@@ -283,7 +287,7 @@
         <div class="content mt-3" id="index">
             <h3>Accueil</h3>
         </div>
-        <div class="content mt-3" id="trombinoscope" ng-load="{{get_id_class(); get_trombi()}}"
+        <div class="content mt-3" id="trombinoscope" ng-load="{{onload()}}"
              ng-controller="Trombinoscope">
             <input type="hidden" ng-model="id_classe" value="{{id_classe}}"/>
             <div class="row">
@@ -309,6 +313,47 @@
                                 </div>
                                 <div class="col-sm-12" style="padding-left: 25px;">
                                     {{etudiant.firstname + ' ' + etudiant.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content mt-3" id="student_report" ng-load="{{onload()}}"
+             ng-controller="StudentReport">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row" ng-repeat="module in list_modules">
+                        <div class="col-12 module">
+                            <div class="row">
+                                <div class="col-1 check-module" ng-if="module.success == true">
+                                    <i class="fa fa-check-circle ok"></i>
+                                </div>
+                                <div class="col-1 check-module" ng-if="module.success == false">
+                                    <i class="fa fa-times-circle fail"></i>
+                                </div>
+                                <div class="col-6" style="padding-top: 15px;">
+                                    <b>{{module.module}}</b>
+                                </div>
+                                <div class="col-4" style="padding-top: 15px;">
+                                    <b>{{module.nb_credits}} ECTS</b>
+                                </div>
+                                <div class="col-1">
+                                    <div class="circle closed"
+                                         id="{{module.id}}"
+                                         ng-click="get_matieres(module.id)">
+                                        <i class="fa fa-angle-up up"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="module{{module.id}}_detail">
+                                <div class="col-12">
+                                    <div class="row" ng-repeat="detail in module.matieres">
+                                        <div class="col-12">
+                                            {{detail.name}}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

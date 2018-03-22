@@ -116,6 +116,7 @@
     <Content Include="images\tile\ribbon.png" />
     <Content Include="js\controllers\Connection.controller.js" />
     <Content Include="js\controllers\Forget_password.controller.js" />
+      <Content Include="js\controllers\StudentReport.controller.js"/>
       <Content Include="js\controllers\Trombinoscope.controller.js"/>
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />

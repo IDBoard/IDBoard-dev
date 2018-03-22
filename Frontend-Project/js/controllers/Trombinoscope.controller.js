@@ -1,5 +1,10 @@
 idboard.controller('Trombinoscope', function ($scope, $http) {
 
+    $scope.onload = function () {
+        $scope.get_id_class();
+        $scope.get_trombi()
+    };
+    
     $scope.get_id_class = function () {
         $scope.id_classe = 5;
     };
