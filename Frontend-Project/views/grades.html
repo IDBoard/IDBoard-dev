@@ -235,10 +235,10 @@
                                        data-ng-click="selectGrade(grade)">
                                         {{grade.name}}
                                     </a>
-                                    <button type="button" class="btn btn-warning float-right" ng-click="archiveGrade(grade)" aria-label="Left Align">
+                                    <button type="button" class="btn float-right" ng-click="archiveGrade(grade)" aria-label="Left Align">
                                         Archiver
                                     </button>
-                                    <button type="button" class="btn btn-danger float-right" ng-click="deleteGrade(grade)" aria-label="Left Align">
+                                    <button type="button" class="btn float-right" ng-click="deleteGrade(grade)" aria-label="Left Align">
                                         Supprimer
                                     </button>
                                 </div>
@@ -266,7 +266,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
                             <div class="list-group">
                                 <a href="#" class="list-group-item active">
-                                    Eleves associé à une classe 
+                                    Eleves associé à la classe: {{gradeSelected.name}}
                                 </a>
                             </div>
                             <div class="list-group" ng-repeat="student in studentsInThisGrade">
@@ -275,10 +275,10 @@
                                         data-ng-click="addStudent(student)">
                                         {{student.name}}
                                     </a>
-                                    <button type="button" class="btn btn-danger float-right" ng-click="deleteStudent(student)" aria-label="Left Align">
+                                    <button type="button" class="btn float-right" ng-click="deleteStudent(student)" aria-label="Left Align">
                                         Supprimer
                                     </button>
-                                    <button type="button" class="btn btn-warning float-right" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
+                                    <button type="button" class="btn float-right" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
                                         Innactivate
                                     </button>
                                 </div>

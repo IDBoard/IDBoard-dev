@@ -221,7 +221,7 @@
 
                 <div class="row">
                     <!-- Grade List -->
-                    <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height-modules">
+                    <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
                         <div class="list-group">
                             <a href="#" class="list-group-item active">
                                 Classes existentes
@@ -255,9 +255,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div> <!-- .content -->
+                <!-- Cours in selected module -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                                Matières du module: {{moduleSelected.name}}
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="c in cours">
+                            <div class="list-group-item">
+                                <a href="javascript: void(0);">
+                                    {{c.name}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
     <script src="../js/vendor/jquery-2.1.4.min.js"></script>

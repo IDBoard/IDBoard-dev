@@ -23,11 +23,11 @@
         );
     }
 
-    var gradeSelected;
+    $scope.gradeSelected;
 
     $scope.selectGrade = function (grade) {
         console.log("selectGrade");
-        gradeSelected = grade;
+        $scope.gradeSelected = grade;
         $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
         var index = $scope.grades.indexOf(gradeSelected);
     };
@@ -39,10 +39,10 @@
     };
 
     $scope.addStudent = function (student) {
-        if (gradeSelected) {
+        if ($scope.gradeSelected != null || $scope.gradeSelected == 'undefined') {
             console.log("grade selected");
-            console.log(gradeSelected);
-            GradeService.addStudent(gradeSelected, student);
+            console.log($scope.gradeSelected);
+            GradeService.addStudent($scope.gradeSelected, student);
             student.grade = true;
             StudentService.changeGradeStudent(student);
         }
@@ -50,7 +50,7 @@
 
     $scope.duplicateGrade = function(grade) {
         console.log("duplicateGrade method");
-        grade = gradeSelected;
+        grade = $scope.gradeSelected;
         var nameNewGrade = $scope.nameNewGrade;
         GradeService.duplicateGrade(grade, nameNewGrade);
     };
@@ -62,9 +62,11 @@
 
     $scope.deleteStudent = function (student) {
         console.log("deleteStudent method");
-        GradeService.deleteStudent(gradeSelected, student);
-        student.grade = false;
-        StudentService.changeGradeStudent(student);
+        if ($scope.gradeSelected != null || $scope.gradeSelected == 'undefined') {
+            GradeService.deleteStudent($scope.gradeSelected, student);
+            student.grade = false;
+            StudentService.changeGradeStudent(student);
+        }
     }
 
     $scope.inactiveStudentPassage = function (student) {

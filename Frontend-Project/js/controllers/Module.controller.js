@@ -5,8 +5,8 @@
 
     
     var moduleToShow;
-    var moduleSelected;
-
+    $scope.moduleSelected;
+    $scope.cours;
     $scope.moduleNameToAdd;
     $scope.coursToAdd;
 
@@ -18,7 +18,8 @@
     };
     
     $scope.setModuleSelected = function (module) {
-        moduleSelected = module;
+        $scope.moduleSelected = module;
+        $scope.cours = module.cours;
     }
 
     $scope.addModuleToGrade = function (grade, module) {
@@ -55,14 +56,14 @@
     });
 
     $scope.addCoursToModule = function () {
-        console.log("moduleSelected", moduleSelected);
+        console.log("moduleSelected", $scope.moduleSelected);
         var coursToadd = {
             id: Date.now(),
             name: $scope.coursToAdd,
         };
 
-        if (moduleSelected != null || moduleSelected == 'undefined') {
-            ModuleService.addCoursToModule(moduleSelected, coursToadd);
+        if ($scope.moduleSelected != null || $scope.moduleSelected == 'undefined') {
+            ModuleService.addCoursToModule($scope.moduleSelected, coursToadd);
             $scope.coursToAdd = "";
         }
      

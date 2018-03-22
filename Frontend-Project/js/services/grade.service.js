@@ -71,6 +71,15 @@
             ]
         },
         {
+            id: '255',
+            name: 'M1',
+            active: true,
+            checked: false,
+            students: [],
+            contents: [],
+            modules: []
+        },
+        {
             id: '3',
             name: 'B2',
             active: true,
