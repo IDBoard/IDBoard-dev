@@ -4,27 +4,31 @@
     var students    = StudentService.getStudents();
     $scope.grades   = GradeService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
-   
+
+    
+    $scope.gradeSelected;
+    $scope.gradesActives  = GradeService.getGradesActives();
+    $scope.gradesNActives = GradeService.getGradesNActives();
+
     $scope.newGrade = function () {
         console.log("add new grade");
-        GradeService.getGrades().push(
-            {
-                id: '77',
-                name: $scope.gradeNameToAdd,
-                activated: true,
-                students: [
-                    {
-                        name: "Antuanett",
-                        activated: true,
-                        checked: false,
-                    }
-                ]
-            }
-        );
+        var grade = {
+            id: '77',
+            name: $scope.gradeNameToAdd,
+            activated: true,
+            students: [
+                {
+                    name: "Antuanett",
+                    activated: true,
+                    checked: false,
+                }
+            ]
+        }
+        GradeService.getGrades().push(grade);
+        GradeService.gradesActives().push(grade);
+        $scope.gradeNameToAdd = "";
     }
-
-    $scope.gradeSelected;
-
+    
     $scope.selectGrade = function (grade) {
         console.log("selectGrade");
         $scope.gradeSelected = grade;
@@ -53,11 +57,20 @@
         grade = $scope.gradeSelected;
         var nameNewGrade = $scope.nameNewGrade;
         GradeService.duplicateGrade(grade, nameNewGrade);
+        $scope.nameNewGrade = "";
     };
 
     $scope.archiveGrade = function (grade) {
         console.log("archiverGrade method");
         GradeService.archiveGrade(grade);
+
+        //remove grade in list gradeActives
+        var index = $scope.gradesActives.indexOf(grade);
+        $scope.gradesActives.splice(index, 1);
+
+        //add grade in list gradeNActives
+        $scope.gradesNActives.push(grade);
+        console.log("grade non actives", $scope.gradesNActives);
     }
 
     $scope.deleteStudent = function (student) {

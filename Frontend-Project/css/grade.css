@@ -10,3 +10,14 @@
     height: 350px;
     overflow-y: auto;
 }
+
+.card {
+    margin-bottom: 0 !important;
+}
+
+.button-grade {
+    border: 6px;
+    padding: 6px;
+    border-radius: 1.5px !important;
+    
+}

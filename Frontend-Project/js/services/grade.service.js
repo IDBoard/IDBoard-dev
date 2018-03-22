@@ -109,7 +109,7 @@
         {
             id: '4',
             name: 'B3',
-            active: true,
+            active: false,
             checked: false,
             students: [
                 {
@@ -143,9 +143,39 @@
         return gradeList;
     }
 
+    var gradesActives = [];
+    var gradesNActives = [];
+
     this.getStudentsInThisGrade = function (grade) {
         if (grade)
             return grade.students;
+    }
+
+    this.gradesActives = function () {
+        return gradesActives;
+    }
+
+    this.gradesNActives = function () {
+        return gradesNActives;
+    }
+
+    this.getGradesActives = function () {
+        gradeList.forEach(function (_grade) {
+            if (_grade.active) {
+                gradesActives.push(_grade);
+            }
+        });
+        return gradesActives;
+    }
+
+    this.getGradesNActives = function () {
+
+        gradeList.forEach(function (_grade) {
+            if (!_grade.active) {
+                gradesNActives.push(_grade);
+            }
+        });
+        return gradesNActives;
     }
 
     this.duplicateGrade = function (grade, nameNewGrade) {
@@ -172,8 +202,26 @@
     }
 
     this.deleteGrade = function (grade) {
+
+        console.log("deletegrade", grade);
+        console.log("gradesActives", gradesActives);
+        console.log("gradesNActives", gradesNActives);
+
+        var i = gradesActives.indexOf(grade);
+        console.log("i", i);
+        if (i != -1) {
+            gradesActives.splice(i, 1);
+        }
+        else {
+            var _i = gradesNActives.indexOf(grade);
+            console.log("_i", _i);
+            if (_i != -1) {
+                gradesNActives.splice(_i, 1);
+            }
+        }
         var index = gradeList.indexOf(grade);
         gradeList.splice(index, 1);
+        console.log("gradeList", gradeList);
     }
 
     this.addStudent = function (grade, student) {
