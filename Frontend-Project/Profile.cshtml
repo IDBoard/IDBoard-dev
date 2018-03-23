@@ -1,0 +1,196 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Css/MyCss.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script>
+        function toggleEmail(element) {       
+            if (document.getElementById("hideEmail").style.display == 'none') {
+                
+                document.getElementById("hideEmail").style.display = 'table-row'; // set to table-row instead of an empty string
+                var table = document.getElementById("tableEmail");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myEmail = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationEmail")
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myEmail();
+                } else {
+                document.getElementById("hideEmail").style.display = 'none';
+                }
+        }
+
+        function toggleAddresse(element) {
+            if (document.getElementById("hideAddresse").style.display == 'none') {
+                document.getElementById("hideAddresse").style.display = 'table-row';// set to table-row instead of an empty string
+                var table = document.getElementById("tableAddresse");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myNumero = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationAddresse");
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myNumero();
+               
+            } else {
+                document.getElementById("hideAddresse").style.display = 'none';
+            }
+        }
+
+        function toggleNumero(element) {
+          //  alert("row" + element.parentNode.parentNode.rowIndex +
+          //      " - column" + element.parentNode.cellIndex);
+            if (document.getElementById("hideNumero").style.display == 'none') {
+                document.getElementById("hideNumero").style.display = 'table-row';
+                var table = document.getElementById("tableNumeros");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myNumero = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationNumero")
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myNumero();
+                // set to table-row instead of an empty string
+            } else {
+                document.getElementById("hideNumero").style.display = 'none';
+            }       
+        }
+    </script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+<body>
+    <div style="margin-top:120px;margin-left:140px;">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center ">
+                    <div class="panel panel-default">
+                        <div class="userprofile social ">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+                                <div class="ratio img-circle" style="background-image: url(https://data.whicdn.com/images/59274389/large.jpg)"></div>
+                            </div>
+                            <div class="info">
+                                <h3 class="username">Bienvenue, {{Nom}} et {{Prenom}}</h3>
+                                <h5 style="color:#ffffff">Nè à {{lieu de neissance}} le {{Date de neissance}}</h5>
+                                <h4 style="color:#ffffff">ID : {{id}}</h4>                              
+                                <p>{{role}}</p>
+                                <p>Sophia Antipolis, B3<p>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+               
+            </tr>
+        </table>
+    </div>
+</div>
+                        </div>
+                        <div class="col-md-12" style="background-color:rgb(213, 213, 213);">
+                        </div>
+
+
+                        <br />
+                        <br />
+                        <div class="panel-group" style="width: 80%; margin-left:auto;margin-right:auto;">
+
+                            <div class="panel panel-default" style="border-top:40px;overflow:hidden">
+                                <div class="panel-heading"  >Mes Numeros de telephone</div>
+                                <table class="table table-user-information" id="tableNumeros">
+                                    <tbody>
+                                        <tr>
+                                            <td><label>Numero:</label></td>
+                                            <td><label typeof="numero">{{numero2}}</label></td>
+                                            <td ><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>Numero:</label></td>
+                                            <td><label typeof="numero">{{numero3}}</label></td>
+                                            <td><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                        </tr>
+                                        <tr id="hideNumero" style="display:none;">
+                                            <td><label id="modificationNumero">{{numero}}</label></td>
+                                            <td><input required type="text" class="form-control" id="newNumero"></td>
+                                            <td ><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+                            <div class="panel panel-default" style="border-top:40px;overflow:hidden">
+                                <div class="panel-heading">Mes Emails</div>
+                                <table class="table table-user-information" id="tableEmail">
+                                    <tbody>
+                                        <tr>
+                                            <td>Email personnel:</td>
+                                            <td>{{email}}</td>
+                                            <td><input style="margin-right:4%; float:right" onClick="toggleEmail(this);" id="email" type="button" class="btn btn-danger" value="demander une modification" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email personnel:</td>
+                                            <td>{{email2}}</td>
+                                            <td><input style="margin-right:4%; float:right" onClick="toggleEmail(this);" id="email" type="button" class="btn btn-danger" value="demander une modification" /></td>
+                                        </tr>
+                                        <tr id="hideEmail" style="display:none;">
+                                            <td><label id="modificationEmail">{{email}}</label></td>
+                                            <td><input required type="email" class="form-control" id="newEmail"></td>
+                                            <td><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div class="panel panel-default" style="border-top:40px;overflow:hidden">
+                                <div class="panel-heading">Mes Addresses</div>
+                                <table class="table table-user-information" id="tableAddresse">
+                                    <tbody>
+                                        <tr>
+                                            <td>mon Addresse :</td>
+                                            <td>{{addresse1}}</td>
+                                            <td><input type="button" style="margin-right:4%; float:right" onclick="toggleAddresse(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>mon Addresse :</td>
+                                            <td>{{addresse2}}</td>
+                                            <td><input type="button" style="margin-right:4%; float:right" onclick="toggleAddresse(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                        </tr>
+                                        <tr id="hideAddresse" style="display:none;">
+                                            <td><label id="modificationAddresse">{{addresse}}</label></td>
+                                            <td><input required type="text" class="form-control" id="newAddresse"></td>
+                                            <td><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                         
+
+                    </div>       
+    </body>
+</html>
