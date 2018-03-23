@@ -43,7 +43,7 @@ namespace Backend_Project.Controllers
         [HttpPost]
         public IHttpActionResult AddMatter(String _reference, String _description, int _marksNumber, double _credits, String _classeName)
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             int _idClasse = (from Classes in iDBoard.Classes where Classes.Name == _classeName select Classes.idClass).FirstOrDefault(); ;
 
