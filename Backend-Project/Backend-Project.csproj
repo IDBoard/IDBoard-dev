@@ -185,6 +185,7 @@
     <Compile Include="ContactDetails.cs">
       <DependentUpon>IdboardDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GetClassesController.cs" />
     <Compile Include="Controllers\GetMessagesController.cs" />
     <Compile Include="Controllers\GetProfilController.cs" />
@@ -280,7 +281,16 @@
     <Compile Include="Messages.cs">
       <DependentUpon>IdboardDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActiveDirectory\ActiveDirectoryMethods.cs" />
+    <Compile Include="Models\BusinessEntity.cs" />
     <Compile Include="Models\ClassesIdboard.cs" />
+    <Compile Include="Models\EmailService\EmailService.cs" />
+    <Compile Include="Models\Repository\AuthRepository.cs" />
+    <Compile Include="Models\Repository\MyContext.cs" />
+    <Compile Include="Models\ViewModel\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
+    <Compile Include="Owin\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Owin\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>IdboardDb.tt</DependentUpon>
