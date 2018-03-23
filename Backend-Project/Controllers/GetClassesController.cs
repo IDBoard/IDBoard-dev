@@ -86,6 +86,7 @@ namespace Backend_Project.Controllers
         [ResponseType(typeof(ClassesIdboard))]
         public IHttpActionResult PostClassesIdboard(Classes Classes)
         {
+            return (Ok());
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

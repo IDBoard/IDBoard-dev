@@ -13,7 +13,7 @@ namespace Backend_Project.Controllers
         //Get modules list from classe name (ex : /Matter/B3)
         public IHttpActionResult Get(String ClasseName)
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             int idClasse = (from Classes in iDBoard.Classes where Classes.Name == ClasseName select Classes.idClass).FirstOrDefault(); ;
 
@@ -28,7 +28,7 @@ namespace Backend_Project.Controllers
         [HttpPost]
         public IHttpActionResult EditECTS(String reference, double credits)
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             var updateRow = (from Matters in iDBoard.Matters where Matters.Reference == reference select Matters).FirstOrDefault();
 
