@@ -25,7 +25,9 @@
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
     <script src="../js/angularjs/angular.js"></script>
+    <!--<script src="../js/angularjs/angular-route.js"></script>-->
     <script src="../js/modules/app.module.js"></script>
     <script src="../js/services/student.service.js"></script>
     <script src="../js/services/grade.service.js"></script>
@@ -199,6 +201,11 @@
             </div>
         </header><!-- /header -->
         <!-- Header-->
+        <!--<div ng-view>
+
+        </div>
+        <a href="/test">test</a>-->
+
         <div class="breadcrumbs">
             <div ng-app="IDBoard">
                 <!--GradeController--->
@@ -247,12 +254,12 @@
                                                        data-ng-click="selectGrade(grade)">
                                                         {{grade.name}}
                                                         <div style="float:right">
-                                                            <a role="button" class="btn btn-secondary button-grade" data-ng-click="deleteGrade(grade)">
-                                                                <span class="glyphicon glyphicon-print"></span>Supprimer
+                                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
+                                                                <span class="fa fa-trash"></span>
                                                             </a>
 
-                                                            <a role="button" class="btn btn-secondary button-grade" data-ng-click="archiveGrade(grade)">
-                                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"> Archiver</span>
+                                                            <a role="button" class="btn button-grade" data-ng-click="archiveGrade(grade)">
+                                                                <span class="fa fa-archive" aria-hidden="true"></span>
                                                             </a>
                                                         </div>
                                                     </a>
@@ -282,8 +289,8 @@
                                                        data-ng-click="selectGrade(grade)">
                                                         {{grade.name}}
                                                         <div style="float:right">
-                                                            <a role="button" class="btn btn-secondary button-grade" data-ng-click="deleteGrade(grade)">
-                                                                <span class="glyphicon glyphicon-print"></span>Supprimer
+                                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
+                                                                <span class="fa fa-trash"></span>
                                                             </a>
                                                         </div>
                                                     </a>
@@ -294,10 +301,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
                             </div>
                             <!-- Student without grade List -->
                             <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
