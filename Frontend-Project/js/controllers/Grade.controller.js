@@ -1,14 +1,21 @@
-﻿idboard.controller('GradeController', function ($scope, GradeService, StudentService) {
+﻿idboard.controller('GradeController', function ($scope, $filter, GradeService, StudentService) {
 
     $scope.gradeService = GradeService;
     var students    = StudentService.getStudents();
     $scope.grades   = GradeService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
-
+    
     
     $scope.gradeSelected;
     $scope.gradesActives = GradeService.getGradesActives();
     $scope.gradesNActives = GradeService.getGradesNActives();
+
+    if ($scope.gradesActives.length > 0)
+    {
+        $scope.nameGradeToDuplicate = $scope.gradesActives[0].name;
+    }
+
+   
 
     $scope.newGrade = function () {
         console.log("add new grade");
@@ -53,6 +60,7 @@
 
     $scope.duplicateGrade = function(grade) {
         console.log("duplicateGrade method");
+        console.log('nameGradeToDuplicate', $scope.nameGradeToDuplicate);
         grade = $scope.gradeSelected;
         var nameNewGrade = $scope.nameNewGrade;
         if (grade != null) {
