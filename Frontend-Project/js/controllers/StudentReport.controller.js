@@ -7,19 +7,13 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
         $scope.list_modules = $scope.get_test_list();
     };
 
-    $scope.get_matieres = function (id) {
-        console.log(document.querySelector('#module' + id + '_detail'));
-        console.log(document.querySelector('#module' + id + '_detail').classList);
-        if (document.querySelector('#module' + id + '_detail').classList.contains('opened')) {
-            document.querySelector('#module' + id + '_detail').classList.remove('opened').add('closed');
+    $scope.change_fleche = function (id) {
+        if (document.querySelector('#button_module_' + id).classList.contains('fa-angle-up')) {
+            document.querySelector('#button_module_' + id).classList.remove('fa-angle-up');
+            document.querySelector('#button_module_' + id).classList.add('fa-angle-down');
         }
         else {
-            if (document.querySelector('#module' + id + '_detail').classList.contains('closed')) {
-                document.querySelector('#module' + id + '_detail').classList.remove('closed').add('opened');
-            }
-            else {
-                document.querySelector('#module' + id + '_detail').classList.add('closed');
-            }
+            console.log('toto 2');
         }
     };
 
@@ -27,11 +21,13 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
         return [
             {
                 id: 0,
+                nb_notes_valides: 1,
                 module: "ANGLAIS",
                 nb_credits: 3,
                 success: true,
                 matieres: [
                     {
+                        id: 1,
                         name: 'ANG-SECTINFO-NIV4 : Anglais sur le thème de l\'informatique - Niveau 4',
                         type: 'ecrit',
                         date: '22/03/2018',
@@ -44,11 +40,13 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
             },
             {
                 id: 1,
+                nb_notes_valides: 1,
                 module: "Electronique - Mise à niveau en électronique",
                 nb_credits: 3,
                 success: true,
                 matieres: [
                     {
+                        id: 1,
                         name: 'ELEC-EMB-MAN : Electronique - Mise à niveau en électronique',
                         type: 'ecrit',
                         date: null,
@@ -61,11 +59,13 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
             },
             {
                 id: 2,
+                nb_notes_valides: 1,
                 module: "ALGORITHMIQUE",
                 nb_credits: 3,
                 success: false,
                 matieres: [
                     {
+                        id: 1,
                         name: 'ELEC-EMB-MAN : Electronique - Mise à niveau en électronique',
                         type: 'ecrit',
                         date: '22/12/2017',
@@ -75,6 +75,7 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
                         commentaire: ""
                     },
                     {
+                        id: 3,
                         name: 'ALGO-TRTSND : Algorithmique - Algorithmes et heuristiques appliqués au traitement du son',
                         type: null,
                         date: null,
@@ -84,6 +85,7 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
                         commentaire: null
                     },
                     {
+                        id: 4,
                         name: 'ALGO-TRTIMG : Algorithmique - Algorithmes et heuristiques appliqués au traitement de l’image',
                         type: null,
                         date: null,
@@ -93,6 +95,7 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
                         commentaire: null
                     },
                     {
+                        id: 5,
                         name: 'ALGO-CRYPTO : Algorithmique - Algorithmes et heuristiques appliqués à la cryptographie',
                         type: null,
                         date: null,
@@ -104,5 +107,9 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
                 ]
             }
         ]
+    };
+
+    $scope.get_head_infos = function () {
+        return []
     }
 });

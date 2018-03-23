@@ -76,13 +76,6 @@ input::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* Opéra*/
-input::-o-inner-spin-button,
-input::-o-outer-spin-button {
-    -o-appearance: none;
-    margin: 0
-}
-
 .checkbox .icon-checked:before {
     color: darkred;
 }
@@ -120,6 +113,8 @@ span.menu-link {
 }
 
 .module .circle {
+    margin-top: 5px;
+    
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
     border-radius: 40px;
@@ -133,7 +128,26 @@ span.menu-link {
     background: darkred;
 }
 
+.module .circle a {
+    color: white;
+}
+
 .up, .down {
     font-size: 35px;
     cursor: pointer;
 }
+
+.table thead th {
+    background-color: darkred;
+    color: white;
+}
+
+.table .course-title {
+    background-color: lightgrey;
+}
+
+.table .evaluated {
+
+}
+
+.table .dont-evaluated

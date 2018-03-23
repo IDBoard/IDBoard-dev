@@ -88,7 +88,7 @@
 
     </script>
 </head>
- <body ng-app="IDBoard">
+ <body ng-app="IDBoard" style="overflow-x: hidden;">
 
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -324,36 +324,85 @@
              ng-controller="StudentReport">
             <div class="row">
                 <div class="col-12">
+                    
+                </div>
+                <div class="col-12 accordion" id="modules" role="tablist" aria-multiselectable="true">
                     <div class="row" ng-repeat="module in list_modules">
-                        <div class="col-12 module">
-                            <div class="row">
-                                <div class="col-1 check-module" ng-if="module.success == true">
+                        <div class="col-12 module card">
+                            <div class="row card-header">
+                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == true">
                                     <i class="fa fa-check-circle ok"></i>
                                 </div>
-                                <div class="col-1 check-module" ng-if="module.success == false">
+                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == false">
                                     <i class="fa fa-times-circle fail"></i>
                                 </div>
-                                <div class="col-6" style="padding-top: 15px;">
+                                <div class="col-xs-4 col-md-5" style="padding-top: 15px;">
                                     <b>{{module.module}}</b>
                                 </div>
-                                <div class="col-4" style="padding-top: 15px;">
+                                <div class="col-xs-3 col-md-3" style="padding-top: 15px;">
                                     <b>{{module.nb_credits}} ECTS</b>
                                 </div>
-                                <div class="col-1">
-                                    <div class="circle closed"
-                                         id="{{module.id}}"
-                                         ng-click="get_matieres(module.id)">
-                                        <i class="fa fa-angle-up up"></i>
+                                <div class="col-xs-1 col-md-1" style="padding-top: 15px;">
+                                    <b>{{module.nb_notes_valides + '/' + module.matieres.length}}</b>
+                                </div>
+                                <div class="col-xs-1">
+                                    <div class="circle closed">
+                                        <a href="#module{{module.id}}_detail"
+                                           data-id="{{module.id}}"
+                                           onclick="if($(this).hasClass('fa-angle-up')) {
+                                                        $(this).removeClass('fa-angle-up').addClass('fa-angle-down');
+                                                    }
+                                                    else {
+                                                        $(this).removeClass('fa-angle-down').addClass('fa-angle-up');
+                                                    }"
+                                           data-parent="#modules"
+                                           data-toggle="collapse"
+                                           aria-expanded="true"
+                                           aria-controls="module{{module.id}}_detail"
+                                           class="fa up fa-angle-up"></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="module{{module.id}}_detail">
+                            <div class="row closed collapse hide" id="module{{module.id}}_detail">
                                 <div class="col-12">
-                                    <div class="row" ng-repeat="detail in module.matieres">
-                                        <div class="col-12">
-                                            {{detail.name}}
-                                        </div>
-                                    </div>
+                                    <table class="table table-sm table-responsive-sm"
+                                           style="width: 100%; overflow-x: auto">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Type d'évaluation</th>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Note</th>
+                                            <th class="text-center">Coefficient</th>
+                                            <th class="text-center">Moyenne de la classe</th>
+                                            <th class="text-center">Commentaire</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody ng-repeat="detail in module.matieres">
+                                        <tr scope="row">
+                                            <th colspan="6" class="course-title">{{detail.name}}</th>
+                                        </tr>
+                                        <tr scope="row" ng-if="detail.note != null" class="evaluated">
+                                            <td class="font-weight-bold text-center">{{detail.type + ' n°' +
+                                                detail.id}}
+                                            </td>
+                                            <td class="font-weight-bold text-center">{{detail.date}}</td>
+                                            <td class="font-weight-bold text-center">{{detail.note}}</td>
+                                            <td class="font-weight-bold text-center">{{detail.coefficient}}</td>
+                                            <td class="font-weight-bold text-center">{{detail.moyenne}}</td>
+                                            <td class="font-weight-bold text-center"
+                                                ng-if="detail.commentaire != null && detail.commentaire != ''">
+                                                {{detail.commentaire}}
+                                            </td>
+                                            <td class="font-weight-bold text-center"
+                                                ng-if="detail.commentaire == null || detail.commentaire == ''">Aucun
+                                                commentaire
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="detail.note == null">
+                                            <td colspan="6" class="text-center dont-evaluated">Pas de note</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
