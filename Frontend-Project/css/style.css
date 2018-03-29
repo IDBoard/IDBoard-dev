@@ -112,8 +112,9 @@ span.menu-link {
     color: red;
 }
 
-.module .circle {
-    margin-top: 5px;
+#modules .circle a, .head .card-header .circle {
+    display: inline-block;
+    margin-top: 10px;
     
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -123,13 +124,25 @@ span.menu-link {
     height: 40px;
 
     text-align: center;
+    vertical-align: center;
 
     color: white;
     background: darkred;
 }
 
-.module .circle a {
+#modules .circle a {
+    margin-top: -2px;
+}
+
+#student_report .head .card {
+    background-color: lightgrey;
     color: white;
+}
+
+.card .card-header .circle {
+    display: inline-block;
+    padding-top: 8px;
+    margin-top: 0;
 }
 
 .up, .down {

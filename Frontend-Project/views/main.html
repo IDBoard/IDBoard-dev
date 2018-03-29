@@ -333,9 +333,168 @@
         <div class="content mt-3" id="student_report" ng-load="{{onload()}}"
              ng-controller="StudentReport">
             <div class="row">
+
                 <div class="col-12">
-                    
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header text-center">
+                                <table style="width: 200px;">
+                                    <tr>
+                                        <th>
+                                            <label for="modules_filers">
+                                                Affichage des modules :
+                                            </label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <select id="modules_filers">
+                                                <option value="successed">
+                                                    Réussis
+                                                </option>
+                                                <option value="failed">
+                                                    Échoués
+                                                </option>
+                                                <option value="currents">
+                                                    En Cours
+                                                </option>
+                                            </select>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-1"></div>
+                <div class="col-5 head">
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header">
+                                <table class="col-12">
+                                    <tr>
+                                        <th class="text-left">
+                                            Total des crédits ECTS :
+                                        </th>
+                                        <td class="text-right">
+                                            <div class="circle">
+                                                {{head_modules.credits.total}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 head">
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header">
+                                <table class="col-12">
+                                    <tr>
+                                        <th class="text-left">
+                                            Matières validées :
+                                        </th>
+                                        <td class="text-right">
+                                            <div class="circle">
+                                                {{head_modules.matieres.successed}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
+                <div class="col-1"></div>
+                <div class="col-5 head">
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header">
+                                <table class="col-12">
+                                    <tr>
+                                        <th class="text-left">
+                                            Crédits ECTS déja validés :
+                                        </th>
+                                        <td class="text-right">
+                                            <div class="circle">
+                                                {{head_modules.credits.valided}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 head">
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header">
+                                <table class="col-12">
+                                    <tr>
+                                        <th class="text-left">
+                                            Matières échoués :
+                                        </th>
+                                        <td class="text-right">
+                                            <div class="circle">
+                                                {{head_modules.matieres.failed}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
+                <div class="col-1"></div>
+                <div class="col-5 head">
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header">
+                                <table class="col-12">
+                                    <tr>
+                                        <th class="text-left">
+                                            Crédits ECTS manquants:
+                                        </th>
+                                        <td class="text-right">
+                                            <div class="circle">
+                                                {{head_modules.credits.missing}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 head">
+                    <div class="row">
+                        <div class="col-12 card">
+                            <div class="row card-header">
+                                <table class="col-12">
+                                    <tr>
+                                        <th class="text-left">
+                                            Matières en cours de validation :
+                                        </th>
+                                        <td class="text-right">
+                                            <div class="circle">
+                                                {{head_modules.matieres.currents}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
                 <div class="col-12 accordion" id="modules" role="tablist" aria-multiselectable="true">
                     <div class="row" ng-repeat="module in list_modules">
                         <div class="col-12 module card">
@@ -345,6 +504,9 @@
                                 </div>
                                 <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == false">
                                     <i class="fa fa-times-circle fail"></i>
+                                </div>
+                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == null">
+                                    <i class="fa fa-question"></i>
                                 </div>
                                 <div class="col-xs-4 col-md-5" style="padding-top: 15px;">
                                     <b>{{module.module}}</b>
