@@ -29,7 +29,7 @@ idboard.controller('Trombinoscope', function ($scope, $http) {
                 console.log(data);
             });*/
 
-        data = $scope.genere_json_test();
+        let data = $scope.genere_json_test();
 
         data.listStudent = $scope.delete_unactive_students(data.listStudent);
 

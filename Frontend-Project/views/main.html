@@ -289,36 +289,46 @@
         </div>
         <div class="content mt-3" id="trombinoscope" ng-load="{{onload()}}"
              ng-controller="Trombinoscope">
+
             <input type="hidden" ng-model="id_classe" value="{{id_classe}}"/>
+
             <div class="row">
                 <div class="col-sm-12 font-weight-bold text-center classname">
                     {{nbr_etudiants}} étudiants dans la classe : {{class_name}}
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-sm-4" ng-repeat="etudiant in etudiants">
-                    <div class="row">
-                        <div class="col-12 profilimage img-thumbnail" id="eleve_{{etudiant.id}}">
-                            <center>
-                                <img src="http://192.168.0.171/{{etudiant.picture}}" class="img-fluid rounded"
-                                     style="width: 50%;"/>
-                            </center>
+
+                    <div ng-if="etudiant.active == true">
+
+                        <div class="row">
+                            <div class="col-12 profilimage img-thumbnail" id="eleve_{{etudiant.id}}">
+                                <center>
+                                    <img src="http://192.168.0.171/{{etudiant.picture}}" class="img-fluid rounded"
+                                         style="width: 50%;"/>
+                                </center>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-sm-12" style="padding-left: 25px;">
-                                    {{etudiant.id}}
-                                </div>
-                                <div class="col-sm-12" style="padding-left: 25px;">
-                                    {{etudiant.firstname + ' ' + etudiant.name}}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="padding-left: 25px;">
+                                        {{etudiant.id}}
+                                    </div>
+                                    <div class="col-sm-12" style="padding-left: 25px;">
+                                        {{etudiant.firstname + ' ' + etudiant.name}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
+
         </div>
         <div class="content mt-3" id="student_report" ng-load="{{onload()}}"
              ng-controller="StudentReport">
