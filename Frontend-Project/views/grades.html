@@ -84,6 +84,7 @@
                         </ul>
                     </li>
                     <li>
+                </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -219,16 +220,20 @@
                             </button>
                         </div>
 
-                        <div class="col-sm-6 form-group">
+                        <div class="col-sm-6 form-group" >
                             <span class="label label-primary">Nom de la classe a dupliquer :</span>
-                            <select class="form-control" ng-model="nameGradeToDuplicate">
-                                <option ng-repeat="grade in gradesActives |orderBy:'+':true" value="{{grade}}">{{grade.name}}</option>
+                            <select class="form-control" ng-model="newGradeIdToDuplicate">
+                                <option value="">--- Select an option ---</option>
+                                <option ng-repeat="grade in gradesActives |orderBy:'+':true" 
+                                        value="{{grade.id}}">{{grade.name}}
+                                </option>
                             </select>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGrade" style="margin-top: 2px;">
+                            <button ng-if="newGradeIdToDuplicate"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGrade" style="margin-top: 2px;">
                                 Dupliquer une classe
                             </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="modalGrade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal .-->
+                            <div  class="modal fade" id="modalGrade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -243,7 +248,12 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button id="buttonDuplicate" type="button" class="btn btn-primary" data-dismiss="modal" ng-click="duplicateGrade()">OK</button>
+                                            <button 
+                                                    id="buttonDuplicate" t
+                                                    ype="button" 
+                                                    class="btn btn-primary" 
+                                                    data-dismiss="modal" 
+                                                    ng-click="duplicateGrade()">OK</button>
                                         </div>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@
 
     if ($scope.gradesActives.length > 0)
     {
-        $scope.nameGradeToDuplicate = $scope.gradesActives[0].name;
+        //$scope.newGradeToDuplicate = $scope.gradesActives[0].name;
     }
 
    
@@ -49,7 +49,7 @@
     };
 
     $scope.addStudent = function (student) {
-        if ($scope.gradeSelected != null || $scope.gradeSelected == 'undefined') {
+        if ($scope.gradeSelected != null && $scope.gradeSelected !== "undefined") {
             console.log("grade selected");
             console.log($scope.gradeSelected);
             GradeService.addStudent($scope.gradeSelected, student);
@@ -60,14 +60,24 @@
 
     $scope.duplicateGrade = function(grade) {
         console.log("duplicateGrade method");
-        console.log('nameGradeToDuplicate', $scope.nameGradeToDuplicate);
-        grade = $scope.gradeSelected;
-        var nameNewGrade = $scope.nameNewGrade;
-        if (grade != null) {
-            GradeService.duplicateGrade(grade, nameNewGrade);
-            $scope.nameNewGrade = "";
+        console.log('newGradeIdToDuplicate', $scope.newGradeIdToDuplicate);
+       
+        if ($scope.newGradeIdToDuplicate != null && $scope.newGradeIdToDuplicate != "undefined") {
+            if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
+                var nameNewGrade = $scope.nameNewGrade;
+                var gradeID = $scope.newGradeIdToDuplicate;
+                GradeService.duplicateGrade(gradeID, nameNewGrade);
+                $scope.nameNewGrade = "";
+            }
+            else {
+                console.log("not gradeid");
+            }
+        }
+        else {
+            console.log("not gradeid");
         }
     };
+
 
     $scope.archiveGrade = function (grade) {
         console.log("archiverGrade method");
@@ -84,7 +94,7 @@
 
     $scope.deleteStudent = function (student) {
         console.log("deleteStudent method");
-        if ($scope.gradeSelected != null || $scope.gradeSelected == 'undefined') {
+        if ($scope.gradeSelected !== null || $scope.gradeSelected === 'undefined') {
             GradeService.deleteStudent($scope.gradeSelected, student);
             student.grade = false;
             StudentService.changeGradeStudent(student);
@@ -99,10 +109,9 @@
 
     $scope.$watch('studentsInThisGrade.length', function (newVal, oldVal) {
         console.log('watch studentsInThisGrade');
-
         $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
-        console.log('Watch: studentNotBelongTo', $scope.students);
     });
+
 
     
 });
