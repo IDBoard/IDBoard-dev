@@ -8,8 +8,6 @@
 
     // Message d'erreur ou de success
     $scope.logs = '';
-    // Phrase dans le footer
-    $scope.phrase_daccroche = 'CampusID La Grande Ecole de l\'Institut Européen de l\'Intelligence Digitale à Sophia Antipolis qui forme les Experts Programmeurs de demain.';
 
     // Pictograme pour afficher ou cacher le mot de passe
     $scope.showPassword1 = 'open';
@@ -27,7 +25,7 @@
             }
             else {
                 $scope.color = 'red';
-                $scope.logs = 'Les 2 mots de passe ne sont pas identiques.';
+                $scope.logs = 'Les mots de passe ne sont pas identiques.';
             }
         }
         else {
@@ -40,21 +38,21 @@
     $scope.showHidePassword = function (num_password) {
         switch (num_password) {
             case 1:
-                if ($scope.showPassword1 == 'open') {
+                if ($scope.showPassword1 === 'open') {
                     $scope.showPassword1 = 'close';
                     document.querySelector('#password1').setAttribute('type', 'text');
                 }
-                else if ($scope.showPassword1 == 'close') {
+                else if ($scope.showPassword1 === 'close') {
                     $scope.showPassword1 = 'open';
                     document.querySelector('#password1').setAttribute('type', 'password');
                 }
                 break;
             case 2:
-                if ($scope.showPassword2 == 'open') {
+                if ($scope.showPassword2 === 'open') {
                     $scope.showPassword2 = 'close';
                     document.querySelector('#password2').setAttribute('type', 'text');
                 }
-                else if ($scope.showPassword2 == 'close') {
+                else if ($scope.showPassword2 === 'close') {
                     $scope.showPassword2 = 'open';
                     document.querySelector('#password2').setAttribute('type', 'password');
                 }

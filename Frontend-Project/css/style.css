@@ -1,15 +1,19 @@
-﻿#logo {
+﻿.logo {
     margin-bottom: 15px;
 }
 
-.app-connection #title {
+.app-connection .title {
     font-size: 35px;
     color: black;
 }
 
-.forget-password #title {
+.forget-password .title {
     font-size: 25px;
     color: black;
+}
+
+.link:focus {
+    color: darkred;
 }
 
 .connectionBtn {
@@ -43,8 +47,17 @@
     border-color: gray;
 }
 
+.overflow-main {
+    height: 150px;
+}
+
+.phrase-titre {
+    margin-left: 60px;
+    margin-bottom: -20px;
+}
+
 .panel-footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -63,13 +76,6 @@ input::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* Opéra*/
-input::-o-inner-spin-button,
-input::-o-outer-spin-button {
-    -o-appearance: none;
-    margin: 0
-}
-
 .checkbox .icon-checked:before {
     color: darkred;
 }
@@ -85,3 +91,76 @@ input::-o-outer-spin-button {
 .input-group, .form-group {
     margin-bottom: 15px;
 }
+
+span.menu-link {
+    cursor: pointer;
+}
+
+.classname {
+    padding-bottom: 15px;
+}
+
+.check-module {
+    font-size: 40px;
+}
+
+.check-module .ok {
+    color: green;
+}
+
+.check-module .fail {
+    color: red;
+}
+
+#modules .circle a, .head .card-header .circle {
+    display: inline-block;
+    margin-top: 10px;
+    
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+
+    width: 40px;
+    height: 40px;
+
+    text-align: center;
+    vertical-align: center;
+
+    color: white;
+    background: darkred;
+}
+
+#modules .circle a {
+    margin-top: -2px;
+}
+
+#student_report .head .card {
+    background-color: lightgrey;
+    color: white;
+}
+
+.card .card-header .circle {
+    display: inline-block;
+    padding-top: 8px;
+    margin-top: 0;
+}
+
+.up, .down {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.table thead th {
+    background-color: darkred;
+    color: white;
+}
+
+.table .course-title {
+    background-color: lightgrey;
+}
+
+.table .evaluated {
+
+}
+
+.table .dont-evaluated

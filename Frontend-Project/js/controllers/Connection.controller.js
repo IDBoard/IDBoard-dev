@@ -19,24 +19,25 @@
     // Fonction de validation de l'authentification
     $scope.valider = function () {
         if ($scope.idboard_number !== '' && $scope.password !== '') {
-            $scope.logs = 'Vous êtes connectés, vous allez être rediriger.';
+            $scope.logs = 'Vous êtes identifié, vous allez être redirigé.';
             $scope.color = 'green';
             // mot de passe crypté en base 64
             $scope.cryptPassword = btoa($scope.password);
+            window.location.href = 'views/main.html';
         }
         else {
-            $scope.logs = 'Votre numéro d\'IDBoard ou votre mot de passe est incorrecte.';
+            $scope.logs = 'Votre numéro d\'IDBoard ou votre mot de passe est incorrect.';
             $scope.color = 'red';
         }
     };
 
     // Fonction d'affichage ou de cachage du mot de passe
     $scope.showHidePassword = function () {
-        if ($scope.showPassword == 'open') {
+        if ($scope.showPassword === 'open') {
             $scope.showPassword = 'close';
             document.querySelector('#password').setAttribute('type', 'text');
         }
-        else if ($scope.showPassword == 'close') {
+        else if ($scope.showPassword === 'close') {
             $scope.showPassword = 'open';
             document.querySelector('#password').setAttribute('type', 'password');
         }
