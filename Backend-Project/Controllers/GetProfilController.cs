@@ -25,6 +25,8 @@ namespace Backend_Project.Controllers
             public string phtoPath { get; set; }
             public List<string> messagesTab { get; set; } // A voir si on fait une classe
             public List<string> eventsTab { get; set; } // pareil
+            public string phoneNumber { get; set; }
+            public string adresseMail { get; set; }
         }
 
         public IHttpActionResult Get(int id)
@@ -32,6 +34,10 @@ namespace Backend_Project.Controllers
             IDBoardDb idBoard = new IDBoardDb(); //Context
             Student student = new Student();
 
+
+            // mail et téléphone en dur à trouver en base de donnée
+            student.phoneNumber = "0634527312";
+            student.adresseMail = "test@hotmail.fr";
             student.adresseInfo = new Adresse();
             student.adresseInfo.Addresse1 = (from addresse in idBoard.ContactDetails where (addresse.idBusinessEntity == id) select addresse.Address1).FirstOrDefault();
             student.adresseInfo.Addresse2 = (from addresse in idBoard.ContactDetails where (addresse.idBusinessEntity == id) select addresse.Address2).FirstOrDefault();
