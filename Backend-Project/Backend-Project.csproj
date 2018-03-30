@@ -231,6 +231,7 @@
       <DependentUpon>IdboardDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\GetClassesController.cs" />
     <Compile Include="Controllers\GetMessagesController.cs" />
     <Compile Include="Controllers\GetProfilController.cs" />
