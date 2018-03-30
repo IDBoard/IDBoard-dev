@@ -1,10 +1,5 @@
-﻿<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="fr">
-<!--<![endif]-->
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,20 +14,23 @@
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/flag-icon.min.css">
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../css/module.css" />
+
     <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
-    <link rel="stylesheet" href="../css/event.css">
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+
     <script src="../js/angularjs/angular.js"></script>
     <script src="../js/angularjs/angular-route.js"></script>
     <script src="../js/modules/app.module.js"></script>
-    <script src="../js/services/events.service.js"></script>
-    <script src="../js/services/student.service.js"></script>
-    <script src="../js/controllers/Events.controller.js"></script>
+    <script src="../js//services//module.service.js"></script>
+    <script src="../js/services/grade.service.js"></script>
+    <script src="../js/controllers/Module.controller.js"></script>
+    <title></title>
 </head>
-<body ng-app="IDBoard">
+<body>
 
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -88,7 +86,7 @@
     </aside><!-- /#left-panel -->
     <!-- Left Panel -->
     <!-- Right Panel -->
-    <div id="right-panel" class="right-panel" ng-controller="EventsController">
+    <div id="right-panel" class="right-panel">
         <!-- Header-->
         <header id="header" class="header">
             <div class="header-menu">
@@ -103,21 +101,23 @@
                             </form>
                         </div>
                         <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" 
-                                    type="button" 
-                                    id="notification" 
-                                    data-toggle="dropdown" 
-                                    aria-haspopup="true" 
-                                    aria-expanded="false" 
-                                    ng-click="eventsViewed()">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <!--<span class="count bg-danger">5</span>-->
-                                <span>{{countNotificationEvents}}</span>
+                                <span class="count bg-danger">5</span>
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="notification" ng-repeat="newEvent in eventsNotViewed">
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
                                     <i class="fa fa-check"></i>
-                                    <p>{{newEvent.msg}}</p>
+                                    <p>Server #1 overloaded.</p>
+                                </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                    <i class="fa fa-info"></i>
+                                    <p>Server #2 overloaded.</p>
+                                </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                    <i class="fa fa-warning"></i>
+                                    <p>Server #3 overloaded.</p>
                                 </a>
                             </div>
                         </div>
@@ -164,14 +164,6 @@
                                 </a>
                             </div>
                         </div>
-
-                        <div ng-repeat="event in events">
-                            <p class="event"  style="float:right; font-size: 0.8em;">
-                                {{event.date | date:'yyyy-MM-dd'}} : {{event.msg}}  
-                            </p>
-                            <br>
-                            <div style="clear:both"></div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-sm-5">
@@ -206,25 +198,84 @@
             </div>
         </header><!-- /header -->
         <!-- Header-->
-        <div class="breadcrumbs">
-            <div class="row">
-                <div class="col-sm-12 col-lg-12 col-md-12 list-fix-height">
-                    <!--<div class="list-group">
-                        <div href="#" class="list-group-item active">
-                            <label> Id Etudiant: {{currentStudentId}}</label> <br />
-                            <label>Etudiant connecté:  {{currentStudent.name}} {{currentStudent.lastName}}</label>
-                        </div>
-                    </div>-->
+        <div ng-app="IDBoard">
+            <div ng-controller="ModuleController">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <span class="label label-primary">Nom du module:</span>
+                        <input class="form-control" type="text" placeholder="" ng-model="moduleNameToAdd">
+                        <span class="label label-primary">Creadits ETC:</span>
+                        <input class="form-control" type="text" placeholder="" ng-model="moduleCreditsETCToAdd">
+                        <button type="button" class="btn btn-primary" ng-click="addModuleToGrade()" style="margin-top: 2px;">
+                            Ajouter un module
+                        </button>
+                    </div>
+
+                    <div class="col-sm-6 form-group">
+                        <span class="label label-primary">Nom de la matière :</span>
+                        <input class="form-control" type="text" placeholder="" ng-model="coursToAdd">
+                        <button type="button" class="btn btn-primary" ng-click="addCoursToModule()" style="margin-top: 2px;">
+                            Aujouter une matière
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <button ng-click="addEvent()">Declancher l'Événement</button>
-            </div>
+                <div class="row">
+                    <!-- Grade List -->
+                    <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                                Classes existentes
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="grade in grades">
+                            <div class="list-group-item">
+                                <a href="javascript: void(0);"
+                                   class="list-group-item"
+                                   data-ng-click="showModuleByGrade(grade)">
+                                    {{grade.name}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modules List -->
+                    <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                                Modules de la classe {{gradeSelected.name}}
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="module in modulesOfGradeSelected">
+                            <a href="javascript: void(0);"
+                               class="list-group-item"
+                               data-ng-click="setModuleSelected(module)">
+                                {{module.name}}
+                                <div style="float:right">{{module.creditsETC}}</div>
+                            </a>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
 
-        </div>
-        
-    </div> <!-- .content -->
+                <!-- Cours in selected module -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                                Matières du module: {{moduleSelected.name}}
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="c in cours">
+                            <div class="list-group-item">
+                                <a href="javascript: void(0);">
+                                    {{c.name}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
     <script src="../js/vendor/jquery-2.1.4.min.js"></script>

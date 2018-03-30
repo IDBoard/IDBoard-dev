@@ -25,7 +25,9 @@
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
     <script src="../js/angularjs/angular.js"></script>
+    <!--<script src="../js/angularjs/angular-route.js"></script>-->
     <script src="../js/modules/app.module.js"></script>
     <script src="../js/services/student.service.js"></script>
     <script src="../js/services/grade.service.js"></script>
@@ -82,6 +84,7 @@
                         </ul>
                     </li>
                     <li>
+                </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -199,6 +202,11 @@
             </div>
         </header><!-- /header -->
         <!-- Header-->
+        <!--<div ng-view>
+
+        </div>
+        <a href="/test">test</a>-->
+
         <div class="breadcrumbs">
             <div ng-app="IDBoard">
                 <!--GradeController--->
@@ -212,12 +220,44 @@
                             </button>
                         </div>
 
-                        <div class="col-sm-6 form-group">
+                        <div class="col-sm-6 form-group" >
                             <span class="label label-primary">Nom de la classe a dupliquer :</span>
-                            <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
-                            <button type="button" class="btn btn-primary" ng-click="duplicateGrade(grade, '')" style="margin-top: 2px;">
+                            <select class="form-control" ng-model="newGradeIdToDuplicate">
+                                <option value="">--- Select an option ---</option>
+                                <option ng-repeat="grade in gradesActives |orderBy:'+':true" 
+                                        value="{{grade.id}}">{{grade.name}}
+                                </option>
+                            </select>
+                            <button ng-if="newGradeIdToDuplicate"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGrade" style="margin-top: 2px;">
                                 Dupliquer une classe
                             </button>
+                            <!-- Modal .-->
+                            <div  class="modal fade" id="modalGrade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Dupliquer une classe</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span class="label label-primary">Nom de la nouvelle classe:</span>
+                                            <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button 
+                                                    id="buttonDuplicate" t
+                                                    ype="button" 
+                                                    class="btn btn-primary" 
+                                                    data-dismiss="modal" 
+                                                    ng-click="duplicateGrade()">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -228,19 +268,70 @@
                                     Classes existentes
                                 </a>
                             </div>
-                            <div class="list-group" ng-repeat="grade in grades">
-                                <div class="list-group-item">
-                                    <a href="javascript: void(0);"
-                                       class="list-group-item"
-                                       data-ng-click="selectGrade(grade)">
-                                        {{grade.name}}
-                                    </a>
-                                    <button type="button" class="btn btn-warning float-right" ng-click="archiveGrade(grade)" aria-label="Left Align">
-                                        Archiver
-                                    </button>
-                                    <button type="button" class="btn btn-danger float-right" ng-click="deleteGrade(grade)" aria-label="Left Align">
-                                        Supprimer
-                                    </button>
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#gradeActive" aria-expanded="true" aria-controls="gradeActive">
+                                                Classes actives
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="gradeActive" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <!----Grades actives -->
+                                            <div class="list-group" ng-repeat="grade in gradesActives |orderBy:'+':true">
+                                                <div class="">
+                                                    <a href="javascript: void(0);"
+                                                       class=""
+                                                       data-ng-click="selectGrade(grade)">
+                                                        {{grade.name}}
+                                                        <div style="float:right">
+                                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
+                                                                <span class="fa fa-trash"></span>
+                                                            </a>
+
+                                                            <a role="button" class="btn button-grade" data-ng-click="archiveGrade(grade)">
+                                                                <span class="fa fa-archive" aria-hidden="true"></span>
+                                                            </a>
+                                                        </div>
+                                                    </a>
+                                                    <div style="clear:both"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#gradeNActive" aria-expanded="false" aria-controls="gradeNActive">
+                                                Classes non actives
+                                            </button>
+                                        </h5>
+                                    </div>
+
+                                    <div id="gradeNActive" class="collapse" aria-labelledby="gradeNActive" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <!----Grades nactives -->
+                                            <div class="list-group" ng-repeat="grade in gradesNActives |orderBy:'+':true">
+                                                <div class="">
+                                                    <a href="javascript: void(0);"
+                                                       class=""
+                                                       data-ng-click="selectGrade(grade)">
+                                                        {{grade.name}}
+                                                        <div style="float:right">
+                                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
+                                                                <span class="fa fa-trash"></span>
+                                                            </a>
+                                                        </div>
+                                                    </a>
+                                                    <div style="clear:both"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -253,39 +344,39 @@
                             </div>
                             <div class="list-group" ng-repeat="student in studentsNotBelongToGrade">
                                 <a href="javascript: void(0);"
-                                    class="list-group-item"
-                                    data-ng-click="addStudent(student)">
+                                   class="list-group-item"
+                                   data-ng-click="addStudent(student)">
                                     {{student.name}}
                                 </a>
                             </div>
                         </div>
                     </div>
-                          
+
                     <!-- Students on selected grade -->
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
                             <div class="list-group">
                                 <a href="#" class="list-group-item active">
-                                    Eleves associé à une classe
+                                    Eleves associé à la classe: {{gradeSelected.name}}
                                 </a>
                             </div>
                             <div class="list-group" ng-repeat="student in studentsInThisGrade">
                                 <div class="list-group-item">
                                     <a href="javascript: void(0);"
-                                        data-ng-click="addStudent(student)">
+                                       data-ng-click="addStudent(student)">
                                         {{student.name}}
                                     </a>
-                                    <button type="button" class="btn btn-danger float-right" ng-click="deleteStudent(student)" aria-label="Left Align">
+                                    <button type="button" class="btn float-right" ng-click="deleteStudent(student)" aria-label="Left Align">
                                         Supprimer
                                     </button>
-                                    <button type="button" class="btn btn-warning float-right" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
+                                    <button type="button" class="btn float-right" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
                                         Innactivate
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>          
+                </div>
             </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
@@ -295,11 +386,12 @@
                     </div>
                 </div>
             </div>
-        
-    </div> <!-- .content -->
+
+        </div> <!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
-    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
+    <!--<script src="../js/vendor/jquery-2.1.4.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
@@ -312,10 +404,10 @@
     <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
     <script>
-        ( function ( $ ) {
+        (function ($) {
             "use strict";
 
-            jQuery( '#vmap' ).vectorMap( {
+            jQuery('#vmap').vectorMap({
                 map: 'world_en',
                 backgroundColor: null,
                 color: '#ffffff',
@@ -324,10 +416,11 @@
                 enableZoom: true,
                 showTooltip: true,
                 values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
+                scaleColors: ['#1de9b6', '#03a9f5'],
                 normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
+            });
+        })(jQuery);
     </script>
+
 </body>
 </html>
