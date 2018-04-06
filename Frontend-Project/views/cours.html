@@ -19,21 +19,21 @@
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/flag-icon.min.css">
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../css/grade.css" />
     <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
+    <!---Angular-->
     <script src="../js/angularjs/angular.js"></script>
     <script src="../js/angularjs/angular-route.js"></script>
     <script src="../js/modules/app.module.js"></script>
-    <script src="../js/services/student.service.js"></script>
-    <script src="../js/services/grade.service.js"></script>
-    <script src="../js/controllers/Grade.controller.js"></script>
+    <script src="../js/services/module.service.js"></script>
+    <script src="../js/services/cours.service.js"></script>
+    <script src="../js/controllers/Cours.controller.js"></script>
+    <!---Angular-->
 </head>
-<body>
+<body ng-app="IDBoard">
 
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -72,6 +72,7 @@
                             <li><i class="menu-icon fa fa-table"></i><a href="#">Planning</a></li>
                             <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#">Notes</a></li>
                             <li><i class="menu-icon fa fa-camera-retro"></i><a href="#">Trombinoscope</a></li>
+                            <li><i class="menu-icon fa fa-camera-retro"></i><a href="events.html">Evenements</a></li>
                         </ul>
                     </li>
 
@@ -84,7 +85,6 @@
                         </ul>
                     </li>
                     <li>
-                </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -202,227 +202,117 @@
             </div>
         </header><!-- /header -->
         <!-- Header-->
-        <!--<div ng-view>
 
+        <div ng-app="IDBoard">
+            <div ng-controller="CoursController">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <span class="label label-primary">Nom de la matiere:</span>
+                        <input class="form-control" type="text" placeholder="" ng-model="coursNameToAdd">
+                        <button type="button" class="btn" ng-click="newCours()" style="margin-top: 2px;">
+                            Créer une nouvelle matiere
+                        </button>
+                    </div>
+
+                    <div class="col-sm-6 form-group" style="float:left">
+                        <span class="label label-primary">Nombre de notes :</span>
+                        <input class="form-control" type="text" placeholder="" ng-model="note">
+                    </div>
+
+                    <!-- Cours List -->
+                    <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-dark">
+                                Matières existantes
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="cours in coursList">
+                            <a href="javascript: void(0);"
+                               class="list-group-item"
+                               data-ng-click="">
+                                {{cours.name}}
+                                <div style="float:right">
+                                   <span id="editCours" class="fa fa-info" aria-hidden="true" data-ng-click="editCours(cours)"></span>
+                                   <span class="fa fa-check" aria-hidden="true" data-ng-click="addToModule(cours)"></span>
+                                </div>
+                                <div style="clear:both"></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="editCoursModal" tabindex="-1" role="dialog" aria-labelledby="editCoursModal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module List -->
+                    <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-dark">
+                                Modules existantes
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="module in moduleList">
+                            <a href="javascript: void(0);"
+                               class="list-group-item"
+                               data-ng-click="setModuleSelected(module)">
+                                {{module.name}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <a href="/test">test</a>-->
 
-        <div class="breadcrumbs">
-            <div ng-app="IDBoard">
-                <!--GradeController--->
-                <div ng-controller="GradeController">
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <span class="label label-primary">Nom de la classe:</span>
-                            <input class="form-control" type="text" placeholder="" ng-model="gradeNameToAdd">
-                            <button type="button" class="btn" ng-click="newGrade()" style="margin-top: 2px;">
-                                Créer une nouvelle classe
-                            </button>
-                        </div>
 
-                        <div class="col-sm-6 form-group" >
-                            <span class="label label-primary">Nom de la classe a dupliquer :</span>
-                            <select class="form-control" ng-model="newGradeIdToDuplicate">
-                                <option value="">--- Select an option ---</option>
-                                <option ng-repeat="grade in gradesActives |orderBy:'+':true" 
-                                        value="{{grade.id}}">{{grade.name}}
-                                </option>
-                            </select>
-                            <button ng-if="newGradeIdToDuplicate"  type="button" class="btn" data-toggle="modal" data-target="#modalGrade" style="margin-top: 2px;">
-                                Dupliquer une classe
-                            </button>
-                            <!-- Modal .-->
-                            <div  class="modal fade" id="modalGrade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Dupliquer une classe</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <span class="label label-primary">Nom de la nouvelle classe:</span>
-                                            <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button 
-                                                    id="buttonDuplicate"
-                                                    ype="button" 
-                                                    class="btn" 
-                                                    data-dismiss="modal" 
-                                                    ng-click="duplicateGrade()">OK</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Grade List -->
-                        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-dark">
-                                    Classes existentes
-                                </a>
-                            </div>
-                            <div id="accordion">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#gradeActive" aria-expanded="true" aria-controls="gradeActive">
-                                                Classes actives
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="gradeActive" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <!----Grades actives -->
-                                            <div class="list-group" ng-repeat="grade in gradesActives |orderBy:'+':true">
-                                                <div class="">
-                                                    <a href="javascript: void(0);"
-                                                       class=""
-                                                       data-ng-click="selectGrade(grade)">
-                                                        {{grade.name}}
-                                                        <div style="float:right">
-                                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
-                                                                <span class="fa fa-trash"></span>
-                                                            </a>
-
-                                                            <a role="button" class="btn button-grade" data-ng-click="archiveGrade(grade)">
-                                                                <span class="fa fa-archive" aria-hidden="true"></span>
-                                                            </a>
-                                                        </div>
-                                                    </a>
-                                                    <div style="clear:both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-header" id="headingTwo">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#gradeNActive" aria-expanded="false" aria-controls="gradeNActive">
-                                                Classes non actives
-                                            </button>
-                                        </h5>
-                                    </div>
-
-                                    <div id="gradeNActive" class="collapse" aria-labelledby="gradeNActive" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <!----Grades nactives -->
-                                            <div class="list-group" ng-repeat="grade in gradesNActives |orderBy:'+':true">
-                                                <div class="">
-                                                    <a href="javascript: void(0);"
-                                                       class=""
-                                                       data-ng-click="selectGrade(grade)">
-                                                        {{grade.name}}
-                                                        <div style="float:right">
-                                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
-                                                                <span class="fa fa-trash"></span>
-                                                            </a>
-                                                        </div>
-                                                    </a>
-                                                    <div style="clear:both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Student without grade List -->
-                        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-dark">
-                                    Eleves n'associé à une classe
-                                </a>
-                            </div>
-                            <div class="list-group" ng-repeat="student in studentsNotBelongToGrade">
-                                <a href="javascript: void(0);"
-                                   class="list-group-item"
-                                   data-ng-click="addStudent(student)">
-                                    {{student.name}}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Students on selected grade -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-dark">
-                                    Eleves associé à la classe: {{gradeSelected.name}}
-                                </a>
-                            </div>
-                            <div class="list-group" ng-repeat="student in studentsInThisGrade">
-                                <div class="list-group-item">
-                                    <a href="javascript: void(0);"
-                                       data-ng-click="addStudent(student)">
-                                        {{student.name}}
-                                    </a>
-                                    <div style="float:right">
-                                        <a role="button" class="btn button-grade" ng-click="deleteStudent(student)" aria-label="Left Align">
-                                            <span class="fa fa-trash" aria-hidden="true"></span>
-                                        </a>
-                                        <a role="button" class="btn button-grade" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
-                                            <span class="fa fa-archive" aria-hidden="true"></span>
-                                        </a>
-                                    </div>
-                                  </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-        </div> <!-- .content -->
-    </div><!-- /#right-panel -->
-    <!-- Right Panel -->
-    <!--<script src="../js/vendor/jquery-2.1.4.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
-
-    <script src="../js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="../js/dashboard.js"></script>
-    <script src="../js/widgets.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        (function ($) {
-            "use strict";
-
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
-
+        </> <!-- .content -->
+        </><!-- /#right-panel -->
+        <!-- Right Panel -->
+        <script src="../js/vendor/jquery-2.1.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="../js/plugins.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/lib/chart-js/Chart.bundle.js"></script>
+        <script src="../js/dashboard.js"></script>
+        <script src="../js/widgets.js"></script>
+        <script src="../js/lib/vector-map/jquery.vmap.js"></script>
+        <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
+        <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+        <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
+       
+        <script>
+            (function ($) {
+                "use strict";
+                jQuery('#vmap').vectorMap({
+                    map: 'world_en',
+                    backgroundColor: null,
+                    color: '#ffffff',
+                    hoverOpacity: 0.7,
+                    selectedColor: '#1de9b6',
+                    enableZoom: true,
+                    showTooltip: true,
+                    values: sample_data,
+                    scaleColors: ['#1de9b6', '#03a9f5'],
+                    normalizeFunction: 'polynomial'
+                });
+            })(jQuery);
+        </script>
 </body>
 </html>

@@ -2,9 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <!---Angular-->
+
+    <script src="../js/angularjs/angular.js"></script>
+    <script src="../js/angularjs/angular-route.js"></script>
+    <script src="../js/modules/app.module.js"></script>
+    <!---Angular-->
     <title></title>
 </head>
-<body>
-    hola
+<body ng-app="IDBoard">
+    <div>
+        <a href="grades.html">Grades</a>
+        <a href="/test2">Test</a>
+        <a href="events.html">Events</a>
+    </div>
+   <div ng-view>
+
+   </div>
 </body>
 </html>

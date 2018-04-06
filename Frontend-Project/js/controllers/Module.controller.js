@@ -62,7 +62,7 @@
             name: $scope.coursToAdd,
         };
 
-        if ($scope.moduleSelected != null || $scope.moduleSelected == 'undefined') {
+        if ($scope.moduleSelected != null && $scope.moduleSelected != 'undefined' && $scope.moduleSelected != "") {
             ModuleService.addCoursToModule($scope.moduleSelected, coursToadd);
             $scope.coursToAdd = "";
         }

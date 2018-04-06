@@ -1,0 +1,79 @@
+﻿<div ng-app="IDBoard">
+    <div ng-controller="ModuleController">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <span class="label label-primary">Nom du module:</span>
+                <input class="form-control" type="text" placeholder="" ng-model="moduleNameToAdd">
+                <span class="label label-primary">Creadits ETC:</span>
+                <input class="form-control" type="text" placeholder="" ng-model="moduleCreditsETCToAdd">
+                <button type="button" class="btn btn-primary" ng-click="addModuleToGrade()" style="margin-top: 2px;">
+                    Ajouter un module
+                </button>
+            </div>
+
+            <div class="col-sm-6 form-group">
+                <span class="label label-primary">Nom de la matière :</span>
+                <input class="form-control" type="text" placeholder="" ng-model="coursToAdd">
+                <button type="button" class="btn btn-primary" ng-click="addCoursToModule()" style="margin-top: 2px;">
+                    Aujouter une matière
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Grade List -->
+            <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Classes existentes
+                    </a>
+                </div>
+                <div class="list-group" ng-repeat="grade in grades">
+                    <div class="list-group-item">
+                        <a href="javascript: void(0);"
+                           class="list-group-item"
+                           data-ng-click="showModuleByGrade(grade)">
+                            {{grade.name}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Modules List -->
+            <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Modules de la classe {{gradeSelected.name}}
+                    </a>
+                </div>
+                <div class="list-group" ng-repeat="module in modulesOfGradeSelected">
+                    <a href="javascript: void(0);"
+                       class="list-group-item"
+                       data-ng-click="setModuleSelected(module)">
+                        {{module.name}}
+                        <div style="float:right">{{module.creditsETC}}</div>
+                    </a>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cours in selected module -->
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Matières du module: {{moduleSelected.name}}
+                    </a>
+                </div>
+                <div class="list-group" ng-repeat="c in cours">
+                    <div class="list-group-item">
+                        <a href="javascript: void(0);">
+                            {{c.name}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- .content -->
+</div><!-- /#right-panel -->

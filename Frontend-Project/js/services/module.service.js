@@ -52,7 +52,8 @@
         {
             id: '6',
             name: 'ANLAIS',
-            creditsETC: 6
+            creditsETC: 6,
+            cours: []
         }
     ];
 
@@ -82,8 +83,13 @@
     }
 
     this.addCoursToModule = function (module, cours) {
-        console.log("addCoursToModule");
-        module.cours.push(cours);
+        module.cours.forEach(function (_cours) {
+            if (_cours.id !== cours.id) {
+                module.cours.push(cours);
+            }
+        });
+        
+        console.log("addCoursToModule", module);
     }
 
 });

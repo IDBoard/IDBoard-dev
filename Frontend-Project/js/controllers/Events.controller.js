@@ -9,8 +9,7 @@
     $scope.eventService = EventsService;
     $scope.eventsNotViewed = EventsService.getEventsNotViewedByStudent(currentStudentId);
     console.log('eventsNotViewed', $scope.eventsNotViewed);
-
-
+    
     $scope.showEventsOrder = function () {
         $scope.propertyName = 'date';
         $scope.reverse = true;
