@@ -30,9 +30,10 @@ idboard.controller('Trombinoscope', function ($scope, $http) {
             });*/
 
         let data = $scope.genere_json_test();
-
-        data.listStudent = $scope.delete_unactive_students(data.listStudent);
-
+        $scope.$watch('listStudent.length', function () {
+            data.listStudent = $scope.delete_unactive_students(data.listStudent);
+        });
+        
         $scope.class_name = data.nameClasse;
         $scope.nbr_etudiants = data.nbStudent;
         $scope.etudiants = data.listStudent;

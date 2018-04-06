@@ -179,7 +179,6 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
             }
         });
         console.log('success');
-        console.log(tmp);
         return tmp;
     };
 
@@ -191,7 +190,6 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
             }
         });
         console.log('fail');
-        console.log(tmp);
         return tmp;
     };
 
@@ -203,25 +201,48 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
             }
         });
         console.log('current');
-        console.log(tmp);
         return tmp;
     };
 
     $scope.filter_module = function (value) {
         switch (value) {
             case 'successed':
-                $scope.list_modules = $scope.get_test_list_successed($scope.list_modules);
+                $scope.list_modules = $scope.get_test_list_successed($scope.get_test_list().body);
+                //$scope.toto = 'ekfherfu';
                 break;
             case 'failed':
-                $scope.list_modules = $scope.get_test_list_failed($scope.list_modules);
+                $scope.list_modules = $scope.get_test_list_failed($scope.get_test_list().body);
+                //$scope.toto = 'pouet';
                 break;
             case 'currents':
-                $scope.list_modules = $scope.get_test_list_currents($scope.list_modules);
+                $scope.list_modules = $scope.get_test_list_currents($scope.get_test_list().body);
+                //$scope.toto = 'lololol';
                 break;
             default:
                 break;
         }
 
+
         console.log($scope.list_modules);
-    }
+    };
+    /*$scope.filter_module = function (value) {
+        $scope.$watch('list_modules.length', function (newVal, value) {
+            switch (value) {
+                case 'successed':
+                    $scope.list_modules = $scope.get_test_list_successed($scope.get_test_list().body);
+                    break;
+                case 'failed':
+                    $scope.list_modules = $scope.get_test_list_failed($scope.get_test_list().body);
+                    break;
+                case 'currents':
+                    $scope.list_modules = $scope.get_test_list_currents($scope.get_test_list().body);
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        console.log($scope.list_modules);   
+    }*/
+    
 });

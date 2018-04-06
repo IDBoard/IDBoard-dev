@@ -13,30 +13,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="../images/favicon.ico">
     <link rel="shortcut icon" href="../images/favicon.ico">
+
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/flag-icon.min.css">
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
-    <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
+
+    <!--<script src="../js/vendor/jquery-2.1.4.min.js"></script>-->
+
+    <script src="../js/flat-ui/vendor/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="../js/plugins.js"></script>
+    <!--<script src="../js/plugins.js"></script>-->
     <script src="../js/main.js"></script>
 
     <script src="../js/lib/vector-map/jquery.vmap.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script src="http://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
+
     <script src="../js/angularjs/angular.js"></script>
 
     <script src="../js/modules/app.module.js"></script>
@@ -349,13 +350,13 @@
                                     <tr>
                                         <th>
                                             <select id="modules_filers">
-                                                <option value="successed">
+                                                <option ng-click="OnItemChange(this.value)" value="successed">
                                                     Réussis
                                                 </option>
-                                                <option value="failed">
+                                                <option ng-click="OnItemChange(this.value)" value="failed">
                                                     Échoués
                                                 </option>
-                                                <option value="currents">
+                                                <option ng-click="OnItemChange(this.value)" value="currents">
                                                     En Cours
                                                 </option>
                                             </select>
@@ -496,7 +497,10 @@
                 <div class="col-1"></div>
 
                 <div class="col-12 accordion" id="modules" role="tablist" aria-multiselectable="true">
-                    <div class="row" ng-repeat="module in list_modules">
+                    <div ng-model="module" ng-repeat="modules in list_modules">
+                        {{modules.module}}
+                    </div>
+                    <!--<div class="row" ng-repeat="module in list_modules">
                         <div class="col-12 module card">
                             <div class="row card-header">
                                 <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == true">
@@ -578,7 +582,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
