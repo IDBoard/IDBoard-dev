@@ -66,6 +66,8 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -105,6 +107,7 @@
     <None Include="packages.config" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Css\MyCss.css" />
+    <Content Include="ScriptProfile\Profile.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Profile.cshtml" />
     <None Include="Web.Debug.config">
