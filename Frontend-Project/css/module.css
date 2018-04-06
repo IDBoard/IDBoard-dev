@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.list-fix-height {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.list-fix-height-footer {
+    height: 350px;
+    overflow-y: auto;
+}

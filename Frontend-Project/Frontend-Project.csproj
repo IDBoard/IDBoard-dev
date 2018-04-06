@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\event.css" />
     <Content Include="css\flat-ui\flat-ui.css" />
     <Content Include="css\flat-ui\flat-ui.min.css" />
     <Content Include="css\flat-ui\vendor\bootstrap\css\bootstrap.min.css" />
@@ -77,6 +78,8 @@
     <Content Include="css\flat-ui\fonts\lato\lato-italic.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-light.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.svg" />
+    <Content Include="css\grade.css" />
+    <Content Include="css\module.css" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\icons\png\Book.png" />
     <Content Include="images\icons\png\Calendar.png" />
@@ -113,10 +116,17 @@
     <Content Include="images\logo.png" />
     <Content Include="images\tile\ribbon-2x.png" />
     <Content Include="images\tile\ribbon.png" />
+    <Content Include="js\angularjs\angular-route.js" />
+    <Content Include="js\angularjs\angular-route.min.js" />
     <Content Include="js\controllers\Connection.controller.js" />
+    <Content Include="js\controllers\Events.controller.js" />
     <Content Include="js\controllers\Forget_password.controller.js" />
+    <Content Include="js\controllers\Grade.controller.js" />
+    <Content Include="js\controllers\Module.controller.js" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
+    <Content Include="js\main.js" />
     <Content Include="js\modules\app.module.js" />
     <Content Include="js\flat-ui\vendor\jquery.min.map" />
     <Content Include="css\flat-ui\flat-ui.css.map" />
@@ -146,6 +156,10 @@
     <Content Include="css\flat-ui\fonts\lato\lato-regular.eot" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.ttf" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.woff" />
+    <Content Include="js\plugins.js" />
+    <Content Include="js\selectFx.js" />
+    <Content Include="js\services\events.service.js" />
+    <Content Include="js\angularjs\angular-route.min.js.map" />
     <None Include="packages.config" />
     <Content Include="css\style.css" />
     <Content Include="index.html" />
@@ -171,7 +185,14 @@
     <Content Include="js\flat-ui\vendor\respond.min.js" />
     <Content Include="js\flat-ui\vendor\video-js.swf" />
     <Content Include="js\flat-ui\vendor\video.js" />
+    <Content Include="js\services\grade.service.js" />
+    <Content Include="js\services\module.service.js" />
+    <Content Include="js\services\student.service.js" />
     <Content Include="views\main.html" />
+    <Content Include="views\grades.html" />
+    <Content Include="views\events.html" />
+    <Content Include="views\module.html" />
+    <Content Include="views\test.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
