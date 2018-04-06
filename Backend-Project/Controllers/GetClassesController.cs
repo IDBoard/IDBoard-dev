@@ -139,9 +139,10 @@ namespace Backend_Project.Controllers
         }
         //Desactivate 
         [ResponseType(typeof(ClassesIdboard))]
-        public IHttpActionResult DesactivateClassesIdboard(int idClass, string DateEnd)
+        public IHttpActionResult DesactivateClassesIdboard(int idClass)
         {
             Classes classesIdboard = db.Classes.Find(idClass);
+            classesIdboard.DateEnd = (from De in db.Classes where (De.idClass == idClass) select De.DateEnd).FirstOrDefault();
             classesIdboard.DateEnd = new DateTime(2000,10,10);
 
             db.Entry(DateEnd).State = EntityState.Modified;
