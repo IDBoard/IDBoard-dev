@@ -1,4 +1,5 @@
 ﻿idboard.controller('GradeController', function ($scope, $filter, GradeService, StudentService) {
+    console.log("GradeController ");
 
     $scope.gradeService = GradeService;
     var students    = StudentService.getStudents();
@@ -7,8 +8,10 @@
     
     
     $scope.gradeSelected;
-    $scope.gradesActives = GradeService.getGradesActives();
+    $scope.gradesActives  = GradeService.getGradesActives();
     $scope.gradesNActives = GradeService.getGradesNActives();
+
+    console.log("gradesActives ", $scope.gradesActives);
 
     if ($scope.gradesActives.length > 0)
     {
@@ -37,21 +40,17 @@
     }
     
     $scope.selectGrade = function (grade) {
-        console.log("selectGrade");
+        //console.log("selectGrade");
         $scope.gradeSelected = grade;
         $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
     };
 
     $scope.deleteGrade = function (grade) {
-        console.log("deleteGrade");
-        console.log(grade.id);
         GradeService.deleteGrade(grade);
     };
 
     $scope.addStudent = function (student) {
         if ($scope.gradeSelected != null && $scope.gradeSelected !== "undefined") {
-            console.log("grade selected");
-            console.log($scope.gradeSelected);
             GradeService.addStudent($scope.gradeSelected, student);
             student.grade = true;
             StudentService.changeGradeStudent(student);
@@ -59,8 +58,6 @@
     };
 
     $scope.duplicateGrade = function(grade) {
-        console.log("duplicateGrade method");
-        console.log('newGradeIdToDuplicate', $scope.newGradeIdToDuplicate);
        
         if ($scope.newGradeIdToDuplicate != null && $scope.newGradeIdToDuplicate != "undefined") {
             if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
@@ -70,17 +67,16 @@
                 $scope.nameNewGrade = "";
             }
             else {
-                console.log("not gradeid");
+                
             }
         }
         else {
-            console.log("not gradeid");
+            
         }
     };
 
 
     $scope.archiveGrade = function (grade) {
-        console.log("archiverGrade method");
         GradeService.archiveGrade(grade);
 
         //remove grade in list gradeActives
@@ -89,11 +85,9 @@
 
         //add grade in list gradeNActives
         $scope.gradesNActives.push(grade);
-        console.log("grade non actives", $scope.gradesNActives);
     }
 
     $scope.deleteStudent = function (student) {
-        console.log("deleteStudent method");
         if ($scope.gradeSelected !== null || $scope.gradeSelected === 'undefined') {
             GradeService.deleteStudent($scope.gradeSelected, student);
             student.grade = false;
@@ -102,13 +96,11 @@
     }
 
     $scope.inactiveStudentPassage = function (student) {
-        console.log("inactiveStudentPassage method");
         GradeService.inactiveStudentPassage(student);
     }
 
 
     $scope.$watch('studentsInThisGrade.length', function (newVal, oldVal) {
-        console.log('watch studentsInThisGrade');
         $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
     });
 
