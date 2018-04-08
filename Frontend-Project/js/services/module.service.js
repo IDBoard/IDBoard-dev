@@ -62,14 +62,12 @@
     }
 
     this.allModulesByGrade = function (grade) {
-        console.log("allModulesByGrade method");
         var arrayResultModules = [];
         var modulesOfThisGrade = grade.modules;
         if (modulesOfThisGrade != null)
         {
             if (modulesOfThisGrade.length > 0)
             {
-                console.log("modulesOfThisGrade", modulesOfThisGrade);
                 modulesOfThisGrade.forEach(function (_module) {
                     var moduleToAdd = moduleList.find(function (__module) {
                         return __module.id == _module.id;
@@ -78,18 +76,13 @@
                 });
             }
         }
-        console.log("arrayResultModules", arrayResultModules);
         return arrayResultModules;
     }
 
     this.addCoursToModule = function (module, cours) {
-        module.cours.forEach(function (_cours) {
-            if (_cours.id !== cours.id) {
-                module.cours.push(cours);
-            }
-        });
         
-        console.log("addCoursToModule", module);
+        var notExisted = 0;
+        module.cours.push(cours);
     }
 
 });
