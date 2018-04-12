@@ -9,39 +9,51 @@
     $scope.coursNameToAdd = "";
     $scope.moduleSelected = "";
     $scope.enableEditCours = "";
-
+    
     $scope.newCours = function (cours) {
-        var newCours = {
-            id: Date.now,
-            name: $scope.coursNameToAdd,
-            note: $scope.note
+        if ($scope.coursNameToAdd != "" && $scope.coursNameToAdd != null || $scope.coursNameToAdd != 'undefined')
+        {
+            if ($scope.note != "" && $scope.note != null && $scope.note != 'undefined') {
+                var newCours = {
+                    id: Date.now,
+                    name: $scope.coursNameToAdd,
+                    note: $scope.note
+                }
+                CoursService.addNewCours(newCours);
+                console.log("cours list", CoursService.getCours());
+            }
         }
-        CoursService.addNewCours(cours);
+        
     }
 
     $scope.editCours = function (cours) {
-        console.log("enable editcours", $scope.enableEditCours);
-        $scope.enableEditCours = true;
-        console.log("enable editcours", $scope.enableEditCours);
+        $scope.coursSetted.name = $scope.coursNameToEdit;
+        $scope.coursSetted.note = $scope.noteToEdit;
+        CoursService.setCours($scope.coursSetted);
     }
 
     $scope.addToModule = function (cours) {
-        console.log("add to module cours", $scope.moduleSelected, cours);
         if ($scope.moduleSelected != null && $scope.moduleSelected != 'undefined' && $scope.moduleSelected != "") {
-            console.log("add to module cours1");
-            ModuleService.addCoursToModule($scope.moduleSelected, cours);
+            console.log("add to module cours1", cours, $scope.moduleSelected);
+            //ModuleService.addCoursToModule($scope.moduleSelected, cours);
+            $scope.moduleService.addCoursToModule($scope.moduleSelected, cours);
         }
     }
 
+    $scope.setCours = function (cours) {
+        $scope.coursSetted = cours;
+        $scope.coursNameToEdit = cours.name;
+        $scope.noteToEdit = cours.note;
+    }
+
     $scope.setModuleSelected = function (module) {
-       // console.log('setModuleSelected', module);
         if (module != null && module != 'undefined') {
             $scope.moduleSelected = module;
         }
         console.log('ModuleSelected is ', $scope.moduleSelected);
     }
 
-
+   
 
 
 

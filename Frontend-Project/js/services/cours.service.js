@@ -2,19 +2,24 @@
     var coursList = [
         {
             id: '1',
-            name: "Le framework Ember.js"
+            name: "Le framework Ember.js",
+            note : 10
         },
         {
             id: '2',
-            name: " L'architecture des systèmes parallèles et distribués"
+            name: " L'architecture des systèmes parallèles et distribués",
+            note: 20
         },
         {
-            id: '77',
-            name: "Gestion laboratoire"
+            id: '31',
+            name: "Gestion laboratoire",
+            note: 10
+
         },
         {
-             id: '855',
-             name: "FSHARP-BASE : F# - Les bases"
+             id: '44',
+             name: "FSHARP-BASE : F# - Les bases",
+             note: 20
         }
     ];
 
@@ -23,7 +28,19 @@
     }
 
     this.addNewCours = function (cours) {
-        coursList.push(cours);
+        var i = coursList.indexOf(cours);
+        console.log("cours to add ", cours);
+        console.log("position of cours ", i);
+        if (i == -1) {
+            coursList.push(cours);
+        }
+    }
+
+    this.setCours = function (cours) {
+        var i = coursList.indexOf(cours);
+        console.log("position of cours ", i);
+        coursList[i] = cours;
+        console.log("cours setted ", coursList);
     }
 
 });
