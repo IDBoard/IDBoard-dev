@@ -1,7 +1,10 @@
 ﻿<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="fr"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="fr">
  <!--<![endif]-->
@@ -26,18 +29,22 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!--<script src="../js/vendor/jquery-2.1.4.min.js"></script>-->
-
-    <script src="../js/flat-ui/vendor/jquery.min.js"></script>
+    <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <!--<script src="../js/plugins.js"></script>-->
+    <script src="../js/plugins.js"></script>
     <script src="../js/main.js"></script>
 
     <script src="../js/lib/vector-map/jquery.vmap.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
-
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
     <script src="../js/angularjs/angular.js"></script>
 
     <script src="../js/modules/app.module.js"></script>
@@ -350,13 +357,16 @@
                                     <tr>
                                         <th>
                                             <select id="modules_filers">
-                                                <option ng-click="OnItemChange(this.value)" value="successed">
+                                                <option value="all">
+                                                    Tous
+                                                </option>
+                                                <option value="successed">
                                                     Réussis
                                                 </option>
-                                                <option ng-click="OnItemChange(this.value)" value="failed">
+                                                <option value="failed">
                                                     Échoués
                                                 </option>
-                                                <option ng-click="OnItemChange(this.value)" value="currents">
+                                                <option value="currents">
                                                     En Cours
                                                 </option>
                                             </select>
@@ -496,94 +506,7 @@
                 </div>
                 <div class="col-1"></div>
 
-                <div class="col-12 accordion" id="modules" role="tablist" aria-multiselectable="true">
-                    <div ng-model="module" ng-repeat="modules in list_modules">
-                        {{modules.module}}
-                    </div>
-                    <!--<div class="row" ng-repeat="module in list_modules">
-                        <div class="col-12 module card">
-                            <div class="row card-header">
-                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == true">
-                                    <i class="fa fa-check-circle ok"></i>
-                                </div>
-                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == false">
-                                    <i class="fa fa-times-circle fail"></i>
-                                </div>
-                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == null">
-                                    <i class="fa fa-question"></i>
-                                </div>
-                                <div class="col-xs-4 col-md-5" style="padding-top: 15px;">
-                                    <b>{{module.module}}</b>
-                                </div>
-                                <div class="col-xs-3 col-md-3" style="padding-top: 15px;">
-                                    <b>{{module.nb_credits}} ECTS</b>
-                                </div>
-                                <div class="col-xs-1 col-md-1" style="padding-top: 15px;">
-                                    <b>{{module.nb_notes_valides + '/' + module.matieres.length}}</b>
-                                </div>
-                                <div class="col-xs-1">
-                                    <div class="circle closed">
-                                        <a href="#module{{module.id}}_detail"
-                                           data-id="{{module.id}}"
-                                           onclick="if($(this).hasClass('fa-angle-up')) {
-                                                        $(this).removeClass('fa-angle-up').addClass('fa-angle-down');
-                                                    }
-                                                    else {
-                                                        $(this).removeClass('fa-angle-down').addClass('fa-angle-up');
-                                                    }"
-                                           data-parent="#modules"
-                                           data-toggle="collapse"
-                                           aria-expanded="true"
-                                           aria-controls="module{{module.id}}_detail"
-                                           class="fa up fa-angle-up"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row closed collapse hide" id="module{{module.id}}_detail">
-                                <div class="col-12">
-                                    <table class="table table-sm table-responsive-sm"
-                                           style="width: 100%; overflow-x: auto">
-                                        <thead>
-                                        <tr>
-                                            <th class="text-center">Type d'évaluation</th>
-                                            <th class="text-center">Date</th>
-                                            <th class="text-center">Note</th>
-                                            <th class="text-center">Coefficient</th>
-                                            <th class="text-center">Moyenne de la classe</th>
-                                            <th class="text-center">Commentaire</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody ng-repeat="detail in module.matieres">
-                                        <tr scope="row">
-                                            <th colspan="6" class="course-title">{{detail.name}}</th>
-                                        </tr>
-                                        <tr scope="row" ng-if="detail.note != null" class="evaluated">
-                                            <td class="font-weight-bold text-center">{{detail.type + ' n°' +
-                                                detail.id}}
-                                            </td>
-                                            <td class="font-weight-bold text-center">{{detail.date}}</td>
-                                            <td class="font-weight-bold text-center">{{detail.note}}</td>
-                                            <td class="font-weight-bold text-center">{{detail.coefficient}}</td>
-                                            <td class="font-weight-bold text-center">{{detail.moyenne}}</td>
-                                            <td class="font-weight-bold text-center"
-                                                ng-if="detail.commentaire != null && detail.commentaire != ''">
-                                                {{detail.commentaire}}
-                                            </td>
-                                            <td class="font-weight-bold text-center"
-                                                ng-if="detail.commentaire == null || detail.commentaire == ''">Aucun
-                                                commentaire
-                                            </td>
-                                        </tr>
-                                        <tr ng-if="detail.note == null">
-                                            <td colspan="6" class="text-center dont-evaluated">Pas de note</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-                </div>
+                <div class="col-12 accordion" id="modules" role="tablist" aria-multiselectable="true"></div>
             </div>
         </div>
         <!--<div class="content mt-3">

@@ -14,6 +14,8 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
         $scope.list_modules_cache = $scope.get_test_list().body;
         $scope.head_modules = $scope.get_test_list().header;
 
+        $scope.write_liste();
+        
         document.querySelector('#modules_filers').onchange = function () {
             $scope.filter_module(this.value)
         }
@@ -206,43 +208,123 @@ idboard.controller('StudentReport', function ($scope/*, $http*/) {
 
     $scope.filter_module = function (value) {
         switch (value) {
+            case 'all':
+                $scope.list_modules = $scope.get_test_list().body;
+                break;
             case 'successed':
                 $scope.list_modules = $scope.get_test_list_successed($scope.get_test_list().body);
-                //$scope.toto = 'ekfherfu';
                 break;
             case 'failed':
                 $scope.list_modules = $scope.get_test_list_failed($scope.get_test_list().body);
-                //$scope.toto = 'pouet';
                 break;
             case 'currents':
                 $scope.list_modules = $scope.get_test_list_currents($scope.get_test_list().body);
-                //$scope.toto = 'lololol';
                 break;
             default:
                 break;
         }
 
 
-        console.log($scope.list_modules);
+        $scope.write_liste();
     };
-    /*$scope.filter_module = function (value) {
-        $scope.$watch('list_modules.length', function (newVal, value) {
-            switch (value) {
-                case 'successed':
-                    $scope.list_modules = $scope.get_test_list_successed($scope.get_test_list().body);
-                    break;
-                case 'failed':
-                    $scope.list_modules = $scope.get_test_list_failed($scope.get_test_list().body);
-                    break;
-                case 'currents':
-                    $scope.list_modules = $scope.get_test_list_currents($scope.get_test_list().body);
-                    break;
-                default:
-                    break;
-            }
+
+    $scope.write_liste = function () {
+        let liste = $scope.list_modules;
+        let html = '';
+
+        function write_detail(liste, key) {
+            let html = '                            <div class="row closed collapse hide" id="module' + liste[key].id + '_detail">\n' +
+                '                                <div class="col-12">\n' +
+                '                                    <table class="table table-sm table-responsive-sm"\n' +
+                '                                           style="width: 100%; overflow-x: auto">\n' +
+                '                                        <thead>\n' +
+                '                                        <tr>\n' +
+                '                                            <th class="text-center">Type d\'évaluation</th>\n' +
+                '                                            <th class="text-center">Date</th>\n' +
+                '                                            <th class="text-center">Note</th>\n' +
+                '                                            <th class="text-center">Coefficient</th>\n' +
+                '                                            <th class="text-center">Moyenne de la classe</th>\n' +
+                '                                            <th class="text-center">Commentaire</th>\n' +
+                '                                        </tr>\n' +
+                '                                        </thead>\n' +
+                '                                        <tbody>\n';
+
+            liste[key].matieres.forEach(function (detail, key2) {
+                html += '                                        <tr scope="row">\n' +
+                    '                                            <th colspan="6" class="course-title">' + detail.name + '</th>\n' +
+                    '                                        </tr>\n' +
+                    (detail.no != null ? '                                        <tr scope="row" class="evaluated">\n' +
+                        '                                            <td class="font-weight-bold text-center">' + detail.type + ' n°\n' +
+                        '                                                ' + detail.id +
+                        '                                            </td>\n' +
+                        '                                            <td class="font-weight-bold text-center">' + detail.date + '</td>\n' +
+                        '                                            <td class="font-weight-bold text-center">' + detail.note + '</td>\n' +
+                        '                                            <td class="font-weight-bold text-center">' + detail.coefficient + '</td>\n' +
+                        '                                            <td class="font-weight-bold text-center">' + detail.moyenne + '</td>\n' +
+                        (detail.commentaire != null && detail.commentaire !== '' ? '<td class="font-weight-bold text-center"\n' + detail.commentaire + '\n' +
+                            '                                            </td>\n' :
+                            '                                            <td class="font-weight-bold text-center"\n>Aucun\n' +
+                            '                                                commentaire\n' +
+                            '                                            </td>\n') +
+                        '                                        </tr>\n' :
+                        '                                        <tr>\n' +
+                        '                                            <td colspan="6" class="text-center dont-evaluated">Pas de note</td>\n' +
+                        '                                        </tr>\n');
+            });
+
+            html += '                                        </tbody>\n' +
+                '                                    </table>\n' +
+                '                                </div>\n' +
+                '                            </div>\n';
+
+            return html;
+        }
+
+        liste.forEach(function (module, key) {
+            html += '<div class="row">\n' +
+                '                        <div class="col-12 module card">\n' +
+                '                            <div class="row card-header">\n' +
+                (module.success === true ?
+                    '                                <div class="col-xs-1 col-md-2 check-module">\n' +
+                    '                                    <i class="fa fa-check-circle ok"></i>\n' +
+                    '                                </div>\n' : (module.success === false) ? '                                <div class="col-xs-1 col-md-2 check-module">\n' +
+                        '                                    <i class="fa fa-times-circle fail"></i>\n' +
+                        '                                </div>\n' : '                                <div class="col-xs-1 col-md-2 check-module">\n' +
+                        '                                    <i class="fa fa-times-circle fail"></i>\n' +
+                        '                                </div>\n') +
+                '                                <div class="col-xs-4 col-md-5" style="padding-top: 15px;">\n' +
+                '                                    <b>' + module.module + '</b>\n' +
+                '                                </div>\n' +
+                '                                <div class="col-xs-3 col-md-3" style="padding-top: 15px;">\n' +
+                '                                    <b>' + module.nb_credits + ' ECTS</b>\n' +
+                '                                </div>\n' +
+                '                                <div class="col-xs-1 col-md-1" style="padding-top: 15px;">\n' +
+                '                                    <b>' + module.nb_notes_valides + '/' + module.matieres.length + '</b>\n' +
+                '                                </div>\n' +
+                '                                <div class="col-xs-1">\n' +
+                '                                    <div class="circle closed">\n' +
+                '                                        <a href="#module' + module.id + '_detail"\n' +
+                '                                           data-id="' + module.id + '"\n' +
+                '                                           onclick="if($(this).hasClass(\'fa-angle-up\')) {\n' +
+                '                                                        $(this).removeClass(\'fa-angle-up\').addClass(\'fa-angle-down\');\n' +
+                '                                                    }\n' +
+                '                                                    else {\n' +
+                '                                                        $(this).removeClass(\'fa-angle-down\').addClass(\'fa-angle-up\');\n' +
+                '                                                    }"\n' +
+                '                                           data-parent="#modules"\n' +
+                '                                           data-toggle="collapse"\n' +
+                '                                           aria-expanded="true"\n' +
+                '                                           aria-controls="module' + module.id + '_detail"\n' +
+                '                                           class="fa up fa-angle-up"></a>\n' +
+                '                                    </div>\n' +
+                '                                </div>\n' +
+                '                            </div>\n' +
+                write_detail(liste, key) +
+                '                        </div>\n' +
+                '                    </div>';
         });
 
-        console.log($scope.list_modules);   
-    }*/
+        document.querySelector('#modules').innerHTML = html;
+    }
     
 });
