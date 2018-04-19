@@ -1,4 +1,4 @@
-﻿using Backend_Project.Models;
+using Backend_Project.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace Backend_Project.Controllers
             return Ok(JsonConvert.SerializeObject(classeIDB));
         }
         //Update
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ClassesIdboard))]
         public IHttpActionResult PutClasseIdboard(int idClass, ClassesIdboard Classes)
         {
             if (!ModelState.IsValid)
@@ -86,7 +86,7 @@ namespace Backend_Project.Controllers
         [ResponseType(typeof(ClassesIdboard))]
         public IHttpActionResult PostClassesIdboard(Classes Classes)
         {
-            return (Ok());
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -95,7 +95,7 @@ namespace Backend_Project.Controllers
             db.Classes.Add(Classes);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { idClass = Classes.idClass }, Classes);
+            return (Ok(CreatedAtRoute("DefaultApi", new { idClass = Classes.idClass }, Classes)));
         }
         //Delete
         [ResponseType(typeof(ClassesIdboard))]
@@ -137,6 +137,19 @@ namespace Backend_Project.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { idClass = classesIdboard.idClass }, classesIdboard);
+        }
+        //Desactivate
+        [ResponseType(typeof(ClassesIdboard))]
+        public IHttpActionResult DesactivateClassesIdboard(int idClass)
+        {
+            Classes classesIdboard = db.Classes.Find(idClass);
+            classesIdboard.DateEnd = (from De in db.Classes where (De.idClass == idClass) select De.DateEnd).FirstOrDefault();
+            classesIdboard.DateEnd = new DateTime(2000, 10, 10);
+
+            db.Entry(DateEnd).State = EntityState.Modified;
+
+            return StatusCode(HttpStatusCode.NoContent);
+
         }
 
 

@@ -1,7 +1,4 @@
-﻿@{
-    Layout = null;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -12,9 +9,9 @@
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular.min.js"></script>
     <script>
-        function toggleEmail(element) {       
+        function toggleEmail(element) {
             if (document.getElementById("hideEmail").style.display == 'none') {
-                
+
                 document.getElementById("hideEmail").style.display = 'table-row'; // set to table-row instead of an empty string
                 var table = document.getElementById("tableEmail");
                 var row = element.parentNode.parentNode.rowIndex;
@@ -28,9 +25,9 @@
                     }
                 };
                 myEmail();
-                } else {
+            } else {
                 document.getElementById("hideEmail").style.display = 'none';
-                }
+            }
         }
 
         function toggleAddresse(element) {
@@ -48,15 +45,15 @@
                     }
                 };
                 myNumero();
-               
+
             } else {
                 document.getElementById("hideAddresse").style.display = 'none';
             }
         }
 
         function toggleNumero(element) {
-          //  alert("row" + element.parentNode.parentNode.rowIndex +
-          //      " - column" + element.parentNode.cellIndex);
+            //  alert("row" + element.parentNode.parentNode.rowIndex +
+            //      " - column" + element.parentNode.cellIndex);
             if (document.getElementById("hideNumero").style.display == 'none') {
                 document.getElementById("hideNumero").style.display = 'table-row';
                 var table = document.getElementById("tableNumeros");
@@ -74,13 +71,13 @@
                 // set to table-row instead of an empty string
             } else {
                 document.getElementById("hideNumero").style.display = 'none';
-            }       
+            }
         }
     </script>
 
     <!------ Include the above in your HEAD tag ---------->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
+</head>
 <body>
     <div style="margin-top:120px;margin-left:140px;">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -95,17 +92,15 @@
                             <div class="info">
                                 <h3 class="username">Bienvenue, {{Nom}} et {{Prenom}}</h3>
                                 <h5 style="color:#ffffff">Nè à {{lieu de neissance}} le {{Date de neissance}}</h5>
-                                <h4 style="color:#ffffff">ID : {{id}}</h4>                              
+                                <h4 style="color:#ffffff">ID : {{id}}</h4>
                                 <p>{{role}}</p>
-                                <p>Sophia Antipolis, B3<p>
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-               
-            </tr>
-        </table>
-    </div>
-</div>
+                                <p>Sophia Antipolis, {{className}}<p>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr></tr>
+                                        </table>
+                                    </div>
+                            </div>
                         </div>
                         <div class="col-md-12" style="background-color:rgb(213, 213, 213);">
                         </div>
@@ -116,13 +111,13 @@
                         <div class="panel-group" style="width: 80%; margin-left:auto;margin-right:auto;">
 
                             <div class="panel panel-default" style="border-top:40px;overflow:hidden">
-                                <div class="panel-heading"  >Mes Numeros de telephone</div>
+                                <div class="panel-heading">Mes Numeros de telephone</div>
                                 <table class="table table-user-information" id="tableNumeros">
                                     <tbody>
                                         <tr>
                                             <td><label>Numero:</label></td>
                                             <td><label typeof="numero">{{numero2}}</label></td>
-                                            <td ><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
+                                            <td><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr>
                                             <td><label>Numero:</label></td>
@@ -132,7 +127,7 @@
                                         <tr id="hideNumero" style="display:none;">
                                             <td><label id="modificationNumero">{{numero}}</label></td>
                                             <td><input required type="text" class="form-control" id="newNumero"></td>
-                                            <td ><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
+                                            <td><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -189,8 +184,12 @@
                                 </table>
                             </div>
                         </div>
-                         
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    </div>       
-    </body>
+
+    </div>
+</body>
 </html>

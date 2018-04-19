@@ -285,7 +285,7 @@
     <Content Include="js\vendor\jquery-2.1.4.min.js" />
     <Content Include="js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="js\widgets.js" />
-    <Content Include="Profile.cshtml" />
+    <Content Include="views\Profile.html" />
     <Content Include="scss\bootstrap\bootstrap-grid.css.map" />
     <Content Include="scss\bootstrap\bootstrap-grid.scss" />
     <Content Include="scss\bootstrap\bootstrap-reboot.css.map" />
