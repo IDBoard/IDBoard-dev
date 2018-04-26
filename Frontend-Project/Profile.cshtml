@@ -11,6 +11,7 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular.min.js"></script>
+    <script src="~/ScriptProfile/Profile.js"></script>
     <script>
         function toggleEmail(element) {       
             if (document.getElementById("hideEmail").style.display == 'none') {
@@ -81,7 +82,7 @@
     <!------ Include the above in your HEAD tag ---------->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
-<body>
+<body ng-app="MyModule" ng-controller="DBcontroller">
     <div style="margin-top:120px;margin-left:140px;">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
@@ -93,10 +94,10 @@
                                 <div class="ratio img-circle" style="background-image: url(https://data.whicdn.com/images/59274389/large.jpg)"></div>
                             </div>
                             <div class="info">
-                                <h3 class="username">Bienvenue, {{Nom}} et {{Prenom}}</h3>
-                                <h5 style="color:#ffffff">Nè à {{lieu de neissance}} le {{Date de neissance}}</h5>
-                                <h4 style="color:#ffffff">ID : {{id}}</h4>                              
-                                <p>{{role}}</p>
+                                <h3 class="username">Bienvenue, {{student.Nom}} et {{student.Prenom}}</h3>
+                                <h5 style="color:#ffffff">Nè à {{student.lieudeneissance}} le {{student.Datedeneissance}}</h5>
+                                <h4 style="color:#ffffff">ID : {{student.id}}</h4>                              
+                                <p>{{student.role}}</p>
                                 <p>Sophia Antipolis, B3<p>
     <div class="table-responsive">
         <table class="table">
@@ -121,16 +122,16 @@
                                     <tbody>
                                         <tr>
                                             <td><label>Numero:</label></td>
-                                            <td><label typeof="numero">{{numero2}}</label></td>
+                                            <td><label typeof="numero">{{student.numero2}}</label></td>
                                             <td ><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr>
                                             <td><label>Numero:</label></td>
-                                            <td><label typeof="numero">{{numero3}}</label></td>
+                                            <td><label typeof="numero">{{student.numero3}}</label></td>
                                             <td><input type="button" style="margin-right:4%; float:right" onclick="toggleNumero(this);" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr id="hideNumero" style="display:none;">
-                                            <td><label id="modificationNumero">{{numero}}</label></td>
+                                            <td><label id="modificationNumero">{{student.numero}}</label></td>
                                             <td><input required type="text" class="form-control" id="newNumero"></td>
                                             <td ><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
                                         </tr>
@@ -143,20 +144,20 @@
 
                             <div class="panel panel-default" style="border-top:40px;overflow:hidden">
                                 <div class="panel-heading">Mes Emails</div>
-                                <table class="table table-user-information" id="tableEmail">
+                                <table class="table table-user-information" id="tableEmail" >
                                     <tbody>
                                         <tr>
                                             <td>Email personnel:</td>
-                                            <td>{{email}}</td>
+                                            <td>{{student.email}}</td>
                                             <td><input style="margin-right:4%; float:right" onClick="toggleEmail(this);" id="email" type="button" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr>
                                             <td>Email personnel:</td>
-                                            <td>{{email2}}</td>
+                                            <td>{{student.email2}}</td>
                                             <td><input style="margin-right:4%; float:right" onClick="toggleEmail(this);" id="email" type="button" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr id="hideEmail" style="display:none;">
-                                            <td><label id="modificationEmail">{{email}}</label></td>
+                                            <td><label id="modificationEmail"></label>{{email}}<td>
                                             <td><input required type="email" class="form-control" id="newEmail"></td>
                                             <td><input type="button" class="btn btn-primary" value="Envoyer" style="margin-right:4%; float:right" /></td>
 
@@ -172,12 +173,12 @@
                                     <tbody>
                                         <tr>
                                             <td>mon Addresse :</td>
-                                            <td>{{addresse1}}</td>
+                                            <td>{{student.addresse1}}</td>
                                             <td><input type="button" style="margin-right:4%; float:right" onclick="toggleAddresse(this);" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr>
                                             <td>mon Addresse :</td>
-                                            <td>{{addresse2}}</td>
+                                            <td>{{student.addresse2}}</td>
                                             <td><input type="button" style="margin-right:4%; float:right" onclick="toggleAddresse(this);" class="btn btn-danger" value="demander une modification" /></td>
                                         </tr>
                                         <tr id="hideAddresse" style="display:none;">
@@ -189,8 +190,6 @@
                                 </table>
                             </div>
                         </div>
-                         
-
                     </div>       
     </body>
 </html>
