@@ -68,21 +68,29 @@
     this.allModulesByGrade = function (grade) {
         var arrayResultModules = [];
         var modulesOfThisGrade = grade.modules;
+        var keepGoing = true;
         if (modulesOfThisGrade != null)
         {
             if (modulesOfThisGrade.length > 0)
             {
                 modulesOfThisGrade.forEach(function (_module) {
-                    var moduleToAdd = moduleList.find(function (__module) {
-                        return __module.id == _module.id;
+                    console.log("module item  ", _module);
+                    moduleList.forEach(function (__module) {
+                        if (keepGoing) {
+                            if (_module.id == __module.id) {
+                                keepGoing = false;
+                                var moduleToAdd = __module;
+                                console.log("module found ", moduleToAdd);
+                                arrayResultModules.push(moduleToAdd)
+                            }
+                        }
                     });
-                    arrayResultModules.push(moduleToAdd);
                 });
             }
         }
         return arrayResultModules;
     }
-
+    
     this.addCoursToModule = function (module, cours) {
 
         if (!this.coursExisted(module, cours)) {

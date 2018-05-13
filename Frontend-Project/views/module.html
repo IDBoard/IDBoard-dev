@@ -1,67 +1,65 @@
-﻿<div ng-controller="ModuleController">
+﻿<div ng-controller="ModuleController" class="main_div">
     <div class="row">
         <div class="col-sm-6 form-group">
-            <form name="formAddNewModule">
-                <span class="label label-primary">Nom du module:</span>
-                <input name="moduleNameToAdd" class="form-control" type="text" placeholder="" ng-model="moduleNameToAdd" required>
-                <span class="label label-primary">Creadits ETC:</span>
-                <input class="form-control" type="text" placeholder="" ng-model="moduleCreditsETCToAdd">
-                <button type="button" class="btn" ng-click="addModuleToGrade()" style="margin-top: 2px;" name="buttonAddModule" >
-                    Ajouter un module
+            <!-- Grade List -->
+            <span class="label label-primary">Classes existentes :</span>
+            <select class="form-control" ng-model="gradeSelected">
+                <option value="">--- Select an option ---</option>
+                <option ng-repeat="grade in grades |orderBy:'+':true"
+                        value="{{grade.id}}">
+                    {{grade.name}}
+                </option>
+            </select>
+            <!--<button ng-if="gradeSelected" type="button" class="btn mbuttons" data-toggle="modal" ng-click="showModuleByGrade(gradeSelected)">
+                Select class
+            </button>-->
+            <div class="">
+                <span class="label label-primary">Nom de la matière :</span>
+                <input class="form-control" type="text" placeholder="" ng-model="coursToAdd">
+                <button type="button" class="btn mbuttons" ng-click="addCoursToModule()" style="margin-top: 5px;">
+                    Aujouter une matière
                 </button>
-
-            </form>
+            </div>
         </div>
 
         <div class="col-sm-6 form-group">
-            <span class="label label-primary">Nom de la matière :</span>
-            <input class="form-control" type="text" placeholder="" ng-model="coursToAdd">
-            <button type="button" class="btn" ng-click="addCoursToModule()" style="margin-top: 2px;">
-                Aujouter une matière
+            <span class="label label-primary">Nom du module:</span>
+            <input name="moduleNameToAdd" class="form-control" type="text" placeholder="" ng-model="moduleNameToAdd" required>
+            <span class="label label-primary">Creadits ETC:</span>
+            <input class="form-control" type="number" placeholder="" ng-model="moduleCreditsETCToAdd">
+            <button type="button" class="btn mbuttons" ng-click="addModuleToGrade()" name="buttonAddModule">
+                Ajouter un module
             </button>
         </div>
+
     </div>
 
+
+    <!-- Modules List -->
     <div class="row">
-        <!-- Grade List -->
         <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-            <div class="list-group">
+            <div class="list-group mlist-group">
                 <a href="#" class="list-group-item list-group-item-dark">
-                    Classes existentes
+                    Modules de la classe {{currentGrade.name}}
                 </a>
             </div>
-            <div class="list-group" ng-repeat="grade in grades">
-                <div class="list-group-item">
-                    <a href="javascript: void(0);"
-                       class="list-group-item"
-                       data-ng-click="showModuleByGrade(grade)">
-                        {{grade.name}}
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Modules List -->
-        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-dark">
-                    Modules de la classe {{gradeSelected.name}}
-                </a>
-            </div>
-            <div class="list-group" ng-repeat="module in modulesOfGradeSelected">
+            <div class="list-group mlist-group" ng-repeat="module in modulesOfGradeSelected">
                 <a href="javascript: void(0);"
-                   class="list-group-item"
-                   data-ng-click="setModuleSelected(module)">
-                    {{module.name}}
-                    <div style="float:right">{{module.creditsETC}}</div>
+                   class="list-group-item">
+                    <span data-placement="top" data-toggle="tooltip"
+                          title="Credits ETC: {{module.creditsETC}}">{{module.name}} </span>
+                        <div style="float:right" ng-click="setModuleSelected(module)" 
+                             data-placement="top" 
+                             data-toggle="tooltip"
+                             title="Chercher les matiéres de ce module">
+                            <span class="fa fa-search" aria-hidden="true"></span>
+                        </div>
                 </a>
                 <div style="clear:both"></div>
             </div>
         </div>
-    </div>
 
-    <!-- Cours in selected module -->
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
+        <div class="col-sm-6 col-md-6 col-lg-6 list-fix-height-footer">
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-dark">
                     Matières du module: {{moduleSelected.name}}
@@ -69,12 +67,20 @@
             </div>
             <div class="list-group" ng-repeat="c in cours">
                 <div class="list-group-item">
-                    <a href="javascript: void(0);">
+                    <a href="javascript: void(0);"
+                       data-placement="top" 
+                       data-toggle="tooltip"
+                       title="Note : {{c.note}}">
                         {{c.name}}
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Cours in selected module -->
+    
+    
+    
 
 </div> <!-- .content -->

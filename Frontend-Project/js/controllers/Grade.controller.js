@@ -19,7 +19,6 @@
     }
 
    
-
     $scope.newGrade = function () {
         console.log("add new grade");
         var grade = {

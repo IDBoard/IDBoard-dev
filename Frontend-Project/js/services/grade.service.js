@@ -22,7 +22,7 @@
             contents: [],
             modules: [
                 {
-                    id: '3'
+                    id: '153'
                 },
                 {
                     id: '5'
@@ -99,7 +99,7 @@
             ],
             modules: [
                 {
-                    id: '4'
+                    id: '455'
                 },
                 {
                     id: '5'
@@ -130,7 +130,7 @@
             ],
             modules: [
                 {
-                    id: '1'
+                    id: '265416'
                 },
                 {
                     id: '5'
@@ -290,5 +290,33 @@
             id : module.id
         };
         grade.modules.push(_module);
+    }
+
+
+    this.getModules = function (idGrade) {
+        var modules = [];
+
+        gradeList.forEach(function (_grade) {
+            if (_grade.id == idGrade) {
+                modules = _grade.modules;
+                console.log("modules of grade ", idGrade, modules);
+            }
+        });
+        return modules;
+    }
+
+    this.findGradeById = function (idGrade) {
+        var grade;
+        var keepGoing = true;
+        gradeList.forEach(function (_grade) {
+            if (keepGoing) {
+                if (_grade.id == idGrade) {
+                    grade = _grade;
+                    keepGoing = false;
+                }
+            }
+            
+        });
+        return grade;
     }
 });

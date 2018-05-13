@@ -10,15 +10,25 @@
     $scope.moduleNameToAdd;
     $scope.coursToAdd;
 
-    $scope.showModuleByGrade = function (grade) {
-        $scope.modulesOfGradeSelected = ModuleService.allModulesByGrade(grade);
-        moduleToShow = $scope.modulesOfGradeSelected;
-        $scope.gradeSelected = grade;
+    $scope.showModuleByGrade = function (idgrade) {
+        console.log("showModuleByGrade ", idgrade);
+        var _grade = GradeService.findGradeById(idgrade);
+        $scope.currentGrade = _grade;
+        moduleToShow = ModuleService.allModulesByGrade(_grade);
+        console.log("modules to show ", moduleToShow);
+        $scope.modulesOfGradeSelected = moduleToShow;
     };
     
     $scope.setModuleSelected = function (module) {
-        $scope.moduleSelected = module;
-        $scope.cours = module.cours;
+        if (module != null) {
+            $scope.moduleSelected = module;
+            $scope.cours = module.cours;
+        }
+        else {
+            $scope.moduleSelected = null;    
+            $scope.cours = [];
+        }
+       
     }
 
     $scope.addModuleToGrade = function (grade, module) {
@@ -38,28 +48,34 @@
         
     }
 
-    $scope.$watch('gradeSelected.modules.length', function (newVal, oldVal) {
+    $scope.$watch('gradeSelected', function (newVal, oldVal) {
         if ($scope.gradeSelected != null) {
-            if ($scope.gradeSelected.modules.length > 0) {
-                if (newVal > oldVal)
-                {
-                    $scope.modulesOfGradeSelected = ModuleService.allModulesByGrade($scope.gradeSelected);
-                }
-               
+            console.log("watch grade selected newVal ", newVal);
+            console.log("watch grade selected oldVal ", oldVal);
+           
+            if (newVal != oldVal) {
+                $scope.showModuleByGrade(newVal);
+                $scope.setModuleSelected(null); //update cours list
             }
+          
         }
     });
 
     $scope.addCoursToModule = function () {
-        var coursToadd = {
-            id: Date.now(),
-            name: $scope.coursToAdd,
-        };
+        if ($scope.coursToAdd != null && $scope.coursToAdd != 'undefined' && $scope.coursToAdd != "") {
+            var coursToadd = {
+                id: Date.now(),
+                name: $scope.coursToAdd,
+            };
 
-        if ($scope.moduleSelected != null && $scope.moduleSelected != 'undefined' && $scope.moduleSelected != "") {
-            ModuleService.addCoursToModule($scope.moduleSelected, coursToadd);
-            $scope.coursToAdd = "";
+            if ($scope.moduleSelected != null && $scope.moduleSelected != 'undefined' && $scope.moduleSelected != "") {
+                ModuleService.addCoursToModule($scope.moduleSelected, coursToadd);
+                $scope.coursToAdd = "";
+            }
+
         }
+
+        console.log("cours to add is empty or undefined");      
      
     }
 

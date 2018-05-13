@@ -10,3 +10,49 @@
     height: 350px;
     overflow-y: auto;
 }
+
+.main_div {
+    padding: 5px;
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
+
+.mbuttons {
+    margin-top: 5px;
+    margin-left: 1px;
+    padding: 5px !important;
+}
+
+.mlist-group {
+    /*margin-left: -14px;*/
+}
+
+/*.tooltip span {
+    display: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    color: black;
+    background: white;
+}
+
+.tooltip:hover {
+    
+}
+
+.tooltip:hover span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: auto;
+    max-width: 320px;
+    min-height: 128px;
+    border: 1px solid black;
+    margin-top: 12px;
+    margin-left: 32px;
+    overflow: hidden;
+    padding: 8px;
+}*/
