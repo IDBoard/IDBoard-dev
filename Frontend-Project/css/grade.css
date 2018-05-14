@@ -2,7 +2,7 @@
 }
 
 .list-fix-height {
-    height: 300px;
+    height: 450px;
     overflow-y: auto;
 }
 
@@ -16,12 +16,18 @@
 }
 
 .button-grade {
-    border: 6px;
-    padding: 6px;
+    border: 2px;
+    padding: 2px;
     border-radius: 1.5px !important;
 }
 
 .colorHeader {
     background-color:darkgray;
 }
+
+.card-header {
+    padding: 4px !important;
+}
+
+
 

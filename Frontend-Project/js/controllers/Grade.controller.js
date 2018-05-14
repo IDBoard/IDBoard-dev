@@ -41,8 +41,13 @@
     $scope.selectGrade = function (grade) {
         //console.log("selectGrade");
         $scope.gradeSelected = grade;
-        $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
+      
     };
+
+    $scope.findStudentsInThisGrade = function (grade) {
+        $scope.gradeSelected = grade;
+        $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
+    }
 
     $scope.deleteGrade = function (grade) {
         GradeService.deleteGrade(grade);
