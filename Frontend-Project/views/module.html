@@ -3,23 +3,13 @@
         <div class="col-sm-6 form-group">
             <!-- Grade List -->
             <span class="label label-primary">Classes existentes :</span>
-            <select class="form-control" ng-model="gradeSelected">
+            <select class="form-control" ng-model="idGradeSelected">
                 <option value="">--- Select an option ---</option>
                 <option ng-repeat="grade in grades |orderBy:'+':true"
                         value="{{grade.id}}">
                     {{grade.name}}
                 </option>
             </select>
-            <!--<button ng-if="gradeSelected" type="button" class="btn mbuttons" data-toggle="modal" ng-click="showModuleByGrade(gradeSelected)">
-                Select class
-            </button>-->
-            <div class="">
-                <span class="label label-primary">Nom de la matière :</span>
-                <input class="form-control" type="text" placeholder="" ng-model="coursToAdd">
-                <button type="button" class="btn mbuttons" ng-click="addCoursToModule()" style="margin-top: 5px;">
-                    Aujouter une matière
-                </button>
-            </div>
         </div>
 
         <div class="col-sm-6 form-group">
@@ -39,7 +29,7 @@
     <div class="row">
         <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
             <div class="list-group mlist-group">
-                <a href="#" class="list-group-item list-group-item-dark">
+                <a href="#" class="list-group-item list-group-item background_header_list">
                     Modules de la classe {{currentGrade.name}}
                 </a>
             </div>
@@ -59,9 +49,9 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-6 col-lg-6 list-fix-height-footer">
+        <div class="col-sm-6 col-md-6 col-lg-6 list-fix-height">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-dark">
+                <a href="#" class="list-group-item list-group-item background_header_list">
                     Matières du module: {{moduleSelected.name}}
                 </a>
             </div>

@@ -286,6 +286,7 @@
     }
 
     this.addModule = function (grade, module) {
+        console.log("GradeService add Module ", module);
         var _module = {
             id : module.id
         };

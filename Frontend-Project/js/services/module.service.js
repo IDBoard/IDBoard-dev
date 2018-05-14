@@ -66,9 +66,9 @@
     }
 
     this.allModulesByGrade = function (grade) {
+        console.log("Module service allModulesByGrade", grade);
         var arrayResultModules = [];
         var modulesOfThisGrade = grade.modules;
-        var keepGoing = true;
         if (modulesOfThisGrade != null)
         {
             if (modulesOfThisGrade.length > 0)
@@ -76,14 +76,13 @@
                 modulesOfThisGrade.forEach(function (_module) {
                     console.log("module item  ", _module);
                     moduleList.forEach(function (__module) {
-                        if (keepGoing) {
-                            if (_module.id == __module.id) {
-                                keepGoing = false;
-                                var moduleToAdd = __module;
-                                console.log("module found ", moduleToAdd);
-                                arrayResultModules.push(moduleToAdd)
-                            }
-                        }
+                        
+                    if (_module.id == __module.id) {
+                        var moduleToAdd = __module;
+                        console.log("module found ", moduleToAdd);
+                        arrayResultModules.push(moduleToAdd)
+                    }
+                        
                     });
                 });
             }
