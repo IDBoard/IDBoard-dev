@@ -21,6 +21,8 @@
                 }
                 CoursService.addNewCours(newCours);
                 console.log("cours list", CoursService.getCours());
+                $scope.coursNameToAdd = "";
+                $scope.note = "";
             }
         }
         

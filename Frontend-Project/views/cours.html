@@ -1,22 +1,43 @@
-﻿<div ng-controller="CoursController">
+﻿<div ng-controller="CoursController" class="main_div">
     <div class="row">
         <div class="col-sm-6 form-group">
             <span class="label label-primary">Nom de la matiere:</span>
             <input class="form-control" type="text" placeholder="" ng-model="coursNameToAdd">
-            <button type="button" class="btn" ng-click="newCours()" style="margin-top: 2px;">
+            <button type="button" class="btn mbuttons" ng-click="newCours()" style="margin-top: 2px;">
                 Créer une nouvelle matiere
             </button>
         </div>
 
         <div class="col-sm-6 form-group" style="float:left">
             <span class="label label-primary">Nombre de notes :</span>
-            <input class="form-control" type="text" placeholder="" ng-model="note">
+            <input class="form-control" type="number" placeholder="" ng-model="note">
+        </div>
+
+        <!-- Module List -->
+        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item background_header_list">
+                    Modules existantes
+                </a>
+            </div>
+            <div class="list-group" ng-repeat="module in moduleList">
+                <a href="javascript: void(0);"
+                   class="list-group-item">
+                    {{module.name}}
+                    <div style="float:right" data-toggle="modal" data-target="#modalFindCours">
+                        <span class="fa fa-search" data-placement="top" data-toggle="tooltip"
+                              ng-click="setModuleSelected(module)"
+                              title="Afficher tout les matiéres dans ce module"></span>
+                    </div>
+                </a>
+                <div style="clear:both"></div>
+            </div>
         </div>
 
         <!-- Cours List -->
         <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-dark">
+                <a href="#" class="list-group-item list-group-item background_header_list">
                     Matières existantes
                 </a>
             </div>
@@ -27,7 +48,10 @@
                     {{cours.name}}
                     <div style="float:right">
                         <span id="editCours" class="fa fa-info" aria-hidden="true" data-toggle="modal" data-target="#editCoursModal" data-ng-click="setCours(cours)"></span>
-                        <span class="fa fa-check" aria-hidden="true" data-ng-click="addToModule(cours)"></span>
+                        <span class="fa fa-plus" aria-hidden="true"
+                              data-placement="top" data-toggle="tooltip"
+                              title="Ajouter ce module "
+                              data-ng-click="addToModule(cours)"></span>
                     </div>
                     <div style="clear:both"></div>
                 </a>
@@ -48,47 +72,46 @@
                         <input class="form-control" type="text" placeholder="" ng-model="noteToEdit">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click="editCours()">Save changes</button>
+                        <button type="button" class="btn btn-secondary mbuttons" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary mbuttons" data-dismiss="modal" data-ng-click="editCours()">Save changes</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Module List -->
-        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-dark">
-                    Modules existantes
-                </a>
-            </div>
-            <div class="list-group" ng-repeat="module in moduleList">
-                <a href="javascript: void(0);"
-                   class="list-group-item"
-                   data-ng-click="setModuleSelected(module)">
-                    {{module.name}}
-                </a>
-            </div>
-        </div>
 
 
-        <!-- Cours on selected module -->
 
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height-footer">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-dark">
-                    Matieres du module: {{moduleSelected.name}}
-                </a>
-            </div>
-            <div class="list-group" ng-repeat="coursModule in moduleSelected.cours">
-                <div class="list-group-item">
-                    <a href="javascript: void(0);">
-                        {{coursModule.name}}
-                    </a>
+        <!-- Modal Cours on selected module.-->
+        <div class="modal fade" id="modalFindCours" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Matieres du module: {{moduleSelected.name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height">
+                                <div class="list-group" ng-repeat="coursModule in moduleSelected.cours">
+                                    <div class="list-group-item">
+                                        <a href="javascript: void(0);">
+                                            {{coursModule.name}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary mbuttons" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
