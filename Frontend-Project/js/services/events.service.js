@@ -1,4 +1,9 @@
-﻿idboard.service('EventsService', function () {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.service('EventsService', function () {
     var eventsList = [
         {
             id: '48',

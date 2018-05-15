@@ -40,10 +40,10 @@
                             <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary mbuttons" data-dismiss="modal">Close</button>
                             <button id="buttonDuplicate"
                                     ype="button"
-                                    class="btn"
+                                    class="btn mbuttons"
                                     data-dismiss="modal"
                                     ng-click="duplicateGrade()">
                                 OK
@@ -166,10 +166,9 @@
                    class="list-group-item">
                     {{student.name}}
                     <div ng-if="gradeSelected" style="float:right">
-                        <a  role="button" class="btn button-grade" data-ng-click="addStudent(student)">
-                            <span class="fa fa-plus" data-placement="top" data-toggle="tooltip"
-                                  title="Ajouter cet evele a la classe {{gradeSelected.name}}"></span>
-                        </a>
+                        <span class="fa fa-plus" data-placement="top" data-toggle="tooltip"
+                                data-ng-click="addStudent(student)"
+                                title="Ajouter cet evele a la classe {{gradeSelected.name}}"></span>
                     </div>
                 </a>
                 <div style="clear:both"></div>
@@ -203,10 +202,12 @@
                                     </a>
                                     <div style="float:right">
                                         <a role="button" class="btn button-grade" ng-click="deleteStudent(student)" aria-label="Left Align">
-                                            <span class="fa fa-trash" aria-hidden="true"></span>
+                                            <span class="fa fa-trash" aria-hidden="true" data-placement="top" data-toggle="tooltip"
+                                                      title="Supprimer cet éleve"></span>
                                         </a>
                                         <a role="button" class="btn button-grade" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
-                                            <span class="fa fa-archive" aria-hidden="true"></span>
+                                            <span class="fa fa-archive" aria-hidden="true" data-placement="top" data-toggle="tooltip"
+                                                      title="Changer cet éleve à non active"></span>
                                         </a>
                                     </div>
                                 </div>
@@ -215,7 +216,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary mbuttons" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

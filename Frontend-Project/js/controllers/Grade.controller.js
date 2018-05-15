@@ -1,8 +1,16 @@
-﻿idboard.controller('GradeController', function ($scope, $filter, GradeService, StudentService) {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.controller('GradeController', function ($scope, $filter, GradeService, StudentService) {
     console.log("GradeController ");
 
     $scope.gradeService = GradeService;
-    var students    = StudentService.getStudents();
+    var students = StudentService.getStudents();
+
+    console.log("students on data base", students);
+
     $scope.grades   = GradeService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
     
@@ -22,16 +30,10 @@
     $scope.newGrade = function () {
         console.log("add new grade");
         var grade = {
-            id: '77',
+            id: '53',
             name: $scope.gradeNameToAdd,
             activated: true,
-            students: [
-                {
-                    name: "Antuanett",
-                    activated: true,
-                    checked: false,
-                }
-            ]
+            students: []
         }
         GradeService.getGrades().push(grade);
         GradeService.gradesActives().push(grade);
@@ -46,8 +48,27 @@
 
     $scope.findStudentsInThisGrade = function (grade) {
         $scope.gradeSelected = grade;
-        $scope.studentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
+        $scope.updateListStudentsInCurrentGrade(grade);
     }
+
+    $scope.updateListStudentsInCurrentGrade = function (grade) {
+        console.log("updateListStudentsInCurrentGrad");
+        var idStudentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
+        console.log("idStudentsINThisGrade", idStudentsInThisGrade);
+        var students = [];
+        if (idStudentsInThisGrade != null) {
+            idStudentsInThisGrade.forEach(function (_idstudent) {
+                var s = StudentService.getStudentById(_idstudent);
+                if (s != null) {
+                    console.log("student found ", s.name);
+                    students.push(s);
+                }
+            });
+        }
+        $scope.studentsInThisGrade = students;
+    }
+
+    
 
     $scope.deleteGrade = function (grade) {
         GradeService.deleteGrade(grade);
@@ -58,6 +79,7 @@
             GradeService.addStudent($scope.gradeSelected, student);
             student.grade = true;
             StudentService.changeGradeStudent(student);
+            $scope.findStudentsInThisGrade($scope.gradeSelected);
         }
     };
 
@@ -70,13 +92,8 @@
                 GradeService.duplicateGrade(gradeID, nameNewGrade);
                 $scope.nameNewGrade = "";
             }
-            else {
-                
-            }
         }
-        else {
-            
-        }
+        
     };
 
 
@@ -92,8 +109,9 @@
     }
 
     $scope.deleteStudent = function (student) {
+        console.log("deleteStudent", student);
         if ($scope.gradeSelected !== null || $scope.gradeSelected === 'undefined') {
-            GradeService.deleteStudent($scope.gradeSelected, student);
+            $scope.gradeSelected.students = GradeService.deleteStudent($scope.gradeSelected, student);
             student.grade = false;
             StudentService.changeGradeStudent(student);
         }
@@ -105,7 +123,19 @@
 
 
     $scope.$watch('studentsInThisGrade.length', function (newVal, oldVal) {
+        console.log("watch studentsInThisGrade newVal", newVal, "oldVal", oldVal);
         $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
+    });
+
+    $scope.$watch('gradeSelected.students.length', function (newVal, oldVal) {
+        console.log("watch gradeSelected newVal", newVal, "oldVal", oldVal);
+        if (newVal < oldVal) { // only when delete student
+            $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
+            console.log("watch gradeSelected studentsInThisGrade", $scope.studentsInThisGrade);
+            console.log("watch gradeSelected gradeSelected.students", $scope.gradeSelected.students);
+            $scope.updateListStudentsInCurrentGrade($scope.gradeSelected);
+        }
+     
     });
 
 

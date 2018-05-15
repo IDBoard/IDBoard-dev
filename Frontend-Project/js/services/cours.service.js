@@ -1,4 +1,8 @@
-﻿idboard.service('CoursService', function () {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+idboard.service('CoursService', function () {
     var coursList = [
         {
             id: '1',

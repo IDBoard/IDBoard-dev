@@ -1,4 +1,8 @@
-﻿idboard.service('GradeService', function () {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+idboard.service('GradeService', function () {
     console.log("GradeService ");
     var gradeList = [
         {
@@ -7,16 +11,13 @@
             active: true,
             students: [
                 {
-                    name: "Jorge",
-                    active: true
+                    id: '55'
                 },
                 {
-                    name: "Antuanett",
-                    active: true
+                    id: '77'
                 },
                 {
-                    name: "Pepe",
-                    active: true
+                    id: '47'
                 }
             ],
             contents: [],
@@ -35,20 +36,14 @@
             active: true,
             checked: false,
             students: [
-               {
-                    name: "Rplland",
-                    active: true,
-                    grade: true
+                {
+                    id: '96'
                 },
                 {
-                    name: "Emmanuel",
-                    active: true,
-                    grade: true
+                    id: '85'
                 },
                 {
-                    name: "Mike",
-                    active: true,
-                    grade: true
+                    id: '11'
                 }
 
             ],
@@ -86,9 +81,7 @@
             checked: false,
             students: [
                 {
-                    name: "Robin",
-                    active: true,
-                    grade: true
+                    id: '55'
                 }
             ],
             contents: [
@@ -113,9 +106,7 @@
             checked: false,
             students: [
                 {
-                    name: "Larence",
-                    active: true,
-                    grade: true
+                    id: '126'
                 }
             ],
             contents: [
@@ -251,8 +242,11 @@
     }
 
     this.addStudent = function (grade, student) {
+        console.log("addStudent ", student);
+        console.log("grade after adding student ", grade);
         if (!this.studentExisted(grade, student)) {
-            grade.students.push(student);
+            var s = { id: student.id };
+            grade.students.push(s);
         }
     }
 
@@ -277,8 +271,16 @@
 
     this.deleteStudent = function (grade, student)
     {
-        var index = grade.students.indexOf(student);
-        grade.students.splice(index, 1)
+        console.log("grade service delete student in grade", grade);
+        for (var i = 0; i < grade.students.length; i++) {
+            if (grade.students[i].id == student.id) {
+                console.log("grade service student delected");
+                grade.students.splice(i, 1);
+                break;
+            }
+        }
+        return grade.students;
+        console.log("grade service after deleting student in grade", grade);
     }
 
     this.inactiveStudentPassage = function (student) {

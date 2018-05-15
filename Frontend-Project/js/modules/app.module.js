@@ -1,4 +1,9 @@
-﻿// Création du module principal 'idboard'
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+// Création du module principal 'idboard'
 var idboard = angular.module('IDBoard', ['ngRoute']);
 
 idboard.config(function ($routeProvider, $locationProvider) {

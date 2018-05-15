@@ -1,4 +1,9 @@
-﻿idboard.controller('EventsController', function ($scope, $timeout, $filter, EventsService, StudentService) {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.controller('EventsController', function ($scope, $timeout, $filter, EventsService, StudentService) {
 
     $scope.countNotificationEvents = 0;
     $scope.currentStudentId = 55;

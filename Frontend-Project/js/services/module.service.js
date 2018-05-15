@@ -1,4 +1,8 @@
-﻿idboard.service('ModuleService', function () {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+idboard.service('ModuleService', function () {
     var moduleList = [
         {
             id: '153',

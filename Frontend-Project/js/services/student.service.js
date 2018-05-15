@@ -1,66 +1,73 @@
-﻿idboard.service('StudentService', function () {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.service('StudentService', function () {
 
     var students = [
         {
             id: '1',
-            name: 'Pepito1',
-            lastName: 'LL'
+            name: 'Peter',
+            lastName: 'LL',
+            active: false,
+            grade: false
         },
         {
             id: '55',
-            name: 'Juan',
+            name: 'Lian',
             lastName: 'LL',
             active: false,
-            grade: false
+            grade: true
         },
         {
             id: '77',
-            name: 'Pepito4',
+            name: 'Robin',
             lastName: 'LL',
             active: false,
-            grade: false
+            grade: true
         },
         {
             id: '47',
-            name: 'Pepito44',
+            name: 'George',
             lastName: 'LL',
             active: false,
-            grade: false
+            grade: true
         },
         {
             id: '74',
-            name: 'PepitoL',
+            name: 'Laure',
             lastName: 'LL',
             active: false,
             grade: false
         },
         {
             id: '11',
-            name: 'Pepito11',
+            name: 'Laurence',
             lastName: 'LL',
             active: false,
-            grade: false
+            grade: true
         },
         {
             id: '85',
-            name: 'PepitoMo',
+            name: 'Anne',
             lastName: 'LL',
             active: false,
-            grade: false
+            grade: true
         },
         {
             id: '96',
-            name: 'Pepito96',
+            name: 'Lola',
             lastName: 'LL',
             active: false,
-            grade: false
+            grade: true
         },
         {
             id: '126',
             name: 'Lillie',
             lastName: 'LL',
             active: true,
-            grade: false
+            grade: true
         }
     ];
 
@@ -70,16 +77,19 @@
 
     this.getStudentById = function (id) {
         console.log("getStudentById method");
+        console.log("getStudentById method students", students);
         console.log(id);
-
         var student;
 
         for (var i = 0; i < students.length; i++)
         {
-            if (students[i].id == id)
-            {
+            if (students[i].id == id.id) {
+                console.log("students in list has same student id", id.id);
                 student = students[i];
                 break;
+            }
+            else {
+                console.log("students in list has not the same student id", id.id);
             }
         }
         return student;
@@ -104,4 +114,5 @@
         })
     }
 
+   
 });
