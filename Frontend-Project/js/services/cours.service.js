@@ -47,4 +47,17 @@ idboard.service('CoursService', function () {
         console.log("cours setted ", coursList);
     }
 
+    this.deleteCours = function (cours) {
+        var i = coursList.indexOf(cours);
+        console.log("cours to delete ", cours);
+        console.log("position of cours ", i);
+        if (i !== -1) {
+            console.log("cours deleted", cours.name);
+            coursList.splice(i, 1);
+        }
+        console.log("cours service cours after deleting one cours ", coursList);
+    }
+
+
+
 });

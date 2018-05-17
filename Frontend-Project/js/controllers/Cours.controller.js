@@ -35,10 +35,16 @@
     }
 
     $scope.addToModule = function (cours) {
+        console.log("add To Module This Cours", cours);
         if ($scope.moduleSelected != null && $scope.moduleSelected != 'undefined' && $scope.moduleSelected != "") {
-            console.log("add to module cours1", cours, $scope.moduleSelected);
-            //ModuleService.addCoursToModule($scope.moduleSelected, cours);
-            $scope.moduleService.addCoursToModule($scope.moduleSelected, cours);
+            console.log("add to module cours", cours, "module selected", $scope.moduleSelected);
+            var added = $scope.moduleService.addCoursToModule($scope.moduleSelected, cours);
+            console.log("cours added in module selected", added);
+            if (added) {
+                console.log("before deleting cours ");
+                $scope.courService.deleteCours(cours);
+                console.log("cours list after deleting cours", $scope.coursList);
+            }
         }
     }
 
@@ -55,7 +61,15 @@
         console.log('ModuleSelected is ', $scope.moduleSelected);
     }
 
-   
+    $scope.$watch('moduleSelected.cours.length', function (newVal, oldVal) {
+        console.log("watch moduleSelected.cours.length newVal", newVal, "oldVal", oldVal);
+        $scope.coursList = CoursService.getCours();
+    });
+
+    $scope.$watch('coursList.length', function (newVal, oldVal) {
+        console.log("watch coursList newVal", newVal, "oldVal", oldVal);
+        
+    });
 
 
 
