@@ -29,6 +29,37 @@ namespace Backend_Project.Controllers
             public string adresseMail { get; set; }
         }
 
+        [HttpPost]
+        public IHttpActionResult ModifAddComplete(string address1, string address2,  string cp, string city, string country, int id)
+        {
+            IDBoardDb idBoard = new IDBoardDb(); //Context
+
+            var Address1 = (from add1 in idBoard.ContactDetails where add1.idBusinessEntity == id select add1).FirstOrDefault();
+
+            Address1.Address1 = address1;
+
+            var Address2 = (from add2 in idBoard.ContactDetails where add2.idBusinessEntity == id select add2).FirstOrDefault();
+
+            Address2.Address1 = address2;
+
+            var CP = (from postalCode in idBoard.ContactDetails where postalCode.idBusinessEntity == id select postalCode).FirstOrDefault();
+
+            CP.PostalCode = cp;
+
+            var City = (from cT in idBoard.ContactDetails where cT.idBusinessEntity == id select cT).FirstOrDefault();
+
+            City.City = city;
+
+            var Country = (from cntry in idBoard.ContactDetails where cntry.idBusinessEntity == id select cntry).FirstOrDefault();
+
+            Country.Country = country;
+
+            idBoard.SaveChanges();
+            return Ok();
+        }
+
+
+
         public IHttpActionResult Get(int id)
         {
             IDBoardDb idBoard = new IDBoardDb(); //Context
