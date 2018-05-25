@@ -19,7 +19,7 @@ namespace Backend_Project.Controllers
             public string Country { get; set; }
 
         }
-       public class Student
+        public class Student
         {
             public Adresse adresseInfo { get; set; }
             public string phtoPath { get; set; }
@@ -29,6 +29,56 @@ namespace Backend_Project.Controllers
             public string adresseMail { get; set; }
         }
 
+        // [HttpPost]
+        //public IHttpActionResult Modif photo(int id , File photo)
+        //{
+
+        // Return liste des emails
+        //}
+
+        // [HttpPost]
+        //public IHttpActionResult SuprMail (int id, string email)
+        // {
+
+        // suppr email si plusieurs mails en db
+        //}
+
+
+
+        //[HttpPost]
+        //public IHttpActionResult GetMailList(int id)
+        //{
+
+        // Return liste des emails
+        //}
+
+        //[HttpPost]
+        //public IHttpActionResult GetMailList(int id)
+        //{
+
+        // Return liste des emails
+        //}
+
+        //[HttpPost]
+        //public IHttpActionResult modifMail(int id, int mailOld, int mailNew)
+        //{
+
+        // Return liste des emmodif email en db
+        //}
+
+        //public IHttpActionResult AcceptModifPhone(int id, string num)
+        // {
+
+        //modifer num (update en base de donnée    
+        //}
+
+
+        // [HttpPost]
+        //public IHttpActionResult SuprPhone(int id, string num)
+        //{
+
+        //supression d'un numéro si y'en a plusieurs
+        //}
         [HttpPost]
         public IHttpActionResult ModifAddComplete(string address1, string address2,  string cp, string city, string country, int id)
         {
