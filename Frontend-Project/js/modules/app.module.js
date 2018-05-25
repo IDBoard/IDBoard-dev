@@ -20,9 +20,9 @@ idboard.config(function ($routeProvider, $locationProvider) {
             templateUrl: "views/module.html",
             controller: "ModuleController"
         })
-        .when('/grades', {
-            templateUrl: "views/grades.html",
-            controller: "GradeController"
+        .when('/class', {
+            templateUrl: "views/class.html",
+            controller: "ClassController"
         })
         .when('/events', {
             templateUrl: 'views/events1.html',

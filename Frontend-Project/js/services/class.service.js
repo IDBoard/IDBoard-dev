@@ -2,8 +2,8 @@
  * Created by Visual Studio.
  * User: Antuanett Barrios
  */
-idboard.service('GradeService', function () {
-    console.log("GradeService ");
+idboard.service('ClassService', function () {
+    console.log("ClassService ");
     var gradeList = [
         {
             id: '1',

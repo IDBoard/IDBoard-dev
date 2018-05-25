@@ -1,6 +1,8 @@
-﻿idboard.controller('ModuleController', function ($scope, GradeService, ModuleService) {
+﻿idboard.controller('ModuleController', function ($scope, ClassService, ModuleService) {
     console.log("ModuleController");
-    $scope.grades  = GradeService.getGrades();
+
+    $scope.classService = ClassService;
+    $scope.grades = $scope.classService.getGrades();
     $scope.modules = ModuleService.getModules();
 
     
@@ -11,7 +13,7 @@
 
     $scope.showModuleByGrade = function (idgrade) {
         console.log("showModuleByGrade ", idgrade);
-        var _grade = GradeService.findGradeById(idgrade);
+        var _grade = $scope.classService.findGradeById(idgrade);
         $scope.currentGrade = _grade;
         moduleToShow = ModuleService.allModulesByGrade(_grade);
         console.log("modules to show ", moduleToShow);
@@ -43,9 +45,9 @@
                         creditsETC: $scope.moduleCreditsETCToAdd,
                         cours: []
                     }
-                    $scope.gradeSelected = GradeService.findGradeById($scope.idGradeSelected);
+                    $scope.gradeSelected = $scope.classService.findGradeById($scope.idGradeSelected);
                     console.log("addModuleToGrade  gradeSelected", $scope.gradeSelected);
-                    GradeService.addModule($scope.gradeSelected, moduleToAdd);
+                    $scope.classService.addModule($scope.gradeSelected, moduleToAdd);
                     console.log("addModuleToGrade  set array modulesOfGradeSelected");
                     ModuleService.getModules().push(moduleToAdd);
                     console.log("all modules after adding the last ", ModuleService.getModules());

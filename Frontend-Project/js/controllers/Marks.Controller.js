@@ -3,11 +3,12 @@
  * User: Antuanett Barrios
  */
 
-idboard.controller('MarksController', function ($scope, GradeService, StudentService) {
+idboard.controller('MarksController', function ($scope, ClassService, StudentService) {
 
-    $scope.grades = GradeService.getGrades();
-    $scope.students = StudentService.getStudents();
     $scope.studentService = StudentService;
+    $scope.classService = ClassService;
+    $scope.grades = $scope.classService.getGrades();
+    $scope.students = $scope.studentService.getStudents();
     $scope.idGradeSelected;
     $scope.studentsByGrade = [];
     $scope.seachStudentBy = "";
@@ -30,7 +31,7 @@ idboard.controller('MarksController', function ($scope, GradeService, StudentSer
     });
 
     $scope.updateListStudentsByGrade = function (grade) {
-        var grade = GradeService.findGradeById($scope.idGradeSelected);
+        var grade = $scope.classService.findGradeById($scope.idGradeSelected);
         console.log("grade ", grade);
         if (grade != null) {
             $scope.studentsByGrade = [];

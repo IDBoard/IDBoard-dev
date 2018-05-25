@@ -3,21 +3,21 @@
  * User: Antuanett Barrios
  */
 
-idboard.controller('GradeController', function ($scope, $filter, GradeService, StudentService) {
-    console.log("GradeController ");
+idboard.controller('ClassController', function ($scope, $filter, ClassService, StudentService) {
+    console.log("ClassController ");
 
-    $scope.gradeService = GradeService;
+    $scope.gradeService = ClassService;
     var students = StudentService.getStudents();
 
     console.log("students on data base", students);
 
-    $scope.grades   = GradeService.getGrades();
+    $scope.grades = ClassService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
     
     
     $scope.gradeSelected;
-    $scope.gradesActives  = GradeService.getGradesActives();
-    $scope.gradesNActives = GradeService.getGradesNActives();
+    $scope.gradesActives = ClassService.getGradesActives();
+    $scope.gradesNActives = ClassService.getGradesNActives();
 
     console.log("gradesActives ", $scope.gradesActives);
 
@@ -35,8 +35,8 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
             activated: true,
             students: []
         }
-        GradeService.getGrades().push(grade);
-        GradeService.gradesActives().push(grade);
+        ClassService.getGrades().push(grade);
+        ClassService.gradesActives().push(grade);
         $scope.gradeNameToAdd = "";
     }
     
@@ -53,7 +53,7 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
 
     $scope.updateListStudentsInCurrentGrade = function (grade) {
         console.log("updateListStudentsInCurrentGrad");
-        var idStudentsInThisGrade = GradeService.getStudentsInThisGrade(grade);
+        var idStudentsInThisGrade = ClassService.getStudentsInThisGrade(grade);
         console.log("idStudentsINThisGrade", idStudentsInThisGrade);
         var students = [];
         if (idStudentsInThisGrade != null) {
@@ -71,12 +71,12 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
     
 
     $scope.deleteGrade = function (grade) {
-        GradeService.deleteGrade(grade);
+        ClassService.deleteGrade(grade);
     };
 
     $scope.addStudent = function (student) {
         if ($scope.gradeSelected != null && $scope.gradeSelected !== "undefined") {
-            GradeService.addStudent($scope.gradeSelected, student);
+            ClassService.addStudent($scope.gradeSelected, student);
             student.grade = true;
             StudentService.changeGradeStudent(student);
             $scope.findStudentsInThisGrade($scope.gradeSelected);
@@ -89,7 +89,7 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
             if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
                 var nameNewGrade = $scope.nameNewGrade;
                 var gradeID = $scope.newGradeIdToDuplicate;
-                GradeService.duplicateGrade(gradeID, nameNewGrade);
+                ClassService.duplicateGrade(gradeID, nameNewGrade);
                 $scope.nameNewGrade = "";
             }
         }
@@ -98,7 +98,7 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
 
 
     $scope.archiveGrade = function (grade) {
-        GradeService.archiveGrade(grade);
+        ClassService.archiveGrade(grade);
 
         //remove grade in list gradeActives
         var index = $scope.gradesActives.indexOf(grade);
@@ -111,14 +111,14 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
     $scope.deleteStudent = function (student) {
         console.log("deleteStudent", student);
         if ($scope.gradeSelected !== null || $scope.gradeSelected === 'undefined') {
-            $scope.gradeSelected.students = GradeService.deleteStudent($scope.gradeSelected, student);
+            $scope.gradeSelected.students = ClassService.deleteStudent($scope.gradeSelected, student);
             student.grade = false;
             StudentService.changeGradeStudent(student);
         }
     }
 
     $scope.inactiveStudentPassage = function (student) {
-        GradeService.inactiveStudentPassage(student);
+        ClassService.inactiveStudentPassage(student);
     }
 
 
