@@ -311,15 +311,17 @@ idboard.service('GradeService', function () {
     this.findGradeById = function (idGrade) {
         var grade;
         var keepGoing = true;
-        gradeList.forEach(function (_grade) {
-            if (keepGoing) {
-                if (_grade.id == idGrade) {
-                    grade = _grade;
-                    keepGoing = false;
+        if (idGrade != null) {
+            gradeList.forEach(function (_grade) {
+                if (keepGoing) {
+                    if (_grade.id == idGrade) {
+                        grade = _grade;
+                        keepGoing = false;
+                    }
                 }
-            }
-            
-        });
+
+            });
+        }
         return grade;
     }
 });

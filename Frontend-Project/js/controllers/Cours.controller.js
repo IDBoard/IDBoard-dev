@@ -1,4 +1,9 @@
-﻿idboard.controller('CoursController', function ($scope, CoursService, ModuleService) {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.controller('CoursController', function ($scope, CoursService, ModuleService) {
 
     $scope.courService = CoursService;
     $scope.moduleService = ModuleService;
