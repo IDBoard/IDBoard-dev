@@ -1,5 +1,9 @@
-﻿idboard.service('GradeService', function (StudentService) {
-
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+idboard.service('GradeService', function () {
+    console.log("GradeService ");
     var gradeList = [
         {
             id: '1',
@@ -7,19 +11,24 @@
             active: true,
             students: [
                 {
-                    name: "Jorge",
-                    active: true
+                    id: '55'
                 },
                 {
-                    name: "Antuanett",
-                    active: true
+                    id: '77'
                 },
                 {
-                    name: "Pepe",
-                    active: true
+                    id: '47'
                 }
             ],
-            contents: []
+            contents: [],
+            modules: [
+                {
+                    id: '153'
+                },
+                {
+                    id: '5'
+                }
+            ]
         },
         {
             id: '88',
@@ -28,28 +37,42 @@
             checked: false,
             students: [
                 {
-                    name: "Pepe1",
-                    active: true,
-                    grade: true
+                    id: '96'
                 },
                 {
-                    name: "Pepe33",
-                    active: true,
-                    grade: true
+                    id: '85'
                 },
                 {
-                    name: "Pepe44",
-                    active: true,
-                    grade: true
-                },
+                    id: '11'
+                }
 
             ],
             contents: [
                 {
-                    id: "1",
+                    id: '1',
                     name: "contents1"
                 }
+            ],
+            modules: [
+                {
+                    id: '1'
+                },
+                {
+                    id: '2'
+                },
+                {
+                    id: '3'
+                }
             ]
+        },
+        {
+            id: '255',
+            name: 'M1',
+            active: true,
+            checked: false,
+            students: [],
+            contents: [],
+            modules: []
         },
         {
             id: '3',
@@ -58,40 +81,51 @@
             checked: false,
             students: [
                 {
-                    name: "Pepe11",
-                    active: true,
-                    grade: true
+                    id: '55'
                 }
             ],
             contents: [
                 {
-                    id: "2",
+                    id: '2',
                     name: "contents2"
+                }
+            ],
+            modules: [
+                {
+                    id: '455'
+                },
+                {
+                    id: '5'
                 }
             ]
         },
         {
             id: '4',
             name: 'B3',
-            active: true,
+            active: false,
             checked: false,
             students: [
                 {
-                    name: "Pepe77",
-                    active: true,
-                    grade: true
+                    id: '126'
                 }
             ],
             contents: [
                 {
-                    id: "3",
+                    id: '3',
                     name: "contents3"
                 },
                 {
-                    id: "4",
+                    id: '4',
                     name: "contents4"
+                }
+            ],
+            modules: [
+                {
+                    id: '265416'
                 },
-
+                {
+                    id: '5'
+                }
             ]
         }
     ];
@@ -100,81 +134,192 @@
         return gradeList;
     }
 
+    var gradesActives = [];
+    var gradesNActives = [];
+
     this.getStudentsInThisGrade = function (grade) {
         if (grade)
             return grade.students;
     }
 
-    this.duplicateGrade = function (grade, nameNewGrade) {
-        console.log('grade to duplique', grade.name);
-        console.log('content of grade to duplique', grade.contents);
+    this.gradesActives = function () {
+        return gradesActives;
+    }
+
+    this.gradesNActives = function () {
+        return gradesNActives;
+    }
+
+    this.getGradesActives = function () {
+        gradeList.forEach(function (_grade) {
+            if (_grade.active) {
+                if (gradesActives.length == 0) {
+                    gradesActives.push(_grade);
+                }
+                else {
+                    var i = gradesActives.indexOf(_grade);
+                    if (i == -1) {
+                        gradesActives.push(_grade);
+                    }
+                }
+            }
+        });
+        return gradesActives;
+    }
+
+    this.getGradesNActives = function () {
+
+        gradeList.forEach(function (_grade) {
+            if (!_grade.active) {
+                if (gradesNActives.length == 0) {
+                    gradesNActives.push(_grade);
+                }
+                else {
+                    var i = gradesNActives.indexOf(_grade);
+                    if (i == -1) {
+                        gradesNActives.push(_grade);
+                    }
+                }
+            }
+        });
+        return gradesNActives;
+    }
+
+    this.duplicateGrade = function (gradeID, nameNewGrade) {
+    
+        var grade = null;
+        gradeList.forEach(function (_grade) {
+            if (_grade.id == gradeID) {
+                grade = _grade;
+            }
+        });
         var newGrade = {
-            id: '44',
+            id: Date.now(),
             name: nameNewGrade,
             active: true,
-            students: [],
+            students: grade.students,
             contents: grade.contents
         };
         gradeList.push(newGrade);
-        console.log("new grade dupliqued", nameNewGrade);
-        console.log("content new grade dupliqued", newGrade.contents);
+
+        //add new grade as active
+        gradesActives.push(newGrade);
+        if (grade != null) {
+            this.archiveGrade(grade);
+        }
+        //delete in list active grades
+        var i = gradesActives.indexOf(grade);
+        if (i !== -1) {
+            gradesActives.splice(i, 1);
+        }
+        //add in list not active grades
+        gradesNActives.push(grade);
+        
     }
 
     this.archiveGrade = function (grade) {
-        console.log('grade is active before archive',grade.active);
         if (grade.active === true) {
             grade.active = false;
+            grade.students.forEach(function (_student) {
+                _student.active = false;
+            });
         }
-        console.log('grade is active after archive method', grade.active);
     }
 
     this.deleteGrade = function (grade) {
+        var i = gradesActives.indexOf(grade);
+        if (i !== -1) {
+            gradesActives.splice(i, 1);
+        }
+        else {
+            var _i = gradesNActives.indexOf(grade);
+            if (_i !== -1) {
+                gradesNActives.splice(_i, 1);
+            }
+        }
         var index = gradeList.indexOf(grade);
         gradeList.splice(index, 1);
     }
 
     this.addStudent = function (grade, student) {
-        console.log('student added id', student.id);
+        console.log("addStudent ", student);
+        console.log("grade after adding student ", grade);
         if (!this.studentExisted(grade, student)) {
-            console.log('this student not existed', student.id );
-            grade.students.push(student);
+            var s = { id: student.id };
+            grade.students.push(s);
         }
     }
 
     this.studentExisted = function (grade, student)
-    { 
+    {
         var existed = false;
-        var studentList = grade.students;
-        for (var i = 0; i < studentList.length; i++)
-        {
-            if (studentList[i].id == student.id)
-            {
-                existed = true;
-                break;
+        if (grade != null && grade != "undefined") {
+            var studentList = grade.students;
+            for (var i = 0; i < studentList.length; i++) {
+                if (studentList[i].id == student.id) {
+                    existed = true;
+                    break;
+                }
             }
+            return existed;
         }
-
-        return existed;
+        else {
+            return true;
+        }
+        
     }
 
     this.deleteStudent = function (grade, student)
     {
-        var index = grade.students.indexOf(student);
-        console.log("position student to delete");
-        console.log(index);
-        console.log(student.name);
-        grade.students.splice(index, 1)
+        console.log("grade service delete student in grade", grade);
+        for (var i = 0; i < grade.students.length; i++) {
+            if (grade.students[i].id == student.id) {
+                console.log("grade service student delected");
+                grade.students.splice(i, 1);
+                break;
+            }
+        }
+        return grade.students;
+        console.log("grade service after deleting student in grade", grade);
     }
 
     this.inactiveStudentPassage = function (student) {
-        //var index = grade.students.indexOf(student);
-        console.log("before set active student");
-        console.log(student.active);
-        console.log(student.name);
-        //grade.students[index].active = false;
         student.active = false;
-        console.log("after set active student");
-        console.log(student.active);
     }
 
+    this.addModule = function (grade, module) {
+        console.log("GradeService add Module ", module);
+        var _module = {
+            id : module.id
+        };
+        grade.modules.push(_module);
+    }
+
+
+    this.getModules = function (idGrade) {
+        var modules = [];
+
+        gradeList.forEach(function (_grade) {
+            if (_grade.id == idGrade) {
+                modules = _grade.modules;
+                console.log("modules of grade ", idGrade, modules);
+            }
+        });
+        return modules;
+    }
+
+    this.findGradeById = function (idGrade) {
+        var grade;
+        var keepGoing = true;
+        gradeList.forEach(function (_grade) {
+            if (keepGoing) {
+                if (_grade.id == idGrade) {
+                    grade = _grade;
+                    keepGoing = false;
+                }
+            }
+            
+        });
+        return grade;
+    }
 });
