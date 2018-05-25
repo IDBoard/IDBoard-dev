@@ -36,7 +36,7 @@
                     Eleves
                 </a>
             </div>
-            <div class="list-group" ng-repeat="student in studentsByGrade">
+            <div class="list-group" ng-repeat="student in studentsByGrade | filter: seachStudentBy">
                 <a href="javascript: void(0);"
                    class="list-group-item">
                     {{student.name}}

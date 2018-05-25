@@ -11,40 +11,7 @@ idboard.controller('MarksController', function ($scope, GradeService, StudentSer
     $scope.idGradeSelected;
     $scope.studentsByGrade = [];
     $scope.seachStudentBy = "";
-
-
-    $scope.$watch('seachStudentBy', function (newVal, oldVal) {
-        if ($scope.seachStudentBy != null) {
-            console.log("watch  seachStudentBy newVal ", newVal);
-            console.log("watch seachStudentBy  oldVal ", oldVal);
-
-            if (newVal != oldVal) {
-                var studentByName = $scope.studentService.getStudentByNameInList(newVal, $scope.studentsByGrade);
-                var studentById;
-                if (studentByName == null) {
-                    console.log("student searched By Name == null");
-                    console.log("before searching student by id ", newVal);
-                    studentById = $scope.studentService.getStudentByIdInList(newVal, $scope.studentsByGrade);
-                    if (studentById != null) {
-                        console.log("student searched By Id != null");
-                        $scope.studentsByGrade = [];
-                        $scope.studentsByGrade.push(studentById);
-                    }
-                    else {
-                        console.log("student searched By Id == null");
-                        $scope.updateListStudentsByGrade();
-                    }
-                }
-                else {
-                    console.log("student searched By Name != null");
-                    $scope.studentsByGrade = [];
-                    $scope.studentsByGrade.push(studentByName);
-                }
-            }
-
-        }
-    });
-
+    
     $scope.$watch('idGradeSelected', function (newVal, oldVal) {
         if ($scope.idGradeSelected != null) {
             console.log("watch grade selected newVal ", newVal);
@@ -74,7 +41,6 @@ idboard.controller('MarksController', function ($scope, GradeService, StudentSer
                     $scope.studentsByGrade.push(e);
                 }
             }
-
         }
     }
   
