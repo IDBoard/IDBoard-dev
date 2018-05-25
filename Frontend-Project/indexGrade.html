@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="app/controller/GradeController.js"></script>
+    <title></title>
+</head>
+<body>
+    <div ng-app="App">
+        <div ng-controller="GradeController">
+
+            <label>Grades</label>
+            <ul class="list-group" ng-repeat="grade in grades">
+                <li class="list-group-item">
+                    <input type="checkbox"  data-ng-click="selectGrade(grade)" />{{grade.name}}
+
+                    <button ng-click="deleteGrade(grade)">Delete a class</button>
+                    <button ng-click="saveGrade(grade)">Save a class</button>
+
+                </li>
+            </ul>
+
+            <label>Studients</label>
+            <ul class="list-group" ng-repeat="student in students">
+                <li class="list-group-item">
+                    <input type="checkbox" data-ng-click="selectStudent(student)" />{{student.name}}
+                </li>
+            </ul>
+
+
+            <form>
+                Class Name: <input class="form-control" type="text" placeholder="" ng-model="className">
+            </form>
+
+            <button ng-click="newGrade()">
+                Add new class
+            </button>
+
+            <label> Students in this grade </label>
+            <ul class="list-group" ng-repeat="student in studentsInThisGrade">
+                <li class="list-group-item">{{student.name}}</li>
+            </ul>
+
+
+        </div>
+        
+    </div>
+</body>
+</html>

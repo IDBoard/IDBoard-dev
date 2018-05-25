@@ -1,0 +1,166 @@
+﻿.logo {
+    margin-bottom: 15px;
+}
+
+.app-connection .title {
+    font-size: 35px;
+    color: black;
+}
+
+.forget-password .title {
+    font-size: 25px;
+    color: black;
+}
+
+.link:focus {
+    color: darkred;
+}
+
+.connectionBtn {
+    border: 2px solid black;
+    background-color: white;
+    color: red;
+}
+
+.connectionBtn:hover {
+    color: red;
+}
+
+.connectionBtn:focus {
+    color: red;
+}
+
+#lieux {
+    color: black;
+}
+
+[ng-bind="logs"] {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.app-connection {
+    margin-top: 30px;
+}
+
+.text-input:hover,  .text-input:focus {
+    border-color: gray;
+}
+
+.overflow-main {
+    height: 150px;
+}
+
+.phrase-titre {
+    margin-left: 60px;
+    margin-bottom: -20px;
+}
+
+.panel-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+/* Firefox */
+input[type=password] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.checkbox .icon-checked:before {
+    color: darkred;
+}
+
+.link {
+    color: gray;
+}
+
+.link:hover {
+    color: darkred;
+}
+
+.input-group, .form-group {
+    margin-bottom: 15px;
+}
+
+span.menu-link {
+    cursor: pointer;
+}
+
+.classname {
+    padding-bottom: 15px;
+}
+
+.check-module {
+    font-size: 40px;
+}
+
+.check-module .ok {
+    color: green;
+}
+
+.check-module .fail {
+    color: red;
+}
+
+#modules .circle a, .head .card-header .circle {
+    display: inline-block;
+    margin-top: 10px;
+    
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+
+    width: 40px;
+    height: 40px;
+
+    text-align: center;
+    vertical-align: center;
+
+    color: white;
+    background: darkred;
+}
+
+#modules .circle a {
+    margin-top: -2px;
+}
+
+#student_report .head .card {
+    background-color: lightgrey;
+    color: white;
+}
+
+.card .card-header .circle {
+    display: inline-block;
+    padding-top: 8px;
+    margin-top: 0;
+}
+
+.up, .down {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.table thead th {
+    background-color: darkred;
+    color: white;
+}
+
+.table .course-title {
+    background-color: lightgrey;
+}
+
+.table .evaluated {
+
+}
+
+.table .dont-evaluated

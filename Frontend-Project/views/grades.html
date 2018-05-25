@@ -1,0 +1,219 @@
+﻿  <!--GradeController--->
+<div ng-controller="GradeController" class="main_div">
+    <div class="row">
+        <div class="col-sm-6 form-group">
+            <form name="formAddNewGrade">
+                <span class="label label-primary">Nom de la classe:</span>
+                <input class="form-control" type="text" placeholder="" ng-model="gradeNameToAdd">
+                <button type="button" class="btn mbuttons" ng-click="newGrade()" style="margin-top: 2px;">
+                    Créer une nouvelle classe
+                </button>
+            </form>
+
+        </div>
+
+        <div class="col-sm-6 form-group">
+            <span class="label label-primary">Nom de la classe a dupliquer :</span>
+            <select class="form-control" ng-model="newGradeIdToDuplicate">
+                <option value="">--- Select an option ---</option>
+                <option ng-repeat="grade in gradesActives |orderBy:'+':true"
+                        value="{{grade.id}}">
+                    {{grade.name}}
+                </option>
+            </select>
+            <button ng-if="newGradeIdToDuplicate" type="button" class="btn mbuttons" data-toggle="modal" data-target="#modalDuplicateGrade">
+                Dupliquer une classe
+            </button>
+            <!-- Modal .-->
+            <div class="modal fade" id="modalDuplicateGrade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Dupliquer une classe</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <span class="label label-primary">Nom de la nouvelle classe:</span>
+                            <input class="form-control" type="text" placeholder="" ng-model="nameNewGrade">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary mbuttons" data-dismiss="modal">Close</button>
+                            <button id="buttonDuplicate"
+                                    ype="button"
+                                    class="btn mbuttons"
+                                    data-dismiss="modal"
+                                    ng-click="duplicateGrade()">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Grade List -->
+        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item background_header_list">
+                    Classes existentes
+                </a>
+            </div>
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#gradeActive" aria-expanded="true" aria-controls="gradeActive">
+                                Classes actives
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="gradeActive" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <!----Grades actives -->
+                            <div class="list-group" ng-repeat="grade in gradesActives |orderBy:'+':true">
+                                <div class="">
+                                    <a href="javascript: void(0);"
+                                       class=""
+                                       data-ng-click="selectGrade(grade)">
+                                        {{grade.name}}
+                                        <div style="float:right">
+                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
+                                                <span class="fa fa-trash" data-placement="top" data-toggle="tooltip"
+                                                      title="Supprimer cette classe"></span>
+                                            </a>
+
+                                            <a role="button" class="btn button-grade" data-ng-click="archiveGrade(grade)">
+                                                <span class="fa fa-archive" aria-hidden="true" data-placement="top" data-toggle="tooltip"
+                                                      title="Changer cette classe à non active"></span>
+                                            </a>
+
+                                            <a role="button" class="btn button-grade" data-toggle="modal"
+                                               data-target="#modalFindStudentsInThisGrade" data-ng-click="findStudentsInThisGrade(grade)">
+                                                <span class="fa fa-search"
+                                                      data-placement="top" data-toggle="tooltip"
+                                                      title="Afficher tout les eleves"></span>
+                                            </a>
+                                            <a role="button" class="btn button-grade" data-ng-click="selectGrade(grade)">
+                                                <span class="fa fa-check" data-placement="top" data-toggle="tooltip"
+                                                      title="Choisir cette classe"></span>
+                                            </a>
+
+                                        </div>
+                                    </a>
+                                    <div style="clear:both"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#gradeNActive" aria-expanded="false" aria-controls="gradeNActive">
+                                Classes non actives
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="gradeNActive" class="collapse" aria-labelledby="gradeNActive" data-parent="#accordion">
+                        <div class="card-body">
+                            <!----Grades nactives -->
+                            <div class="list-group" ng-repeat="grade in gradesNActives |orderBy:'+':true">
+                                <div class="">
+                                    <a href="javascript: void(0);"
+                                       class=""
+                                       data-ng-click="selectGrade(grade)">
+                                        {{grade.name}}
+                                        <div style="float:right">
+                                            <a role="button" class="btn button-grade" data-ng-click="deleteGrade(grade)">
+                                                <span class="fa fa-trash" data-placement="top" data-toggle="tooltip"
+                                                      title="Supprimer cette classe">
+                                                </span>
+                                            </a>
+                                            <a role="button" class="btn button-grade" data-ng-click="findStudentsInThisGrade(grade)"
+                                               data-toggle="modal" data-target="#modalFindStudentsInThisGrade">
+                                                <span class="fa fa-search" data-placement="top" data-toggle="tooltip"
+                                                      title="Afficher tout les eleves"></span>
+                                            </a>
+                                            <a role="button" class="btn button-grade" data-ng-click="selectGrade(grade)">
+                                                <span class="fa fa-check" data-placement="top" data-toggle="tooltip"
+                                                      title="Choisir cette classe"></span>
+                                            </a>
+                                        </div>
+                                    </a>
+                                    <div style="clear:both"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Student without grade List -->
+        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item background_header_list">
+                    Eleves n'associé à une classe
+                </a>
+            </div>
+            <div class="list-group" ng-repeat="student in studentsNotBelongToGrade">
+                <a href="javascript: void(0);"
+                   class="list-group-item">
+                    {{student.name}}
+                    <div ng-if="gradeSelected" style="float:right">
+                        <span class="fa fa-plus" data-placement="top" data-toggle="tooltip"
+                                data-ng-click="addStudent(student)"
+                                title="Ajouter cet evele a la classe {{gradeSelected.name}}"></span>
+                    </div>
+                </a>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Students on selected grade.-->
+    <div class="modal fade" id="modalFindStudentsInThisGrade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eleves associé à la classe: {{gradeSelected.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 list-fix-height">
+                            <div class="list-group" ng-repeat="student in studentsInThisGrade">
+                                <div class="list-group-item">
+                                    <a href="javascript: void(0);"
+                                       data-ng-click="addStudent(student)">
+                                        {{student.name}}
+                                    </a>
+                                    <div style="float:right">
+                                        <a role="button" class="btn button-grade" ng-click="deleteStudent(student)" aria-label="Left Align">
+                                            <span class="fa fa-trash" aria-hidden="true" data-placement="top" data-toggle="tooltip"
+                                                      title="Supprimer cet éleve"></span>
+                                        </a>
+                                        <a role="button" class="btn button-grade" ng-click="inactiveStudentPassage(student)" aria-label="Left Align">
+                                            <span class="fa fa-archive" aria-hidden="true" data-placement="top" data-toggle="tooltip"
+                                                      title="Changer cet éleve à non active"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mbuttons" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

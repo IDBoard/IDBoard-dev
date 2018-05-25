@@ -1,0 +1,33 @@
+﻿body {
+}
+
+.list-fix-height {
+    height: 450px;
+    overflow-y: auto;
+}
+
+.list-fix-height-footer {
+    height: 350px;
+    overflow-y: auto;
+}
+
+.card {
+    margin-bottom: 0 !important;
+}
+
+.button-grade {
+    border: 2px;
+    padding: 2px;
+    border-radius: 1.5px !important;
+}
+
+.colorHeader {
+    background-color:darkgray;
+}
+
+.card-header {
+    padding: 4px !important;
+}
+
+
+

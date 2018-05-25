@@ -44,6 +44,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.AuthorizationServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.AuthorizationServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.AuthorizationServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -55,9 +70,6 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -71,9 +83,6 @@
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
@@ -89,10 +98,19 @@
     </Reference>
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -114,6 +132,9 @@
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
@@ -133,6 +154,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Http.WebHost">
@@ -141,16 +165,156 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="IdboardDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IdboardDb.Context.cs</LastGenOutput>
+      <DependentUpon>IdboardDb.edmx</DependentUpon>
+    </Content>
+    <Content Include="IdboardDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>IdboardDb.edmx</DependentUpon>
+      <LastGenOutput>IdboardDb.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminRights.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Aspects.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspectsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessEntities.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Chapters.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientsDataModificationRequests.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Competences.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompetencesStatus.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompetencesStatusGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactDetails.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\GetClassesController.cs" />
+    <Compile Include="Controllers\GetMessagesController.cs" />
+    <Compile Include="Controllers\GetProfilController.cs" />
+    <Compile Include="Controllers\GetTrombi2Controller.cs" />
+    <Compile Include="Controllers\GetTrombiController.cs" />
+    <Compile Include="Controllers\InternshipController.cs" />
+    <Compile Include="Controllers\MatterController.cs" />
+    <Compile Include="Controllers\SalutationController.cs" />
+    <Compile Include="Courses.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domains.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomainsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Events.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IdboardDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdboardDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdboardDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdboardDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdboardDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Informations.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InternshipContacts.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InternshipConventionRequests.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InternshipOffers.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JoinAspectDomain.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JoinEntityClass.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JoinEntityMessage.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JoinMatterDomain.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JoinOfferClass.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Languages.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LockedAccounts.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogsAlteration.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogsCompetences.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogsConnection.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogsPreEnrolment.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Marks.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Matters.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MattersGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ActiveDirectory\ActiveDirectoryMethods.cs" />
     <Compile Include="Models\BusinessEntity.cs" />
+    <Compile Include="Models\ClassesIdboard.cs" />
     <Compile Include="Models\EmailService\EmailService.cs" />
     <Compile Include="Models\Repository\AuthRepository.cs" />
     <Compile Include="Models\Repository\MyContext.cs" />
@@ -159,8 +323,78 @@
     <Compile Include="Owin\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Owin\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Salutations.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalutationsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sites.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLevels.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLevelsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesBusinessEntities.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesBusinessEntitiesGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesCourses.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesCoursesGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesEvaluations.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesEvaluationsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesEvents.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesEventsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesInformations.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesInformationsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesInternships.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesInternshipsGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesRoles.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypesRolesGlobalization.cs">
+      <DependentUpon>IdboardDb.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="IdboardDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>IdboardDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="IdboardDb.edmx.diagram">
+      <DependentUpon>IdboardDb.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -171,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
