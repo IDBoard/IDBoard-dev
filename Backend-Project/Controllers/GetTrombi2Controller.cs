@@ -48,14 +48,16 @@ namespace Backend_Project.Controllers
                 student.nameStudent = (from eleve in idBoard.BusinessEntities where eleve.idBusinessEntity == IDB select eleve.Name).FirstOrDefault();
                 student.firstNameStudent = (from eleve in idBoard.BusinessEntities where eleve.idBusinessEntity == IDB select eleve.FirstName).FirstOrDefault();
                 student.idStudent = IDB;
-                var dateendlol = (from eleve in idBoard.BusinessEntities
+                var dateE = (from eleve in idBoard.BusinessEntities
                                   join EleveInfos in idBoard.Informations on eleve.idBusinessEntity equals EleveInfos.idBusinessEntity
                                   where eleve.idBusinessEntity == IDB
                                   select new
                                   {
                                       EleveInfos.DateEnd
                                   }).FirstOrDefault();
-                if (dateendlol.DateEnd == null)
+
+
+                if (dateE.DateEnd == null)
                 {
                     student.activity = true;
                     //   return Ok(JsonConvert.SerializeObject(dateendlol));
