@@ -16,6 +16,7 @@ namespace Backend_Project.Controllers
             public string nameStudent { get; set; }
             public string firstNameStudent { get; set; }
             public int idStudent { get; set; }
+            public string phtoPath { get; set; }
             public Boolean activity { get; set; }
         }
 
@@ -48,6 +49,8 @@ namespace Backend_Project.Controllers
                 student.nameStudent = (from eleve in idBoard.BusinessEntities where eleve.idBusinessEntity == IDB select eleve.Name).FirstOrDefault();
                 student.firstNameStudent = (from eleve in idBoard.BusinessEntities where eleve.idBusinessEntity == IDB select eleve.FirstName).FirstOrDefault();
                 student.idStudent = IDB;
+                student.phtoPath = (from photo in idBoard.BusinessEntities where (photo.idBusinessEntity == id) select photo.PhotoPath).FirstOrDefault();
+
                 var dateE = (from eleve in idBoard.BusinessEntities
                                   join EleveInfos in idBoard.Informations on eleve.idBusinessEntity equals EleveInfos.idBusinessEntity
                                   where eleve.idBusinessEntity == IDB
