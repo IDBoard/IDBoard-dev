@@ -13,7 +13,7 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
 
     $scope.grades = ClassService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
-    
+    $scope.newGradeIdToDuplicate;
     
     $scope.gradeSelected;
     $scope.gradesActives = ClassService.getGradesActives();
@@ -30,7 +30,7 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     $scope.newGrade = function () {
         console.log("add new grade");
         var grade = {
-            id: '53',
+            idClass: Date.now,
             name: $scope.gradeNameToAdd,
             activated: true,
             students: []
@@ -38,6 +38,7 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         ClassService.getGrades().push(grade);
         ClassService.gradesActives().push(grade);
         $scope.gradeNameToAdd = "";
+        $scope.newGradeIdToDuplicate;
     }
     
     $scope.selectGrade = function (grade) {
@@ -83,8 +84,8 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         }
     };
 
-    $scope.duplicateGrade = function(grade) {
-       
+    $scope.duplicateGrade = function (grade) {
+        console.log("duplicateGrade ", grade);
         if ($scope.newGradeIdToDuplicate != null && $scope.newGradeIdToDuplicate != "undefined") {
             if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
                 var nameNewGrade = $scope.nameNewGrade;

@@ -6,7 +6,7 @@
             <select class="form-control" ng-model="idGradeSelected">
                 <option value="">--- Select an option ---</option>
                 <option ng-repeat="grade in grades |orderBy:'+':true"
-                        value="{{grade.id}}">
+                        value="{{grade.idClass}}">
                     {{grade.name}}
                 </option>
             </select>

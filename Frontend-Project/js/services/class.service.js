@@ -6,7 +6,7 @@ idboard.service('ClassService', function () {
     console.log("ClassService ");
     var gradeList = [
         {
-            id: '1',
+            idClass: '1',
             name: 'M2',
             active: true,
             students: [
@@ -31,7 +31,7 @@ idboard.service('ClassService', function () {
             ]
         },
         {
-            id: '88',
+            idClass: '88',
             name: 'B1',
             active: true,
             checked: false,
@@ -66,7 +66,7 @@ idboard.service('ClassService', function () {
             ]
         },
         {
-            id: '255',
+            idClass: '255',
             name: 'M1',
             active: true,
             checked: false,
@@ -75,7 +75,7 @@ idboard.service('ClassService', function () {
             modules: []
         },
         {
-            id: '3',
+            idClass: '3',
             name: 'B2',
             active: true,
             checked: false,
@@ -100,7 +100,7 @@ idboard.service('ClassService', function () {
             ]
         },
         {
-            id: '4',
+            idClass: '4',
             name: 'B3',
             active: false,
             checked: false,
@@ -189,12 +189,12 @@ idboard.service('ClassService', function () {
     
         var grade = null;
         gradeList.forEach(function (_grade) {
-            if (_grade.id == gradeID) {
+            if (_grade.idClass == gradeID) {
                 grade = _grade;
             }
         });
         var newGrade = {
-            id: Date.now(),
+            idClass: Date.now(),
             name: nameNewGrade,
             active: true,
             students: grade.students,
@@ -314,7 +314,7 @@ idboard.service('ClassService', function () {
         if (idGrade != null) {
             gradeList.forEach(function (_grade) {
                 if (keepGoing) {
-                    if (_grade.id == idGrade) {
+                    if (_grade.idClass == idGrade) {
                         grade = _grade;
                         keepGoing = false;
                     }

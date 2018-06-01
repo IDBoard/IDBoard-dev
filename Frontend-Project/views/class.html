@@ -9,7 +9,6 @@
                     Créer une nouvelle classe
                 </button>
             </form>
-
         </div>
 
         <div class="col-sm-6 form-group">
@@ -17,7 +16,7 @@
             <select class="form-control" ng-model="newGradeIdToDuplicate">
                 <option value="">--- Select an option ---</option>
                 <option ng-repeat="grade in gradesActives |orderBy:'+':true"
-                        value="{{grade.id}}">
+                        value="{{grade.idClass}}">
                     {{grade.name}}
                 </option>
             </select>

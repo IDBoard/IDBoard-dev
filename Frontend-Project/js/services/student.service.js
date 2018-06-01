@@ -60,14 +60,35 @@ idboard.service('StudentService', function () {
             name: 'Lola',
             lastName: 'LL',
             active: false,
-            grade: true
+            grade: false
+        },
+        {
+            id: '28455',
+            name: 'Nicolas',
+            lastName: 'T',
+            active: false,
+            grade: false
+        },
+        {
+            id: '3648',
+            name: 'Mario',
+            lastName: 'Espe',
+            active: false,
+            grade: false
+        },
+        {
+            id: '5423',
+            name: 'Juin',
+            lastName: 'P',
+            active: false,
+            grade: false
         },
         {
             id: '126',
-            name: 'Lillie',
+            name: 'Forme',
             lastName: 'LL',
-            active: true,
-            grade: true
+            active: false,
+            grade: false
         }
     ];
 

@@ -26,7 +26,7 @@ idboard.config(function ($routeProvider, $locationProvider) {
         })
         .when('/events', {
             templateUrl: 'views/events1.html',
-            controller: "EventsController"
+            /*controller: "EventsController"*/
         })
         .when('/marks', {
             templateUrl: 'views/marks.html',

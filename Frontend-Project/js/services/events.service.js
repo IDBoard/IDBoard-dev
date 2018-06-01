@@ -6,73 +6,73 @@
 idboard.service('EventsService', function () {
     var eventsList = [
         {
-            id: '48',
-            msg: "Convocation à l'entretien d'admission",
+            idEvent: '48',
+            bBCode: "Convocation à l'entretien d'admission",
             date: new Date("10, 12, 2016"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '1',
-            msg: "Admissible M1 ESD Sophia Antipolis",
+            idEvent: '1',
+            bBCode: "Admissible M1 ESD Sophia Antipolis",
             date: new Date("10,13, 2016"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '75',
-            msg: "Admissible M1 ESD Sophia Antipolis 01",
+            idEvent: '75',
+            bBCode: "Admissible M1 ESD Sophia Antipolis 01",
             date: new Date("1,13, 2017"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '14',
-            msg: "Admissible M1 ESD Sophia Antipolis 03",
+            idEvent: '14',
+            bBCode: "Admissible M1 ESD Sophia Antipolis 03",
             date: new Date("03,13, 2017"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '44',
-            msg: "Examen Admission Oral",
+            idEvent: '44',
+            bBCode: "Examen Admission Oral",
             date: new Date("10,13, 2016"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '47',
-            msg: "Avis Favorable de la Commission d'Admission",
+            idEvent: '47',
+            bBCode: "Avis Favorable de la Commission d'Admission",
             date: new Date("05, 31, 2016"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '87',
-            msg: "Absence",
+            idEvent: '87',
+            bBCode: "Absence",
             date: new Date("10, 26, 2017"),
-            student: '55',
+            idBusinessEntity: '55',
             viewed: true
         },
         {
-            id: '2',
-            msg: "Reception du dossier demande d'admission",
+            idEvent: '2',
+            bBCode: "Reception du dossier demande d'admission",
             date: new Date("10, 13, 2016"),
-            student: '96',
+            idBusinessEntity: '96',
             viewed: true
         },
         {
-            id: '3',
-            msg: "Demande d'Admission M1 ESD",
+            idEvent: '3',
+            bBCode: "Demande d'Admission M1 ESD",
             date: new Date("10, 13, 2016"),
-            student: '85',
+            idBusinessEntity: '85',
             viewed: true
         },
         {
-            id: '4',
-            msg: "Examen Admission Oral",
+            idEvent: '4',
+            bBCode: "Examen Admission Oral",
             date: new Date("11, 22, 2017"),
-            student: '74',
+            idBusinessEntity: '74',
             viewed: true
         },
 
@@ -88,7 +88,7 @@ idboard.service('EventsService', function () {
         var events = [];
         for (var i = 0; i < eventsList.length; i++)
         {
-            if (eventsList[i].student == id)
+            if (eventsList[i].idBusinessEntity == id)
             {
                 events.push(eventsList[i]);
             }
@@ -99,7 +99,7 @@ idboard.service('EventsService', function () {
     this.existedEvent = function (event) {
         var existed = false;
         for (var i = 0; i < eventsList.length; i++) {
-            if (eventsList[i].id == event.id) {
+            if (eventsList[i].idEvent == event.id) {
                 existed = true;
                 break;
             }
@@ -109,7 +109,7 @@ idboard.service('EventsService', function () {
  
     this.addEvents = function (event) {
         if (!this.existedEvent(event)) {
-            console.log('addedEvenet', event.msg);
+            console.log('addedEvenet', event.bBCode);
             eventsList.push(event);
         }
     }
@@ -117,7 +117,7 @@ idboard.service('EventsService', function () {
     this.getEventsNotViewedByStudent = function (id) {
         var eventsNotViewed = [];
         eventsList.forEach(function (_newEvent) {
-            if (!_newEvent.viewed && _newEvent.student == id) {
+            if (!_newEvent.viewed && _newEvent.idBusinessEntity == id) {
                 eventsNotViewed.push(_newEvent);
             }
         });
