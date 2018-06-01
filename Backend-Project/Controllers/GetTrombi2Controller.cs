@@ -16,6 +16,7 @@ namespace Backend_Project.Controllers
             public string nameStudent { get; set; }
             public string firstNameStudent { get; set; }
             public int idStudent { get; set; }
+            public string phtoPath { get; set; }
             public Boolean activity { get; set; }
         }
 
@@ -70,6 +71,8 @@ namespace Backend_Project.Controllers
 
 
                 }
+                student.phtoPath = (from photo in idBoard.BusinessEntities where (photo.idBusinessEntity == id) select photo.PhotoPath).FirstOrDefault();
+
                 trombi.students.Add(student);
             }
 
