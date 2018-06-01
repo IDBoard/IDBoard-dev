@@ -48,6 +48,26 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,6 +86,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\event.css" />
     <Content Include="css\flat-ui\flat-ui.css" />
     <Content Include="css\flat-ui\flat-ui.min.css" />
     <Content Include="css\flat-ui\vendor\bootstrap\css\bootstrap.min.css" />
@@ -77,6 +98,8 @@
     <Content Include="css\flat-ui\fonts\lato\lato-italic.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-light.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.svg" />
+    <Content Include="css\grade.css" />
+    <Content Include="css\module.css" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\icons\png\Book.png" />
     <Content Include="images\icons\png\Calendar.png" />
@@ -114,12 +137,11 @@
     <Content Include="images\logo.png" />
     <Content Include="images\tile\ribbon-2x.png" />
     <Content Include="images\tile\ribbon.png" />
-    <Content Include="index3.html" />
-    <Content Include="indexGrade.html" />
     <Content Include="js\controllers\Connection.controller.js" />
+    <Content Include="js\controllers\Events.controller.js" />
     <Content Include="js\controllers\Forget_password.controller.js" />
-    <Content Include="js\controllers\StudentReport.controller.js" />
-    <Content Include="js\controllers\Trombinoscope.controller.js" />
+    <Content Include="js\controllers\Grade.controller.js" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\flat-ui\flat-ui.js" />
     <Content Include="js\flat-ui\flat-ui.min.js" />
     <Content Include="js\modules\app.module.js" />
@@ -151,10 +173,14 @@
     <Content Include="css\flat-ui\fonts\lato\lato-regular.eot" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.ttf" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.woff" />
+    <Content Include="js\plugins.js" />
+    <Content Include="js\selectFx.js" />
+    <Content Include="js\services\events.service.js" />
     <None Include="packages.config" />
-    <Content Include="css\style.css" />
-    <Content Include="index.html" />
-    <Content Include="js\angularjs\angular.min.js.map" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Css\MyCss.css" />
+    <Content Include="ScriptProfile\Profile.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Profile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -177,12 +203,11 @@
     <Content Include="js\flat-ui\vendor\respond.min.js" />
     <Content Include="js\flat-ui\vendor\video-js.swf" />
     <Content Include="js\flat-ui\vendor\video.js" />
-    <Content Include="js\modules\idboardControllers.js" />
-    <Content Include="views\Accueil.html" />
-    <Content Include="views\events.html" />
-    <Content Include="views\grades.html" />
+    <Content Include="js\services\grade.service.js" />
+    <Content Include="js\services\student.service.js" />
     <Content Include="views\main.html" />
-    <Content Include="views\Trombinoscope.html" />
+    <Content Include="views\grades.html" />
+    <Content Include="views\events.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

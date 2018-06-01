@@ -1,4 +1,9 @@
-﻿idboard.service('EventsService', function () {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.service('EventsService', function () {
     var eventsList = [
         {
             id: '48',
@@ -11,6 +16,20 @@
             id: '1',
             msg: "Admissible M1 ESD Sophia Antipolis",
             date: new Date("10,13, 2016"),
+            student: '55',
+            viewed: true
+        },
+        {
+            id: '75',
+            msg: "Admissible M1 ESD Sophia Antipolis 01",
+            date: new Date("1,13, 2017"),
+            student: '55',
+            viewed: true
+        },
+        {
+            id: '14',
+            msg: "Admissible M1 ESD Sophia Antipolis 03",
+            date: new Date("03,13, 2017"),
             student: '55',
             viewed: true
         },

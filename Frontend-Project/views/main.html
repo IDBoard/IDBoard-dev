@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="fr">
+<html class="no-js" lang="fr" ng-app="IDBoard">
  <!--<![endif]-->
 <head>
     <meta charset="utf-8">
@@ -19,74 +19,31 @@
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/flag-icon.min.css">
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="stylesheet" href="../css/grade.css">
     <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="../css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
-
-    <script src="../js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script src="http://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
+    <!---Angular-->
     <script src="../js/angularjs/angular.js"></script>
-
+    <script src="../js/angularjs/angular-route.js"></script>
     <script src="../js/modules/app.module.js"></script>
-    <script src="../js/controllers/Trombinoscope.controller.js"></script>
-    <script src="../js/controllers/StudentReport.controller.js"></script>
+    <!--Service-->
+    <script src="../js//services//module.service.js"></script>
+    <script src="../js/services/grade.service.js"></script>
+    <script src="../js/services/student.service.js"></script>
+    <script src="../js/services/events.service.js"></script>
+    <script src="../js/services/cours.service.js"></script>
 
-    <script>
-
-        $(window).ready(function () {
-
-            function go_to(id_div = 'index', page_title = 'CampusID', breadcrumb = null) {
-                let step1 = '';
-                let step2 = '';
-
-                if (breadcrumb) {
-                    if (breadcrumb.step1 !== undefined) {
-                        step1 = breadcrumb.step1;
-                    }
-                    if (breadcrumb.step2 !== undefined) {
-                        step2 = breadcrumb.step2;
-                    }
-                }
-                else {
-                    step1 = 'Bienvenu sur l\'IDBoard';
-                }
-
-                $('#fst_step').text(step1);
-                $('#snd_step').text(step2);
-
-                $('.right-panel .content').css('display', 'none');
-                $('#' + id_div).css('display', 'block');
-                $('title').text(page_title);
-            }
-
-            go_to();
-
-            $('.menu-link').click(function () {
-                go_to(
-                    $(this).attr('data-id'),
-                    $(this).attr('data-page-title'),
-                    {
-                        step1: $(this).attr('data-breadcrumb-step1'),
-                        step2: $(this).attr('data-breadcrumb-step2')
-                    }
-                );
-            });
-
-        });
-
-    </script>
+    <!--Controller-->
+    <script src="../js/controllers/Grade.controller.js"></script>
+    <script src="../js/controllers/Module.controller.js"></script>
+    <script src="../js/controllers/Events.controller.js"></script>
+    <script src="../js/controllers/Cours.controller.js"></script>
+    <!---Angular-->
 </head>
  <body ng-app="IDBoard" style="overflow-x: hidden;">
 
@@ -120,6 +77,9 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-clipboard"></i><a href="#">Conventions</a></li>
                             <li><i class="fa fa-certificate"></i><a href="#">Certificats</a></li>
+                            <li><i class="fa fa-building"></i><a href="/module">Modules</a></li>
+                            <li><i class="fa fa-building"></i><a href="/grades">Classes</a></li>
+                            <li><i class="fa fa-building"></i><a href="/cours">Matieres</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -127,18 +87,8 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="#">Offre de stages</a></li>
                             <li><i class="menu-icon fa fa-table"></i><a href="#">Planning</a></li>
-                            <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#" class="menu-link"
-                                                                                 data-id="student_report"
-                                                                                 data-breadcrumb-step1="Vie Étudiante"
-                                                                                 data-breadcrumb-step2="Relevé de notes"
-                                                                                 data-page-title="Relevé de notes">Notes</a>
-                            </li>
-                            <li><i class="menu-icon fa fa-camera-retro"></i><a href="#" class="menu-link"
-                                                                               data-id="trombinoscope"
-                                                                               data-breadcrumb-step1="Vie Étudiante"
-                                                                               data-breadcrumb-step2="Trombinoscope"
-                                                                               data-page-title="Détail de la classe">Trombinoscope</a>
-                            </li>
+                            <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#">Notes</a></li>
+                            <li><i class="menu-icon fa fa-camera-retro"></i><a href="#">Trombinoscope</a></li>
                         </ul>
                     </li>
 
@@ -272,312 +222,14 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1 id="fst_step">Bienvenue sur l'IDBoard </h1>
+                        <h1>Bienvenue sur le site de CampusID </h1>
                     </div>
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1 id="snd_step"></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content mt-3" id="index">
-            <h3>Accueil</h3>
-        </div>
-        <div class="content mt-3" id="trombinoscope" ng-load="{{onload()}}"
-             ng-controller="Trombinoscope">
-
-            <input type="hidden" ng-model="id_classe" value="{{id_classe}}"/>
-
-            <div class="row">
-                <div class="col-sm-12 font-weight-bold text-center classname">
-                    {{nbr_etudiants}} étudiants dans la classe : {{class_name}}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-4" ng-repeat="etudiant in etudiants">
-
-                    <div ng-if="etudiant.active == true">
-
-                        <div class="row">
-                            <div class="col-12 profilimage img-thumbnail" id="eleve_{{etudiant.id}}">
-                                <center>
-                                    <img src="http://192.168.0.171/{{etudiant.picture}}" class="img-fluid rounded"
-                                         style="width: 50%;"/>
-                                </center>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-sm-12" style="padding-left: 25px;">
-                                        {{etudiant.id}}
-                                    </div>
-                                    <div class="col-sm-12" style="padding-left: 25px;">
-                                        {{etudiant.firstname + ' ' + etudiant.name}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-        <div class="content mt-3" id="student_report" ng-load="{{onload()}}"
-             ng-controller="StudentReport">
-            <div class="row">
-
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header text-center">
-                                <table style="width: 200px;">
-                                    <tr>
-                                        <th>
-                                            <label for="modules_filers">
-                                                Affichage des modules :
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <select id="modules_filers">
-                                                <option value="successed">
-                                                    Réussis
-                                                </option>
-                                                <option value="failed">
-                                                    Échoués
-                                                </option>
-                                                <option value="currents">
-                                                    En Cours
-                                                </option>
-                                            </select>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-5 head">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header">
-                                <table class="col-12">
-                                    <tr>
-                                        <th class="text-left">
-                                            Total des crédits ECTS :
-                                        </th>
-                                        <td class="text-right">
-                                            <div class="circle">
-                                                {{head_modules.credits.total}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5 head">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header">
-                                <table class="col-12">
-                                    <tr>
-                                        <th class="text-left">
-                                            Matières validées :
-                                        </th>
-                                        <td class="text-right">
-                                            <div class="circle">
-                                                {{head_modules.matieres.successed}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-
-                <div class="col-1"></div>
-                <div class="col-5 head">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header">
-                                <table class="col-12">
-                                    <tr>
-                                        <th class="text-left">
-                                            Crédits ECTS déja validés :
-                                        </th>
-                                        <td class="text-right">
-                                            <div class="circle">
-                                                {{head_modules.credits.valided}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5 head">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header">
-                                <table class="col-12">
-                                    <tr>
-                                        <th class="text-left">
-                                            Matières échoués :
-                                        </th>
-                                        <td class="text-right">
-                                            <div class="circle">
-                                                {{head_modules.matieres.failed}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-
-                <div class="col-1"></div>
-                <div class="col-5 head">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header">
-                                <table class="col-12">
-                                    <tr>
-                                        <th class="text-left">
-                                            Crédits ECTS manquants:
-                                        </th>
-                                        <td class="text-right">
-                                            <div class="circle">
-                                                {{head_modules.credits.missing}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5 head">
-                    <div class="row">
-                        <div class="col-12 card">
-                            <div class="row card-header">
-                                <table class="col-12">
-                                    <tr>
-                                        <th class="text-left">
-                                            Matières en cours de validation :
-                                        </th>
-                                        <td class="text-right">
-                                            <div class="circle">
-                                                {{head_modules.matieres.currents}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-
-                <div class="col-12 accordion" id="modules" role="tablist" aria-multiselectable="true">
-                    <div class="row" ng-repeat="module in list_modules">
-                        <div class="col-12 module card">
-                            <div class="row card-header">
-                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == true">
-                                    <i class="fa fa-check-circle ok"></i>
-                                </div>
-                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == false">
-                                    <i class="fa fa-times-circle fail"></i>
-                                </div>
-                                <div class="col-xs-1 col-md-2 check-module" ng-if="module.success == null">
-                                    <i class="fa fa-question"></i>
-                                </div>
-                                <div class="col-xs-4 col-md-5" style="padding-top: 15px;">
-                                    <b>{{module.module}}</b>
-                                </div>
-                                <div class="col-xs-3 col-md-3" style="padding-top: 15px;">
-                                    <b>{{module.nb_credits}} ECTS</b>
-                                </div>
-                                <div class="col-xs-1 col-md-1" style="padding-top: 15px;">
-                                    <b>{{module.nb_notes_valides + '/' + module.matieres.length}}</b>
-                                </div>
-                                <div class="col-xs-1">
-                                    <div class="circle closed">
-                                        <a href="#module{{module.id}}_detail"
-                                           data-id="{{module.id}}"
-                                           onclick="if($(this).hasClass('fa-angle-up')) {
-                                                        $(this).removeClass('fa-angle-up').addClass('fa-angle-down');
-                                                    }
-                                                    else {
-                                                        $(this).removeClass('fa-angle-down').addClass('fa-angle-up');
-                                                    }"
-                                           data-parent="#modules"
-                                           data-toggle="collapse"
-                                           aria-expanded="true"
-                                           aria-controls="module{{module.id}}_detail"
-                                           class="fa up fa-angle-up"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row closed collapse hide" id="module{{module.id}}_detail">
-                                <div class="col-12">
-                                    <table class="table table-sm table-responsive-sm"
-                                           style="width: 100%; overflow-x: auto">
-                                        <thead>
-                                        <tr>
-                                            <th class="text-center">Type d'évaluation</th>
-                                            <th class="text-center">Date</th>
-                                            <th class="text-center">Note</th>
-                                            <th class="text-center">Coefficient</th>
-                                            <th class="text-center">Moyenne de la classe</th>
-                                            <th class="text-center">Commentaire</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody ng-repeat="detail in module.matieres">
-                                        <tr scope="row">
-                                            <th colspan="6" class="course-title">{{detail.name}}</th>
-                                        </tr>
-                                        <tr scope="row" ng-if="detail.note != null" class="evaluated">
-                                            <td class="font-weight-bold text-center">{{detail.type + ' n°' +
-                                                detail.id}}
-                                            </td>
-                                            <td class="font-weight-bold text-center">{{detail.date}}</td>
-                                            <td class="font-weight-bold text-center">{{detail.note}}</td>
-                                            <td class="font-weight-bold text-center">{{detail.coefficient}}</td>
-                                            <td class="font-weight-bold text-center">{{detail.moyenne}}</td>
-                                            <td class="font-weight-bold text-center"
-                                                ng-if="detail.commentaire != null && detail.commentaire != ''">
-                                                {{detail.commentaire}}
-                                            </td>
-                                            <td class="font-weight-bold text-center"
-                                                ng-if="detail.commentaire == null || detail.commentaire == ''">Aucun
-                                                commentaire
-                                            </td>
-                                        </tr>
-                                        <tr ng-if="detail.note == null">
-                                            <td colspan="6" class="text-center dont-evaluated">Pas de note</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                <div class="page-header float-right">
+                    <div class="page-title"></li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -944,6 +596,37 @@
     </div>-->
 
     </div> <!-- .content -->
+    </div><!-- /#right-panel -->
     <!-- Right Panel -->
+    <script src="../js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script src="../js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/widgets.js"></script>
+    <script src="../js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="../js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="../js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="../js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script>
+        ( function ( $ ) {
+            "use strict";
+
+            jQuery( '#vmap' ).vectorMap( {
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: [ '#1de9b6', '#03a9f5' ],
+                normalizeFunction: 'polynomial'
+            } );
+        } )( jQuery );
+    </script>
 </body>
 </html>

@@ -1,4 +1,9 @@
-﻿idboard.controller('EventsController', function ($scope, $timeout, EventsService, StudentService) {
+﻿/**
+ * Created by Visual Studio.
+ * User: Antuanett Barrios
+ */
+
+idboard.controller('EventsController', function ($scope, $timeout, $filter, EventsService, StudentService) {
 
     $scope.countNotificationEvents = 0;
     $scope.currentStudentId = 55;
@@ -9,6 +14,22 @@
     $scope.eventService = EventsService;
     $scope.eventsNotViewed = EventsService.getEventsNotViewedByStudent(currentStudentId);
     console.log('eventsNotViewed', $scope.eventsNotViewed);
+    
+    $scope.showEventsOrder = function () {
+        $scope.propertyName = 'date';
+        $scope.reverse = true;
+        console.log("events not ordered", $scope.events);
+        $scope.events = $filter('orderBy')($scope.events, $scope.propertyName, $scope.reverse);
+        console.log("events ordered", $scope.events);
+        countEventsOfStudent = $scope.events.length;
+     
+        if (countEventsOfStudent > 3) {
+            $scope.events.splice(3);
+        }
+        else {
+            $scope.events.splice(countEventsOfStudent)
+        }
+    }
 
     if (currentStudentId !== 'undefined' && currentStudentId !== null )
     {
@@ -16,10 +37,11 @@
         
         $scope.currentStudent = currentStudent;
         $scope.events = EventsService.getEventsByStudent(currentStudentId);
-        countEventsOfStudent = $scope.events.length;
+        $scope.showEventsOrder();
     }
+    
 
-    $scope.addEvent = function () {
+    $scope.addEvent = function (event) {
         console.log('addEvent');
         var eventToAdd = {
             id: '96',
@@ -83,13 +105,10 @@
                 $scope.countNotificationEvents = 0;
                 $scope.eventsNotViewed = [];
                 $scope.events = EventsService.getEventsByStudent(currentStudentId);
-                
+                $scope.showEventsOrder();
             }, 2000);
         }
     }
-
-   
-   
 
     
 });
