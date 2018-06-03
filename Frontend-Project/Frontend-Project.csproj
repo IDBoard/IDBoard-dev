@@ -79,6 +79,7 @@
     <Content Include="css\flat-ui\fonts\lato\lato-light.svg" />
     <Content Include="css\flat-ui\fonts\lato\lato-regular.svg" />
     <Content Include="css\class.css" />
+    <Content Include="css\mark.css" />
     <Content Include="css\module.css" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\icons\png\Book.png" />
@@ -194,7 +195,6 @@
     <Content Include="js\services\module.service.js" />
     <Content Include="js\services\student.service.js" />
     <Content Include="views\cours.html" />
-    <Content Include="views\events1.html" />
     <Content Include="views\class.html" />
     <Content Include="views\main.html" />
     <Content Include="views\events.html" />

@@ -1,54 +1,62 @@
 ﻿<div ng-controller="MarksController" class="main_div">
-    <div class="row">
-        <div class="col-sm-4 form-group">
-            <!-- Grade List -->
-            <span class="label label-primary">Classes existentes :</span>
-            <select class="form-control" ng-model="idGradeSelected">
-                <option value="">--- Select an option ---</option>
-                <option ng-repeat="grade in grades |orderBy:'+':true"
-                        value="{{grade.idClass}}">
-                    {{grade.name}}
-                </option>
-            </select>
-        </div>
-
-        <div class="col-sm-4 form-group">
-            <span class="label label-primary"></span>
-            <button style="margin-top:25px" type="button" class="btn mbuttons" ng-click="transcriptGeneration()" name="buttonTranscriptGeneration">
-                Génération du transcrit
-            </button>
-           
+    <div>
+        <div class="card center">
+            <div class="card-body">
+                <div class="card-text">
+                    <!-- Grade List -->
+                    <span class="label label-primary">Classes existentes :</span>
+                    <select class="form-control" ng-model="idGradeSelected">
+                        <option value="">--- Select an option ---</option>
+                        <option ng-repeat="grade in grades |orderBy:'+':true"
+                                value="{{grade.idClass}}">
+                            {{grade.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
         </div>
 
     </div>
+    <div>
+        <div class="card center">
+            <div class="card-body">
+                <div class="card-title">
+                    <span class="label label-primary">Recherche par nom / ID:</span>
+                    <input class="form-control" type="text" placeholder="" ng-model="seachStudentBy">
+                </div>
+                <div class="card-text">
+                    <!-- Student grade List -->
+                    <div class="list-fix-height">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item background_header_list">
+                                Eleves
+                            </a>
+                        </div>
+                        <div class="list-group" ng-repeat="student in studentsByGrade | filter: seachStudentBy">
+                            <a href="javascript: void(0);"
+                               class="list-group-item">
+                                {{student.name}}
+                            </a>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="col-sm-4 col-lg-4 col-md-4 form-group">
-            <span class="label label-primary">Recherche par nom / ID:</span>
-            <input class="form-control" type="text" placeholder="" ng-model="seachStudentBy">
-        </div>
-        <div class="col-sm-4 col-lg-4 col-md-4 form-group">
-            <span class="label label-primary"></span>
-            <button style="margin-top:25px" type="button" class="btn mbuttons" ng-click="marksGeneration()" name="buttonMarksGeneration">
-                Génération des notes
-            </button>
-        </div>
-   </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
+                        <span class="label label-primary"></span>
+                        <a href="javascript: void(0);" style="margin-top:25px" class="card-link" ng-click="transcriptGeneration()">
+                            Génération du transcrit
+                        </a>
+                    </div>
 
-    <div class="row">
-        <!-- Student grade List -->
-        <div class="col-sm-6 col-lg-6 col-md-6 list-fix-height">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item background_header_list">
-                    Eleves
-                </a>
-            </div>
-            <div class="list-group" ng-repeat="student in studentsByGrade | filter: seachStudentBy">
-                <a href="javascript: void(0);"
-                    class="list-group-item">
-                    {{student.name}}
-                </a>
-                <div style="clear:both"></div>
+                    <div class="col-sm-6 col-lg-6 col-md-6">
+                        <span class="label label-primary"></span>
+                        <a href="javascript: void(0);" style="margin-top:25px" class="card-link" ng-click="marksGeneration()">
+                            Génération des notes
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
