@@ -18,7 +18,7 @@ namespace Backend_Project.Controllers
         //***************************************************************************************
         // Format du json qui contient les informations des notes à passer en parametre
         // 
-        // api/Marks/PushMarks?_idClass=777&_idMatter=166&_MarksInfos={'marks':[{'idBusinessEntity':8,'markCoef':1,'mark':14,'markComment':'bien', 'IsJustifiedAbsence':true},{'idBusinessEntity':9,'markCoef':1,'mark':10,'markComment':'passable','IsJustifiedAbsence':true},{'idBusinessEntity':10,'markCoef':1,'mark':17,'markComment':'très bien','IsJustifiedAbsence':true}]}
+        // api/Marks/PushMarks?_idClass=3&_idMatter=2&_MarksInfos={'marks':[{'idBusinessEntity':8,'markCoef':1,'mark':14,'markComment':'bien', 'IsJustifiedAbsence':true},{'idBusinessEntity':9,'markCoef':1,'mark':10,'markComment':'passable','IsJustifiedAbsence':true},{'idBusinessEntity':10,'markCoef':1,'mark':17,'markComment':'très bien','IsJustifiedAbsence':true}]}
         //
         //***************************************************************************************
 
