@@ -18,17 +18,25 @@ namespace Backend_Project.Controllers
         //***************************************************************************************
         // Format du json qui contient les informations des notes à passer en parametre
         // 
-        // api/Marks/PushMarks?_idClass=3&_idMatter=2&_MarksInfos={'marks':[{'idBusinessEntity':8,'markCoef':1,'mark':14,'markComment':'bien', 'IsJustifiedAbsence':true},{'idBusinessEntity':9,'markCoef':1,'mark':10,'markComment':'passable','IsJustifiedAbsence':true},{'idBusinessEntity':10,'markCoef':1,'mark':17,'markComment':'très bien','IsJustifiedAbsence':true}]}
+        // _MarksInfos = {'marks':[{'idBusinessEntity':8,'markCoef':1,'mark':14,'markComment':'bien', 'IsJustifiedAbsence':true},{'idBusinessEntity':9,'markCoef':1,'mark':10,'markComment':'passable','IsJustifiedAbsence':true},{'idBusinessEntity':10,'markCoef':1,'mark':17,'markComment':'très bien','IsJustifiedAbsence':true}]}
         //
         //***************************************************************************************
 
         //!\\ Attention //!\\ La fonction ne peux marcher que si : - L'ID matter existe en DB
-        //                                                        - Les ID type evaluation existes en DB
-        //                                                        - Les ID businessEntity existes en DB
-        //                                                        - L'ID class existe en DB
+        //                                                         - Les ID type evaluation existes en DB
+        //                                                         - Les ID businessEntity existes en DB
+        //                                                         - L'ID class existe en DB
+        //                                                         - L'ID site de la class existe en DB
+        //
+        // Données à rajouter en DB pour tester avec le json de test écrit au dessus (_marksInfos)
+        // => https://pastebin.com/raw/dDukq6MK (créer un site, 3 éleves, une classe, une matter)
+        //
+        // Exemple de Post 
+        // => https://image.noelshack.com/fichiers/2018/23/5/1528417201-exemple.png
+        //
 
         [HttpPost]
-        public IHttpActionResult PushMarks(int _idClass, int _idMatter, string _MarksInfos) // _MarksInfos est ensuite sérialisé en json (voir le format au dessus)
+        public IHttpActionResult PushMarks(int _idClass, int _idMatter, int _idTypeEvaluation, string _MarksInfos) // _MarksInfos est ensuite sérialisé en json (voir le format au dessus)
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -42,7 +50,7 @@ namespace Backend_Project.Controllers
                     idBusinessEntity = markInfos.idBusinessEntity,
                     idMatter = _idMatter,
                     idClass = _idClass,
-                    idTypeEvaluation = 1,
+                    idTypeEvaluation = _idTypeEvaluation,
                     Coefficient = markInfos.markCoef,
                     Value = markInfos.mark,
                     Comments = markInfos.markComment,
