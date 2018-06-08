@@ -28,8 +28,8 @@ namespace Backend_Project.Controllers
         //                                                         - L'ID class existe en DB
         //                                                         - L'ID site de la class existe en DB
         //
-        // Données à rajouter en DB pour tester avec le json de test écrit au dessus (_marksInfos)
-        // => https://pastebin.com/raw/dDukq6MK (créer un site, 3 éleves, une classe, une matter)
+        // Données à rajouter en DB pour tester avec le json de test écrit au dessus (_MarksInfos)
+        // => https://pastebin.com/raw/dDukq6MK (créé un site, 3 éleves, une classe, une matter)
         //
         // Exemple de Post 
         // => https://image.noelshack.com/fichiers/2018/23/5/1528417201-exemple.png
