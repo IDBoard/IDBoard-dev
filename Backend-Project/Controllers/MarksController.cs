@@ -22,7 +22,7 @@ namespace Backend_Project.Controllers
         //
         //***************************************************************************************
 
-        //!\\ Attention //!\\ La fonction ne peux marché que si : - L'ID matter existe en DB
+        //!\\ Attention //!\\ La fonction ne peux marcher que si : - L'ID matter existe en DB
         //                                                        - Les ID type evaluation existes en DB
         //                                                        - Les ID businessEntity existes en DB
         //                                                        - L'ID class existe en DB
