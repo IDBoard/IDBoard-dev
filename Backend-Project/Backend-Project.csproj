@@ -145,6 +145,7 @@
       <DependentUpon>IDBoardDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\InternshipController.cs" />
+    <Compile Include="Controllers\MarksController.cs" />
     <Compile Include="Controllers\MatterController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Courses.cs">
