@@ -46,6 +46,7 @@ namespace Backend_Project.Controllers
                 classeIDB.Add(c);
             }
 
+           
             return Ok(JsonConvert.SerializeObject(classeIDB));
         }
         //Update
