@@ -15,15 +15,12 @@ idboard.controller('MarksController', function ($scope, ClassService, StudentSer
     
     $scope.$watch('idGradeSelected', function (newVal, oldVal) {
         if ($scope.idGradeSelected != null) {
-            console.log("watch grade selected newVal ", newVal);
-            console.log("watch grade selected oldVal ", oldVal);
 
             if (newVal != oldVal) {
                 if (newVal != "" && newVal != null && newVal != "undefinded") {
                     $scope.updateListStudentsByGrade();
                 }
                 else {
-                    console.log("newVal is empty or null");
                     $scope.studentsByGrade = [];
                 }
             }
@@ -32,7 +29,6 @@ idboard.controller('MarksController', function ($scope, ClassService, StudentSer
 
     $scope.updateListStudentsByGrade = function (grade) {
         var grade = $scope.classService.findGradeById($scope.idGradeSelected);
-        console.log("grade ", grade);
         if (grade != null) {
             $scope.studentsByGrade = [];
             for (var i = 0; i < grade.students.length; i++) {

@@ -97,19 +97,12 @@ idboard.service('StudentService', function () {
     }
 
     this.getStudentById = function (id) {
-        console.log("getStudentById method");
-        console.log("getStudentById method students", students);
-        console.log(id);
         var student;
         for (var i = 0; i < students.length; i++)
         {
             if (students[i].id == id.id) {
-                console.log("students in list has same student id", id.id);
                 student = students[i];
                  break;
-            }
-            else {
-                console.log("students in list has not the same student id", id.id);
             }
         }
         return student;
@@ -129,7 +122,6 @@ idboard.service('StudentService', function () {
         students.forEach(function (_student) {
             if (_student.id === student.id) {
                 _student.grade = student.grade;
-                console.log('changed grade to student:', _student.id);
             }
         })
     }
@@ -139,7 +131,6 @@ idboard.service('StudentService', function () {
         if (name != null && name != 'undefined') {
             students.forEach(function (_student) {
                 if (_student.name === name) {
-                    console.log("getStudentByName", name);
                     student = _student;
                 }
             })
@@ -148,12 +139,10 @@ idboard.service('StudentService', function () {
     }
 
     this.getStudentByNameInList = function (name, studentsL) {
-        console.log("getStudentByNameInList method");
         var student;
         if (name != null && name != 'undefined') {
             studentsL.forEach(function (_student) {
                 if (_student.name === name) {
-                    console.log("getStudentByName", name);
                     student = _student;
                 }
             })
@@ -162,20 +151,12 @@ idboard.service('StudentService', function () {
     }
 
     this.getStudentByIdInList = function (id, studentsL) {
-        console.log("getStudentByIdInList method");
-        console.log("getStudentByIdInList method students", studentsL);
-        console.log(id);
-
         var student;
         if (id !== 'undefined') {
             for (var i = 0; i < studentsL.length; i++) {
                 if (studentsL[i].id == id) {
-                    console.log("students in list has same student id", id);
                     student = studentsL[i];
                     break;
-                }
-                else {
-                    console.log("students in list has not the same student id", id);
                 }
             }
         }

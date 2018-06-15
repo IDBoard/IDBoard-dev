@@ -70,7 +70,6 @@ idboard.service('ModuleService', function () {
     }
 
     this.allModulesByGrade = function (grade) {
-        console.log("Module service allModulesByGrade", grade);
         var arrayResultModules = [];
         var modulesOfThisGrade = grade.modules;
         if (modulesOfThisGrade != null)
@@ -78,12 +77,10 @@ idboard.service('ModuleService', function () {
             if (modulesOfThisGrade.length > 0)
             {
                 modulesOfThisGrade.forEach(function (_module) {
-                    console.log("module item  ", _module);
                     moduleList.forEach(function (__module) {
                         
                     if (_module.id == __module.id) {
                         var moduleToAdd = __module;
-                        console.log("module found ", moduleToAdd);
                         arrayResultModules.push(moduleToAdd)
                     }
                         
@@ -95,14 +92,11 @@ idboard.service('ModuleService', function () {
     }
     
     this.addCoursToModule = function (module, cours) {
-        console.log("Module service add cours to module");
         var added = false;
         if (!this.coursExisted(module, cours)) {
-            console.log("Module service before adding cours");
             for (var i = 0; i < moduleList.length; i++) {
                 if (moduleList[i].id == module.id)
                 {
-                    console.log("Module service cours added in module", moduleList[i].name);
                     moduleList[i].cours.push(cours);
                     added = true;
                     break;
@@ -113,18 +107,15 @@ idboard.service('ModuleService', function () {
     };
 
     this.coursExisted = function (module, cours) {
-        console.log("Module service method coursExisted in module", module, "cours", cours);
         var existed = false;
         if (module != null && module != "undefined" && module != "") {
             var coursList = module.cours;
             for (var i = 0; i < coursList.length; i++) {
                 if (coursList[i].id == cours.id) {
-                    console.log("cours in this module", coursList[i], "new cours to add", cours);
                     existed = true;
                     break;
                 }
             }
-            console.log("cours existe", existed);
             return existed;
         }
         else {

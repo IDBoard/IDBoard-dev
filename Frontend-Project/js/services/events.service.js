@@ -109,7 +109,6 @@ idboard.service('EventsService', function () {
  
     this.addEvents = function (event) {
         if (!this.existedEvent(event)) {
-            console.log('addedEvenet', event.bBCode);
             eventsList.push(event);
         }
     }

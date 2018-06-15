@@ -1,5 +1,4 @@
 ﻿idboard.controller('ModuleController', function ($scope, ClassService, ModuleService) {
-    console.log("ModuleController");
 
     $scope.classService = ClassService;
     $scope.grades = $scope.classService.getGrades();
@@ -12,11 +11,9 @@
     $scope.moduleNameToAdd;
 
     $scope.showModuleByGrade = function (idgrade) {
-        console.log("showModuleByGrade ", idgrade);
         var _grade = $scope.classService.findGradeById(idgrade);
         $scope.currentGrade = _grade;
         moduleToShow = ModuleService.allModulesByGrade(_grade);
-        console.log("modules to show ", moduleToShow);
         $scope.modulesOfGradeSelected = moduleToShow;
     };
     
@@ -33,10 +30,8 @@
     }
 
     $scope.addModuleToGrade = function (grade, module) {
-        console.log("addModuleToGrade");
         if ($scope.idGradeSelected != null && $scope.idGradeSelected != "undefined" && $scope.idGradeSelected != "")
         {
-            console.log("addModuleToGrade  idGradeSelected", $scope.idGradeSelected);
             if ($scope.moduleNameToAdd != null && $scope.moduleNameToAdd != "undefined" && $scope.moduleNameToAdd != "") {
                 if ($scope.moduleCreditsETCToAdd != null && $scope.moduleCreditsETCToAdd != "undefined" && $scope.moduleCreditsETCToAdd != "") {
                     var moduleToAdd = {
@@ -46,11 +41,9 @@
                         cours: []
                     }
                     $scope.gradeSelected = $scope.classService.findGradeById($scope.idGradeSelected);
-                    console.log("addModuleToGrade  gradeSelected", $scope.gradeSelected);
+           
                     $scope.classService.addModule($scope.gradeSelected, moduleToAdd);
-                    console.log("addModuleToGrade  set array modulesOfGradeSelected");
                     ModuleService.getModules().push(moduleToAdd);
-                    console.log("all modules after adding the last ", ModuleService.getModules());
                     $scope.moduleNameToAdd = "";
                     $scope.moduleCreditsETCToAdd = "";
                 }
@@ -59,8 +52,6 @@
     }
 
     $scope.$watch('modules.length', function (newVal, oldVal) {
-        console.log("watch modules  length newval", newVal);
-        console.log("watch modules  length oldVal", oldVal);
         if (newVal != oldVal) {
             if (newVal != null && newVal != "undefined") {
                 if ($scope.gradeSelected != null && $scope.gradeSelected != "undefined") {
@@ -74,8 +65,6 @@
 
     $scope.$watch('idGradeSelected', function (newVal, oldVal) {
         if ($scope.idGradeSelected != null) {
-            console.log("watch grade selected newVal ", newVal);
-            console.log("watch grade selected oldVal ", oldVal);
            
             if (newVal != oldVal) {
                 if (newVal != "" && newVal != null && newVal != "undefinded") {
@@ -83,7 +72,6 @@
                     $scope.setModuleSelected(null); //update cours list
                 }
                 else {
-                    console.log("newVal is empty or null");
                     $scope.modulesOfGradeSelected = [];
                     $scope.setModuleSelected(null); //update cours list
                 }

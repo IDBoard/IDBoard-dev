@@ -7,7 +7,7 @@
 var idboard = angular.module('IDBoard', ['ngRoute']);
 
 idboard.config(function ($routeProvider, $locationProvider) {
-    console.log("ngroute");
+ 
     $routeProvider
         .when('/main', {
             templateUrl: "views/main.html"

@@ -3,8 +3,8 @@
  * User: Antuanett Barrios
  */
 idboard.service('ClassService', function () {
-    console.log("ClassService ");
-    var gradeList = [
+  
+   var gradeList = [
         {
             idClass: '1',
             name: 'M2',
@@ -242,8 +242,6 @@ idboard.service('ClassService', function () {
     }
 
     this.addStudent = function (grade, student) {
-        console.log("addStudent ", student);
-        console.log("grade after adding student ", grade);
         if (!this.studentExisted(grade, student)) {
             var s = { id: student.id };
             grade.students.push(s);
@@ -271,16 +269,14 @@ idboard.service('ClassService', function () {
 
     this.deleteStudent = function (grade, student)
     {
-        console.log("grade service delete student in grade", grade);
+        
         for (var i = 0; i < grade.students.length; i++) {
             if (grade.students[i].id == student.id) {
-                console.log("grade service student delected");
                 grade.students.splice(i, 1);
                 break;
             }
         }
         return grade.students;
-        console.log("grade service after deleting student in grade", grade);
     }
 
     this.inactiveStudentPassage = function (student) {
@@ -288,7 +284,6 @@ idboard.service('ClassService', function () {
     }
 
     this.addModule = function (grade, module) {
-        console.log("GradeService add Module ", module);
         var _module = {
             id : module.id
         };
@@ -302,7 +297,6 @@ idboard.service('ClassService', function () {
         gradeList.forEach(function (_grade) {
             if (_grade.id == idGrade) {
                 modules = _grade.modules;
-                console.log("modules of grade ", idGrade, modules);
             }
         });
         return modules;

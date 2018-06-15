@@ -4,12 +4,10 @@
  */
 
 idboard.controller('ClassController', function ($scope, $filter, ClassService, StudentService) {
-    console.log("ClassController ");
+  
 
     $scope.gradeService = ClassService;
     var students = StudentService.getStudents();
-
-    console.log("students on data base", students);
 
     $scope.grades = ClassService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
@@ -18,9 +16,7 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     $scope.gradeSelected;
     $scope.gradesActives = ClassService.getGradesActives();
     $scope.gradesNActives = ClassService.getGradesNActives();
-
-    console.log("gradesActives ", $scope.gradesActives);
-
+    
     if ($scope.gradesActives.length > 0)
     {
         //$scope.newGradeToDuplicate = $scope.gradesActives[0].name;
@@ -28,7 +24,6 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
 
    
     $scope.newGrade = function () {
-        console.log("add new grade");
         var grade = {
             idClass: Date.now,
             name: $scope.gradeNameToAdd,
@@ -42,7 +37,6 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     }
     
     $scope.selectGrade = function (grade) {
-        //console.log("selectGrade");
         $scope.gradeSelected = grade;
       
     };
@@ -53,15 +47,12 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     }
 
     $scope.updateListStudentsInCurrentGrade = function (grade) {
-        console.log("updateListStudentsInCurrentGrad");
         var idStudentsInThisGrade = ClassService.getStudentsInThisGrade(grade);
-        console.log("idStudentsINThisGrade", idStudentsInThisGrade);
         var students = [];
         if (idStudentsInThisGrade != null) {
             idStudentsInThisGrade.forEach(function (_idstudent) {
                 var s = StudentService.getStudentById(_idstudent);
                 if (s != null) {
-                    console.log("student found ", s.name);
                     students.push(s);
                 }
             });
@@ -85,7 +76,6 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     };
 
     $scope.duplicateGrade = function (grade) {
-        console.log("duplicateGrade ", grade);
         if ($scope.newGradeIdToDuplicate != null && $scope.newGradeIdToDuplicate != "undefined") {
             if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
                 var nameNewGrade = $scope.nameNewGrade;
@@ -110,7 +100,6 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     }
 
     $scope.deleteStudent = function (student) {
-        console.log("deleteStudent", student);
         if ($scope.gradeSelected !== null || $scope.gradeSelected === 'undefined') {
             $scope.gradeSelected.students = ClassService.deleteStudent($scope.gradeSelected, student);
             student.grade = false;
@@ -124,16 +113,12 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
 
 
     $scope.$watch('studentsInThisGrade.length', function (newVal, oldVal) {
-        console.log("watch studentsInThisGrade newVal", newVal, "oldVal", oldVal);
         $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
     });
 
     $scope.$watch('gradeSelected.students.length', function (newVal, oldVal) {
-        console.log("watch gradeSelected newVal", newVal, "oldVal", oldVal);
         if (newVal < oldVal) { // only when delete student
             $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
-            console.log("watch gradeSelected studentsInThisGrade", $scope.studentsInThisGrade);
-            console.log("watch gradeSelected gradeSelected.students", $scope.gradeSelected.students);
             $scope.updateListStudentsInCurrentGrade($scope.gradeSelected);
         }
      
