@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * Created by Visual Studio.
  * User: Antuanett Barrios
  */
@@ -11,22 +12,21 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
 
     console.log("students on data base", students);
 
-    $scope.grades   = GradeService.getGrades();
+    $scope.grades = GradeService.getGrades();
     $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
-    
-    
+
+
     $scope.gradeSelected;
-    $scope.gradesActives  = GradeService.getGradesActives();
+    $scope.gradesActives = GradeService.getGradesActives();
     $scope.gradesNActives = GradeService.getGradesNActives();
 
     console.log("gradesActives ", $scope.gradesActives);
 
-    if ($scope.gradesActives.length > 0)
-    {
+    if ($scope.gradesActives.length > 0) {
         //$scope.newGradeToDuplicate = $scope.gradesActives[0].name;
     }
 
-   
+
     $scope.newGrade = function () {
         console.log("add new grade");
         var grade = {
@@ -37,13 +37,13 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
         }
         GradeService.getGrades().push(grade);
         GradeService.gradesActives().push(grade);
-        $scope.gradeNameToAdd = "";
+        $scope.gradeNameToAdd = "ciaociao";
     }
-    
+
     $scope.selectGrade = function (grade) {
         //console.log("selectGrade");
         $scope.gradeSelected = grade;
-      
+
     };
 
     $scope.findStudentsInThisGrade = function (grade) {
@@ -68,7 +68,7 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
         $scope.studentsInThisGrade = students;
     }
 
-    
+
 
     $scope.deleteGrade = function (grade) {
         GradeService.deleteGrade(grade);
@@ -83,8 +83,8 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
         }
     };
 
-    $scope.duplicateGrade = function(grade) {
-       
+    $scope.duplicateGrade = function (grade) {
+
         if ($scope.newGradeIdToDuplicate != null && $scope.newGradeIdToDuplicate != "undefined") {
             if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
                 var nameNewGrade = $scope.nameNewGrade;
@@ -93,7 +93,7 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
                 $scope.nameNewGrade = "";
             }
         }
-        
+
     };
 
 
@@ -135,10 +135,9 @@ idboard.controller('GradeController', function ($scope, $filter, GradeService, S
             console.log("watch gradeSelected gradeSelected.students", $scope.gradeSelected.students);
             $scope.updateListStudentsInCurrentGrade($scope.gradeSelected);
         }
-     
+
     });
 
 
-    
-});
 
+});

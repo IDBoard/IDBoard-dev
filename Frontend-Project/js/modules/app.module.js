@@ -28,7 +28,14 @@ idboard.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'views/events1.html',
             controller: "EventsController"
         })
-        
+        .when('/calendar', {
+            templateUrl: "views/calendar.html",
+            controller : "CalendarController"
+        }) 
+        .when('/profile', {
+            templateUrl: "views/profile.html",
+            controller: "ProfileController"
+        }) 
         .otherwise({
             redirectTo: '/'
         });

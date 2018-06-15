@@ -21,6 +21,23 @@
     <link rel="stylesheet" href="../css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../css/module.css">
     <link rel="stylesheet" href="../css/grade.css">
+    <link rel="stylesheet" href="../css/profile.css">
+
+    <!--Calendar-->
+
+    <link href="../Css/fullcalendar.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../ScriptCalendar/moment.js"></script>
+    <script src="../ScriptCalendar/jquery-1.11.3.js"></script>
+    <script src="../js/angularjs/angular.min.js"></script>
+    <script src="../ScriptCalendar/calendar.js"></script>
+    <script src="../ScriptCalendar/fullcalendar.js"></script>
+    <script src="../ScriptCalendar/gcal.js"></script>
+    <script src="../ScriptCalendar/MyApp.js"></script>
+
+
+
+
     <!-- <link rel="stylesheet" href="../css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="../scss/style.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -43,9 +60,77 @@
     <script src="../js/controllers/Module.controller.js"></script>
     <script src="../js/controllers/Events.controller.js"></script>
     <script src="../js/controllers/Cours.controller.js"></script>
+    <script src="../js/controllers/Cours.controller.js"></script>
+    <script src="../js/controllers/Profile.Controller.js"></script>
+    <script>
+        function toggleEmail(element) {
+            if (document.getElementById("hideEmail").style.display == 'none') {
+
+                document.getElementById("hideEmail").style.display = 'table-row'; // set to table-row instead of an empty string
+                var table = document.getElementById("tableEmail");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myEmail = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationEmail")
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myEmail();
+            } else {
+                document.getElementById("hideEmail").style.display = 'none';
+            }
+        }
+
+        function toggleAddresse(element) {
+            if (document.getElementById("hideAddresse").style.display == 'none') {
+                document.getElementById("hideAddresse").style.display = 'table-row';// set to table-row instead of an empty string
+                var table = document.getElementById("tableAddresse");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myNumero = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationAddresse");
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myNumero();
+
+            } else {
+                document.getElementById("hideAddresse").style.display = 'none';
+            }
+        }
+
+        function toggleNumero(element) {
+            //  alert("row" + element.parentNode.parentNode.rowIndex +
+            //      " - column" + element.parentNode.cellIndex);
+            if (document.getElementById("hideNumero").style.display == 'none') {
+                document.getElementById("hideNumero").style.display = 'table-row';
+                var table = document.getElementById("tableNumeros");
+                var row = element.parentNode.parentNode.rowIndex;
+                var c = confirm("Est-ce que tu veux modifier ce parametre?");
+                if (c === true) {
+                    var myNumero = function () {
+
+                        console.log(table.rows[row].cells[1]);
+                        var y = document.getElementById("modificationNumero")
+                        y.innerHTML = table.rows[row].cells[1].innerHTML;
+                    }
+                };
+                myNumero();
+                // set to table-row instead of an empty string
+            } else {
+                document.getElementById("hideNumero").style.display = 'none';
+            }
+        }
+    </script>
     <!---Angular-->
 </head>
- <body ng-app="IDBoard" style="overflow-x: hidden;">
+ <body style="overflow-x: hidden;">
 
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -86,7 +171,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Vie étudiante</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="#">Offre de stages</a></li>
-                            <li><i class="menu-icon fa fa-table"></i><a href="#">Planning</a></li>
+                            <li><i class="menu-icon fa fa-table"></i><a href="/calendar">Planning</a></li>
                             <li><i class="menu-icon fa fa-graduation-cap"></i><a href="#">Notes</a></li>
                             <li><i class="menu-icon fa fa-camera-retro"></i><a href="#">Trombinoscope</a></li>
                         </ul>
@@ -192,7 +277,7 @@
                             <img class="user-avatar rounded-circle" src="../images/admin.jpg" alt="User Avatar">
                         </a>
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Mon Profil</a>
+                            <a class="nav-link" href="/profile"><i class="fa fa- user"></i>Mon Profil</a>
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Paramètres</a>
                             <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Déconnexion</a>
@@ -218,6 +303,9 @@
             </div>
         </header><!-- /header -->
         <!-- Header-->
+
+
+
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -228,49 +316,57 @@
             </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
-                    <div class="page-title"></li>
+                    <div class="page-title">
+                        </li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-        <!--<div class="content mt-3">
-            <div class="col-sm-12">
-                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                    <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-1">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
+
+        <div ng-view>
+
+        </div>
+
+
+        <!--<div class="content mt-3">
+        <div class="col-sm-12">
+            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-flat-color-1">
+                <div class="card-body pb-0">
+                    <div class="dropdown float-right">
+                        <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            <i class="fa fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu-content">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </div>
-                        <h4 class="mb-0">
-                            <span class="count">10468</span>
-                        </h4>
-                        <p class="text-light">Members online</p>
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70" />
-                        <canvas id="widgetChart1"></canvas>
                     </div>
+                    <h4 class="mb-0">
+                        <span class="count">10468</span>
+                    </h4>
+                    <p class="text-light">Members online</p>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70" />
+                    <canvas id="widgetChart1"></canvas>
                 </div>
             </div>
         </div>
-        <!--/.col-->
-       <!-- <div class="col-sm-6 col-lg-3">
+    </div>
+    <!--/.col-->
+        <!-- <div class="col-sm-6 col-lg-3">
             <div class="card text-white bg-flat-color-2">
                 <div class="card-body pb-0">
                     <div class="dropdown float-right">
@@ -592,11 +688,11 @@
                 <div id="vmap" class="vmap" style="height: 265px;"></div>
             </div>
         </div>
-        <!-- /# card 
+        <!-- /# card
     </div>-->
 
     </div> <!-- .content -->
-    </div><!-- /#right-panel -->
+   
     <!-- Right Panel -->
     <script src="../js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>

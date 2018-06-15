@@ -1,0 +1,57 @@
+﻿ <div ng-app="IDBoard" ng-controller="CalendarController">
+     <style>
+         #calendar {
+}
+     </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                events: [
+                    {
+                        start: "2018-06-20",
+                        title: "Xamarin"
+                    },
+                    {
+                        start: "2018-06-18",
+                        title: "C-FAILLE",
+                        color: '#070'
+
+                    },
+                    {
+                        start: "2018-06-18",
+                        title: "C-FAILLE",
+                        color: '#000'
+                    },
+                    {
+                        start: "2018-06-16",
+                        title: "PHP",
+                        color: '#888'
+                    },
+                    {
+                        start: "2018-06-16",
+                        title: "PHP",
+                        color: '#888'
+                    },
+                    {
+                        start: "2018-06-16",
+                        title: "ANGLAIS",
+                        color: '#9F1'
+                    },
+
+                ]
+            })
+        });
+    </script>
+
+    <div class="row" style="float: none; margin: 0 auto;">
+        <div class="col-md-8">
+            <div id="calendar" style="background-color: darkred;"></div>
+        </div>
+        <div class="col-md-4">
+                 <p></p>
+            </div>
+        </div>
+    </div>
+
+
+

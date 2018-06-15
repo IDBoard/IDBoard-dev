@@ -1,5 +1,5 @@
-﻿
-idboard.controller("CalendarController", ['$scope', '$http', 'uiCalendarConfig', function ($scope, $http, uiCalendarConfig) {
+﻿var app = angular.module('myApp', ['ui.calendar']);
+app.controller('myNgController',['$scope', '$http', 'uiCalendarConfig', function ($scope, $http, uiCalendarConfig) {
 
     $scope.SelectedEvent = null;
     var isFirstTime = true;
