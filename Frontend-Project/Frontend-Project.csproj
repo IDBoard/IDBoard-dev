@@ -210,14 +210,12 @@
     <Content Include="js\services\grade.service.js" />
     <Content Include="js\services\module.service.js" />
     <Content Include="js\services\student.service.js" />
+    <Content Include="views\class.html" />
     <Content Include="views\cours.html" />
-    <Content Include="views\events1.html" />
-    <Content Include="views\eventsTestURL.html" />
-    <Content Include="views\grades.html" />
     <Content Include="views\main.html" />
     <Content Include="views\events.html" />
+    <Content Include="views\marks.html" />
     <Content Include="views\module.html" />
-    <Content Include="views\test.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
