@@ -121,7 +121,6 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
             $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
             $scope.updateListStudentsInCurrentGrade($scope.gradeSelected);
         }
-     
     });
 
 

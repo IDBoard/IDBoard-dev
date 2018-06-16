@@ -179,10 +179,12 @@
     <Content Include="css\flat-ui\fonts\lato\lato-regular.woff" />
     <Content Include="js\plugins.js" />
     <Content Include="js\selectFx.js" />
+    <Content Include="js\services\class.service.js" />
     <Content Include="js\services\events.service.js" />
     <None Include="packages.config" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Css\MyCss.css" />
+    <Content Include="js\services\marks.service.js" />
     <Content Include="ScriptProfile\Profile.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Profile.cshtml" />
