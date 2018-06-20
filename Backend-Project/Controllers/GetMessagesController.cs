@@ -15,7 +15,6 @@ namespace Backend_Project.Controllers
             public string Title { get; set; }
             public string BBCODE { get; set; }
             public DateTime DateStart { get; set; }
-          //  public DateTime DateEnd { get; set; } Ajouter fausse date de fin à la création pour éviter des soucis de variable null
 
             public Boolean Priority { get; set; }
             public Boolean AdminRequ { get; set; }
@@ -33,15 +32,11 @@ namespace Backend_Project.Controllers
 
             foreach (var idmsg in count)
             {
-            //bon c'est chiant, je vais continuer ma fct et régler ce bug so'              
                 Message message = new Message();
                 message.Title = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.Title).FirstOrDefault();
                 message.BBCODE = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.Title).FirstOrDefault();
                 message.DateStart = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.DateStart).FirstOrDefault();
-               // message.DateEnd = DateTime.Now;
-          //      message.DateEnd = (from msg in idBoard.Messages where (msg.idMessage == idmsg && msg.DateEnd != null) select msg.DateEnd).FirstOrDefault() ;
-           //     if (message.DateEnd.Equals(null))
-            //        message.DateEnd = DateTime.Now;
+
                 message.Priority = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.Priority).FirstOrDefault();
                 message.AdminRequ = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.AdministrativeRequest).FirstOrDefault();
                 message.ModifReq = (from msg in idBoard.Messages where msg.idMessage == idmsg select msg.ModificationRequest).FirstOrDefault();
