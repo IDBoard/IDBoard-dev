@@ -11,7 +11,7 @@ namespace Backend_Project.Controllers
     public class PersonController : ApiController
     {
         // GET: api/Person : Renvoie la liste des personnes
-        public IHttpActionResult GetPersonList()
+       /* public IHttpActionResult GetPersonList()
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -29,7 +29,7 @@ namespace Backend_Project.Controllers
             { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore }
             ));
         }
-
+        */
         // GET: api/Person/id : Renvoie les détails d'une personnes séléctionnée par id
         /*public IHttpActionResult GetPerson(int id)
         {
