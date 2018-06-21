@@ -11,7 +11,7 @@ namespace Backend_Project.Controllers
     public class PersonController : ApiController
     {
         // GET: api/Person : Renvoie la liste des personnes
-        public IHttpActionResult GetPerson()
+        public IHttpActionResult GetPersonList()
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -31,7 +31,7 @@ namespace Backend_Project.Controllers
         }
 
         // GET: api/Person/id : Renvoie les détails d'une personnes séléctionnée par id
-        public IHttpActionResult GetPerson(int id)
+        /*public IHttpActionResult GetPerson(int id)
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -69,7 +69,7 @@ namespace Backend_Project.Controllers
 
             return Ok(JsonConvert.SerializeObject(PersonDetails));
         }
-
+        */
         // POST: AddPerson => _type == (Homme || Femme || Morale)
         [HttpPost]
         public IHttpActionResult UpdatePerson(int _idBusinessEntity, String _type, int _idSystemLevel, int _IDBoard, String _firstName, String _name, String _surName, String _photoPath, 
@@ -110,23 +110,42 @@ namespace Backend_Project.Controllers
                                      fichecontact.City,
                                      fichecontact.Country
                                  }).ToList();
-
-
-         /*   Matters newMatterQuery = new Matters
-            {
-                idClass = _idClasse,
-                Reference = _reference,
-                DescriptionDefaultValue = _description,
-                MarksNumber = _marksNumber,
-                ECTSCredits = _credits
-            };
             
-            iDBoard.Matters.Add(newMatterQuery);
-            */
             iDBoard.SaveChanges();
 
             return Ok();
         }
 
+        [HttpPost]
+        public IHttpActionResult InsertPerson(int _idSalutation, int _idTypeBusinessEntity, String _type, int _idSystemLevel, String _IDBoard, String _firstName, 
+            String _name, String _surName, String _photoPath, String _dateOfBirth, String _placeOfBirth, String _nationality, String _contryOfBirth, String _comment, String _adresse1,
+            String _adresse2, int _postalCode, String _city, String _country)
+        {
+            IdBoardDb iDBoard = new IdBoardDb();
+
+            BusinessEntities newBusinessEntitie = new BusinessEntities
+            {
+                idBusinessEntity = 0,
+                idSalutation = _idSalutation,
+                idTypeBusinessEntity = _idTypeBusinessEntity,
+                idSystemLevel = _idSystemLevel,
+                IDBoard = _IDBoard,
+                Name = _name,
+                FirstName = _firstName,
+                SurName = _surName,
+                PhotoPath = _photoPath,
+                DateOfBirth = DateTime.ParseExact(_dateOfBirth, "yyyy - MM - dd", System.Globalization.CultureInfo.InvariantCulture),
+                PlaceOfBirth = _placeOfBirth,
+                Nationality = _nationality,
+                CountryOfBirth = _contryOfBirth,
+                Comments = _comment
+            };
+
+            iDBoard.BusinessEntities.Add(newBusinessEntitie);
+
+            iDBoard.SaveChanges();
+
+            return Ok(newBusinessEntitie.idBusinessEntity);
+        }
     }
 }
