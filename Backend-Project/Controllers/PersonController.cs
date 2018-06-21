@@ -116,10 +116,10 @@ namespace Backend_Project.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("InsertPerson")]
         public IHttpActionResult InsertPerson(int _idSalutation, int _idTypeBusinessEntity, String _type, int _idSystemLevel, String _IDBoard, String _firstName, 
             String _name, String _surName, String _photoPath, String _dateOfBirth, String _placeOfBirth, String _nationality, String _contryOfBirth, String _comment, String _adresse1,
-            String _adresse2, int _postalCode, String _city, String _country)
+            String _adresse2, String _postalCode, String _city, String _country)
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -134,12 +134,33 @@ namespace Backend_Project.Controllers
                 FirstName = _firstName,
                 SurName = _surName,
                 PhotoPath = _photoPath,
-                DateOfBirth = DateTime.ParseExact(_dateOfBirth, "yyyy - MM - dd", System.Globalization.CultureInfo.InvariantCulture),
+                DateOfBirth = DateTime.Now, //DateTime.ParseExact(_dateOfBirth, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
                 PlaceOfBirth = _placeOfBirth,
                 Nationality = _nationality,
                 CountryOfBirth = _contryOfBirth,
-                Comments = _comment
+                Comments = _comment,
+                CardTokenID = "0"
             };
+
+            iDBoard.BusinessEntities.Add(newBusinessEntitie);
+
+            iDBoard.SaveChanges();
+
+            ContactDetails newContactDetail = new ContactDetails
+            {
+                idBusinessEntity = newBusinessEntitie.idBusinessEntity,
+                Address1 = _adresse1,
+                Address2 = _adresse2,
+                PostalCode = _postalCode,
+                City = _city,
+                Country = _country,
+                DateStart = DateTime.Now,
+                DateEnd = null
+            };
+
+            iDBoard.ContactDetails.Add(newContactDetail);
+
+            iDBoard.SaveChanges();
 
             iDBoard.BusinessEntities.Add(newBusinessEntitie);
 
