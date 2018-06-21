@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,8 +11,7 @@ namespace Backend_Project.Controllers
 {
     public class PersonController : ApiController
     {
-        // GET: api/Person : Renvoie la liste des personnes
-       /* public IHttpActionResult GetPersonList()
+        public IHttpActionResult GetPerson()
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -29,9 +29,9 @@ namespace Backend_Project.Controllers
             { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore }
             ));
         }
-        */
+
         // GET: api/Person/id : Renvoie les détails d'une personnes séléctionnée par id
-        /*public IHttpActionResult GetPerson(int id)
+        public IHttpActionResult GetPerson(int id)
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
@@ -40,7 +40,8 @@ namespace Backend_Project.Controllers
                                  join typebusinnesentity in iDBoard.TypesBusinessEntities
                                  on person.idTypeBusinessEntity equals typebusinnesentity.idTypeBusinessEntity
                                  join fichecontact in iDBoard.ContactDetails
-                                 on person.idBusinessEntity equals fichecontact.idBusinessEntity where fichecontact.DateEnd == null
+                                 on person.idBusinessEntity equals fichecontact.idBusinessEntity
+                                 where fichecontact.DateEnd == null
                                  // on prend la fiche contact que si date end == null pour prendre la plus recente
                                  select new
                                  {
@@ -69,7 +70,7 @@ namespace Backend_Project.Controllers
 
             return Ok(JsonConvert.SerializeObject(PersonDetails));
         }
-        */
+
         // POST: AddPerson => _type == (Homme || Femme || Morale)
         [HttpPost]
         public IHttpActionResult UpdatePerson(int _idBusinessEntity, String _type, int _idSystemLevel, int _IDBoard, String _firstName, String _name, String _surName, String _photoPath, 
@@ -148,6 +149,7 @@ namespace Backend_Project.Controllers
 
             ContactDetails newContactDetail = new ContactDetails
             {
+                idContactDetails = 0,
                 idBusinessEntity = newBusinessEntitie.idBusinessEntity,
                 Address1 = _adresse1,
                 Address2 = _adresse2,
@@ -159,10 +161,6 @@ namespace Backend_Project.Controllers
             };
 
             iDBoard.ContactDetails.Add(newContactDetail);
-
-            iDBoard.SaveChanges();
-
-            iDBoard.BusinessEntities.Add(newBusinessEntitie);
 
             iDBoard.SaveChanges();
 
