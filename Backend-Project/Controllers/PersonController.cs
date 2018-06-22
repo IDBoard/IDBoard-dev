@@ -13,7 +13,7 @@ namespace Backend_Project.Controllers
     {
         public IHttpActionResult GetPerson()
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             //idBusinnesEntity 2 = Personne homme | idBusinnesEntity 3 = Personne femme | idBusinnesEntity 4 = Personne Morale
             var PersonList = (from person in iDBoard.BusinessEntities
@@ -33,7 +33,7 @@ namespace Backend_Project.Controllers
         // GET: api/Person/id : Renvoie les détails d'une personnes séléctionnée par id
         public IHttpActionResult GetPerson(int id)
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             var PersonDetails = (from person in iDBoard.BusinessEntities
                                  where person.idBusinessEntity == id
@@ -77,7 +77,7 @@ namespace Backend_Project.Controllers
             String _dateOfBirth, String _placeOfBirth, String _nationality, String _contryOfBirth, String _comment, String _adress1, String _adresse2, int _postalCode,
             String _city, String _country)
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             var PersonDetails = (from person in iDBoard.BusinessEntities
                                  where person.idBusinessEntity == _idBusinessEntity
@@ -122,7 +122,7 @@ namespace Backend_Project.Controllers
             String _name, String _surName, String _photoPath, String _dateOfBirth, String _placeOfBirth, String _nationality, String _contryOfBirth, String _comment, String _adresse1,
             String _adresse2, String _postalCode, String _city, String _country)
         {
-            IdBoardDb iDBoard = new IdBoardDb();
+            IDBoardDb iDBoard = new IDBoardDb();
 
             BusinessEntities newBusinessEntitie = new BusinessEntities
             {
