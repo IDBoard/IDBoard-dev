@@ -223,7 +223,9 @@
     <Compile Include="Controllers\GetTrombi2Controller.cs" />
     <Compile Include="Controllers\GetTrombiController.cs" />
     <Compile Include="Controllers\InternshipController.cs" />
+    <Compile Include="Controllers\MarksController.cs" />
     <Compile Include="Controllers\MatterController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\SalutationController.cs" />
     <Compile Include="Courses.cs">
       <DependentUpon>IdboardDb.tt</DependentUpon>
