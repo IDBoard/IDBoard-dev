@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,7 +11,6 @@ namespace Backend_Project.Controllers
 {
     public class PersonController : ApiController
     {
-        // GET: api/Person : Renvoie la liste des personnes
         public IHttpActionResult GetPerson()
         {
             IdBoardDb iDBoard = new IdBoardDb();
@@ -40,7 +40,8 @@ namespace Backend_Project.Controllers
                                  join typebusinnesentity in iDBoard.TypesBusinessEntities
                                  on person.idTypeBusinessEntity equals typebusinnesentity.idTypeBusinessEntity
                                  join fichecontact in iDBoard.ContactDetails
-                                 on person.idBusinessEntity equals fichecontact.idBusinessEntity where fichecontact.DateEnd == null
+                                 on person.idBusinessEntity equals fichecontact.idBusinessEntity
+                                 where fichecontact.DateEnd == null
                                  // on prend la fiche contact que si date end == null pour prendre la plus recente
                                  select new
                                  {
@@ -110,23 +111,60 @@ namespace Backend_Project.Controllers
                                      fichecontact.City,
                                      fichecontact.Country
                                  }).ToList();
-
-
-         /*   Matters newMatterQuery = new Matters
-            {
-                idClass = _idClasse,
-                Reference = _reference,
-                DescriptionDefaultValue = _description,
-                MarksNumber = _marksNumber,
-                ECTSCredits = _credits
-            };
             
-            iDBoard.Matters.Add(newMatterQuery);
-            */
             iDBoard.SaveChanges();
 
             return Ok();
         }
 
+        [HttpPost, ActionName("InsertPerson")]
+        public IHttpActionResult InsertPerson(int _idSalutation, int _idTypeBusinessEntity, String _type, int _idSystemLevel, String _IDBoard, String _firstName, 
+            String _name, String _surName, String _photoPath, String _dateOfBirth, String _placeOfBirth, String _nationality, String _contryOfBirth, String _comment, String _adresse1,
+            String _adresse2, String _postalCode, String _city, String _country)
+        {
+            IdBoardDb iDBoard = new IdBoardDb();
+
+            BusinessEntities newBusinessEntitie = new BusinessEntities
+            {
+                idBusinessEntity = 0,
+                idSalutation = _idSalutation,
+                idTypeBusinessEntity = _idTypeBusinessEntity,
+                idSystemLevel = _idSystemLevel,
+                IDBoard = _IDBoard,
+                Name = _name,
+                FirstName = _firstName,
+                SurName = _surName,
+                PhotoPath = _photoPath,
+                DateOfBirth = DateTime.Now, //DateTime.ParseExact(_dateOfBirth, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
+                PlaceOfBirth = _placeOfBirth,
+                Nationality = _nationality,
+                CountryOfBirth = _contryOfBirth,
+                Comments = _comment,
+                CardTokenID = "0"
+            };
+
+            iDBoard.BusinessEntities.Add(newBusinessEntitie);
+
+            iDBoard.SaveChanges();
+
+            ContactDetails newContactDetail = new ContactDetails
+            {
+                idContactDetails = 0,
+                idBusinessEntity = newBusinessEntitie.idBusinessEntity,
+                Address1 = _adresse1,
+                Address2 = _adresse2,
+                PostalCode = _postalCode,
+                City = _city,
+                Country = _country,
+                DateStart = DateTime.Now,
+                DateEnd = null
+            };
+
+            iDBoard.ContactDetails.Add(newContactDetail);
+
+            iDBoard.SaveChanges();
+
+            return Ok(newBusinessEntitie.idBusinessEntity);
+        }
     }
 }
