@@ -135,7 +135,7 @@ namespace Backend_Project.Controllers
                 FirstName = _firstName,
                 SurName = _surName,
                 PhotoPath = _photoPath,
-                DateOfBirth = DateTime.Now, //DateTime.ParseExact(_dateOfBirth, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
+                DateOfBirth = DateTime.ParseExact(_dateOfBirth, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
                 PlaceOfBirth = _placeOfBirth,
                 Nationality = _nationality,
                 CountryOfBirth = _contryOfBirth,
@@ -164,7 +164,7 @@ namespace Backend_Project.Controllers
 
             iDBoard.SaveChanges();
 
-            return Ok(newBusinessEntitie.idBusinessEntity);
+            return Ok();
         }
     }
 }

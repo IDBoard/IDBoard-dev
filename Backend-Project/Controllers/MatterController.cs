@@ -53,7 +53,7 @@ namespace Backend_Project.Controllers
         {
             IdBoardDb iDBoard = new IdBoardDb();
 
-            int _idClasse = (from Classes in iDBoard.Classes where Classes.Name == _classeName select Classes.idClass).FirstOrDefault(); ;
+            int _idClasse = (from Classes in iDBoard.Classes where Classes.Name == _classeName select Classes.idClass).FirstOrDefault();
 
             Matters newMatterQuery = new Matters
             {
