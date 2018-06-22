@@ -5,6 +5,7 @@
 
 idboard.controller('MarksController', function ($scope, ClassService, StudentService) {
 
+
     $scope.studentService = StudentService;
     $scope.classService = ClassService;
     $scope.grades = $scope.classService.getGrades();

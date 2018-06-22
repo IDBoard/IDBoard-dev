@@ -139,6 +139,7 @@
     <Content Include="images\tile\ribbon-2x.png" />
     <Content Include="images\tile\ribbon.png" />
     <Content Include="js\controllers\Connection.controller.js" />
+    <Content Include="js\controllers\Cours.controller.js" />
     <Content Include="js\controllers\Events.controller.js" />
     <Content Include="js\controllers\Forget_password.controller.js" />
     <Content Include="js\controllers\Class.controller.js" />
