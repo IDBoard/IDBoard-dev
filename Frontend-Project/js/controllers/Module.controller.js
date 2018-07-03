@@ -4,19 +4,26 @@
     $scope.grades = $scope.classService.getGrades();
     $scope.modules = ModuleService.getModules();
 
-    
     var moduleToShow;
     $scope.moduleSelected;
     $scope.cours;
     $scope.moduleNameToAdd;
 
+    /**
+     * Show Module By Class (Grade)
+     * @param {any} idgrade
+     */
     $scope.showModuleByGrade = function (idgrade) {
         var _grade = $scope.classService.findGradeById(idgrade);
         $scope.currentGrade = _grade;
         moduleToShow = ModuleService.allModulesByGrade(_grade);
         $scope.modulesOfGradeSelected = moduleToShow;
     };
-    
+
+    /**
+     * Set Module Selected
+     * @param {any} module
+     */
     $scope.setModuleSelected = function (module) {
         if (module != null) {
             $scope.moduleSelected = module;
@@ -26,9 +33,13 @@
             $scope.moduleSelected = null;    
             $scope.cours = [];
         }
-       
     }
 
+    /**
+     * Add Module To Grade
+     * @param {any} grade
+     * @param {any} module
+     */
     $scope.addModuleToGrade = function (grade, module) {
         if ($scope.idGradeSelected != null && $scope.idGradeSelected != "undefined" && $scope.idGradeSelected != "")
         {
@@ -51,6 +62,11 @@
         }
     }
 
+
+    /**
+     * 
+     *Watch length of array  modules
+     */
     $scope.$watch('modules.length', function (newVal, oldVal) {
         if (newVal != oldVal) {
             if (newVal != null && newVal != "undefined") {
@@ -62,7 +78,10 @@
         }
     });
 
-
+    /**
+     * 
+     *Watch the variable idGradeSelected
+     */
     $scope.$watch('idGradeSelected', function (newVal, oldVal) {
         if ($scope.idGradeSelected != null) {
            

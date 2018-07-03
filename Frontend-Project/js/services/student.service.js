@@ -118,6 +118,10 @@ idboard.service('StudentService', function () {
         return studentsNotBelongToGradeList;
     }
 
+    /**
+     * Set Grade of Student
+     * @param {any} student
+     */
     this.changeGradeStudent = function (student) {
         students.forEach(function (_student) {
             if (_student.id === student.id) {
@@ -150,6 +154,11 @@ idboard.service('StudentService', function () {
         return student;
     }
 
+    /**
+     * Get Student By id in list
+     * @param {any} id
+     * @param {any} studentsL
+     */
     this.getStudentByIdInList = function (id, studentsL) {
         var student;
         if (id !== 'undefined') {

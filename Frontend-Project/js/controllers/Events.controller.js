@@ -13,7 +13,10 @@ idboard.controller('EventsController', function ($scope, $timeout, $filter, Even
 
     $scope.eventService = EventsService;
     $scope.eventsNotViewed = EventsService.getEventsNotViewedByStudent(currentStudentId);
-    
+
+    /**
+     * Show Events on Order
+     */
     $scope.showEventsOrder = function () {
         $scope.propertyName = 'date';
         $scope.reverse = true;
@@ -34,11 +37,15 @@ idboard.controller('EventsController', function ($scope, $timeout, $filter, Even
         var currentStudent = StudentService.getStudentById(currentStudentId);
         
         $scope.currentStudent = currentStudent;
-        $scope.events = EventsService.getEventsByStudent(currentStudentId);
+        $scope.events = EventsService.getEventsByIdBusinessEntity(currentStudentId);
         $scope.showEventsOrder();
     }
     
 
+    /**
+     * Add Event
+     * @param {any} event
+     */
     $scope.addEvent = function (event) {
         console.log('addEvent');
         var eventToAdd = {
@@ -52,10 +59,14 @@ idboard.controller('EventsController', function ($scope, $timeout, $filter, Even
     }
 
     $scope.$watch('eventService.getEvents().length', function (newcount) {
-        $scope.checkEventsForNotify(newcount);
+        $scope.checkEventsForNotifing(newcount);
     });
 
-    $scope.checkEventsForNotify = function (newcount) {
+    /**
+     * check Events before notifing
+     * @param {any} newcount
+     */
+    $scope.checkEventsForNotifing = function (newcount) {
 
         if (currentStudent !== null && countEventsOfStudent != 0) {
 
@@ -64,7 +75,7 @@ idboard.controller('EventsController', function ($scope, $timeout, $filter, Even
             if (countEventsAfterUpdate > 0 && countEventsOfStudent > 0) {
                 
                 var countNotificationEvents = countEventsAfterUpdate - countEventsOfStudent;
-                $scope.eventsNotViewed = EventsService.getEventsNotViewedByStudent(currentStudentId);
+                $scope.eventsNotViewed = EventsService.getEventsNotViewedByBusinessEntity(currentStudentId);
                 
                 if (countNotificationEvents < 0) {
                     $scope.countNotificationEvents = 0;
@@ -77,7 +88,9 @@ idboard.controller('EventsController', function ($scope, $timeout, $filter, Even
         }
     }
 
-
+    /**
+     * Show Events after a time
+     */
     $scope.eventsViewed = function ()
     {
         if ($scope.countNotificationEvents > 0)
@@ -87,7 +100,6 @@ idboard.controller('EventsController', function ($scope, $timeout, $filter, Even
                 $scope.eventsNotViewed.forEach(function (_newEvent) {
                     EventsService.setEventsNotViewedToEventList(_newEvent);
                 });
-               
                 ///Init values for notification
                 $scope.countNotificationEvents = 0;
                 $scope.eventsNotViewed = [];

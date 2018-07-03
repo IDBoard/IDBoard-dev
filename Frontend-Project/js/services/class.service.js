@@ -241,6 +241,11 @@ idboard.service('ClassService', function () {
         gradeList.splice(index, 1);
     }
 
+    /**
+     * Add Student to Class
+     * @param {any} grade
+     * @param {any} student
+     */
     this.addStudent = function (grade, student) {
         if (!this.studentExisted(grade, student)) {
             var s = { id: student.id };
@@ -248,6 +253,11 @@ idboard.service('ClassService', function () {
         }
     }
 
+    /**
+     * Check student exist in the class (grade)
+     * @param {any} grade
+     * @param {any} student
+     */
     this.studentExisted = function (grade, student)
     {
         var existed = false;
@@ -269,7 +279,6 @@ idboard.service('ClassService', function () {
 
     this.deleteStudent = function (grade, student)
     {
-        
         for (var i = 0; i < grade.students.length; i++) {
             if (grade.students[i].id == student.id) {
                 grade.students.splice(i, 1);
@@ -279,10 +288,19 @@ idboard.service('ClassService', function () {
         return grade.students;
     }
 
+    /**
+     * Inactive Student Passage
+     * @param {any} student
+     */
     this.inactiveStudentPassage = function (student) {
         student.active = false;
     }
 
+    /**
+     * Add module to grade
+     * @param {any} grade
+     * @param {any} module
+     */
     this.addModule = function (grade, module) {
         var _module = {
             id : module.id
@@ -302,6 +320,10 @@ idboard.service('ClassService', function () {
         return modules;
     }
 
+    /**
+     * Find Grade By Id
+     * @param {any} idGrade
+     */
     this.findGradeById = function (idGrade) {
         var grade;
         var keepGoing = true;

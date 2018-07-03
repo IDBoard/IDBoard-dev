@@ -83,7 +83,11 @@ idboard.service('EventsService', function () {
         return eventsList;
     }
 
-    this.getEventsByStudent = function (id)
+    /**
+     * Get Events by Student idBusinessEntity
+     * @param {any} id
+     */
+    this.getEventsByIdBusinessEntity = function (id)
     {
         var events = [];
         for (var i = 0; i < eventsList.length; i++)
@@ -96,6 +100,10 @@ idboard.service('EventsService', function () {
         return events;
     }
 
+    /**
+     * Check if exist an event
+     * @param {any} event
+     */
     this.existedEvent = function (event) {
         var existed = false;
         for (var i = 0; i < eventsList.length; i++) {
@@ -113,7 +121,11 @@ idboard.service('EventsService', function () {
         }
     }
 
-    this.getEventsNotViewedByStudent = function (id) {
+    /**
+     * Get Events Not Viewed By Business Entity
+     * @param {any} id
+     */
+    this.getEventsNotViewedByBusinessEntity = function (id) {
         var eventsNotViewed = [];
         eventsList.forEach(function (_newEvent) {
             if (!_newEvent.viewed && _newEvent.idBusinessEntity == id) {

@@ -69,6 +69,10 @@ idboard.service('ModuleService', function () {
         return moduleList;
     }
 
+    /**
+     * Get all Modules By Grade
+     * @param {any} grade
+     */
     this.allModulesByGrade = function (grade) {
         var arrayResultModules = [];
         var modulesOfThisGrade = grade.modules;
@@ -90,7 +94,12 @@ idboard.service('ModuleService', function () {
         }
         return arrayResultModules;
     }
-    
+
+    /**
+     * Add Cours to module
+     * @param {any} module
+     * @param {any} cours
+     */
     this.addCoursToModule = function (module, cours) {
         var added = false;
         if (!this.coursExisted(module, cours)) {
@@ -106,6 +115,11 @@ idboard.service('ModuleService', function () {
         return added;
     };
 
+    /**
+     * Check if cours is existed
+     * @param {any} module
+     * @param {any} cours
+     */
     this.coursExisted = function (module, cours) {
         var existed = false;
         if (module != null && module != "undefined" && module != "") {

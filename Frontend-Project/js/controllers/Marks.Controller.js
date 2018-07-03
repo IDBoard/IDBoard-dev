@@ -13,7 +13,8 @@ idboard.controller('MarksController', function ($scope, ClassService, StudentSer
     $scope.idGradeSelected;
     $scope.studentsByGrade = [];
     $scope.seachStudentBy = "";
-    
+
+
     $scope.$watch('idGradeSelected', function (newVal, oldVal) {
         if ($scope.idGradeSelected != null) {
 
@@ -28,6 +29,10 @@ idboard.controller('MarksController', function ($scope, ClassService, StudentSer
         }
     });
 
+    /**
+     * Update List Students By Class (Grade)
+     * @param {any} grade
+     */
     $scope.updateListStudentsByGrade = function (grade) {
         var grade = $scope.classService.findGradeById($scope.idGradeSelected);
         if (grade != null) {

@@ -153,6 +153,11 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
     });
 
+
+    /**
+     * 
+     *Watch length of array  gradeSelected.students
+     */
     $scope.$watch('gradeSelected.students.length', function (newVal, oldVal) {
         if (newVal < oldVal) { // only when delete student
             $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
