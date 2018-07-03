@@ -17,12 +17,9 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
     $scope.gradesActives = ClassService.getGradesActives();
     $scope.gradesNActives = ClassService.getGradesNActives();
     
-    if ($scope.gradesActives.length > 0)
-    {
-        //$scope.newGradeToDuplicate = $scope.gradesActives[0].name;
-    }
-
-   
+    /**
+     * Create a new Class(Grade) and update array of grades and grades actives
+     */
     $scope.newGrade = function () {
         var grade = {
             idClass: Date.now,
@@ -35,17 +32,30 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         $scope.gradeNameToAdd = "";
         $scope.newGradeIdToDuplicate;
     }
-    
+
+    /**
+     * Set gradeSelected
+     * @param {any} grade
+     */
     $scope.selectGrade = function (grade) {
         $scope.gradeSelected = grade;
-      
     };
 
+
+    /**
+     * Find Students in the grade
+     * @param {any} grade
+     */
     $scope.findStudentsInThisGrade = function (grade) {
         $scope.gradeSelected = grade;
         $scope.updateListStudentsInCurrentGrade(grade);
     }
 
+
+    /**
+     * Update List Students In Current Class (Grade)
+     * @param {any} grade
+     */
     $scope.updateListStudentsInCurrentGrade = function (grade) {
         var idStudentsInThisGrade = ClassService.getStudentsInThisGrade(grade);
         var students = [];
@@ -60,12 +70,19 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         $scope.studentsInThisGrade = students;
     }
 
-    
-
+    /**
+     * Delete grade
+     * @param {any} grade
+     */  
     $scope.deleteGrade = function (grade) {
         ClassService.deleteGrade(grade);
     };
 
+
+    /**
+     * Add student to grade selected
+     * @param {any} student
+     */
     $scope.addStudent = function (student) {
         if ($scope.gradeSelected != null && $scope.gradeSelected !== "undefined") {
             ClassService.addStudent($scope.gradeSelected, student);
@@ -75,6 +92,11 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         }
     };
 
+
+    /**
+     * Duplicate grade
+     * @param {any} grade
+     */
     $scope.duplicateGrade = function (grade) {
         if ($scope.newGradeIdToDuplicate != null && $scope.newGradeIdToDuplicate != "undefined") {
             if ($scope.nameNewGrade != null && $scope.nameNewGrade != "undefined") {
@@ -84,10 +106,12 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
                 $scope.nameNewGrade = "";
             }
         }
-        
     };
 
-
+    /**
+     * Archive Grade and update array of grade not actives
+     * @param {any} grade
+     */
     $scope.archiveGrade = function (grade) {
         ClassService.archiveGrade(grade);
 
@@ -99,6 +123,11 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         $scope.gradesNActives.push(grade);
     }
 
+
+    /**
+     * Delete student
+     * @param {any} student
+     */
     $scope.deleteStudent = function (student) {
         if ($scope.gradeSelected !== null || $scope.gradeSelected === 'undefined') {
             $scope.gradeSelected.students = ClassService.deleteStudent($scope.gradeSelected, student);
@@ -107,11 +136,19 @@ idboard.controller('ClassController', function ($scope, $filter, ClassService, S
         }
     }
 
+
+    /**
+     * Inactive Student Passage
+     * @param {any} student
+     */
     $scope.inactiveStudentPassage = function (student) {
         ClassService.inactiveStudentPassage(student);
     }
 
-
+    /**
+     * 
+     *Watch length of array  studentsInThisGrade
+     */
     $scope.$watch('studentsInThisGrade.length', function (newVal, oldVal) {
         $scope.studentsNotBelongToGrade = StudentService.getStudentsNotBelongToGrade();
     });
