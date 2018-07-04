@@ -117,6 +117,8 @@ namespace Backend_Project.Controllers
             return Ok();
         }
 
+        // On utilise un action name pour eviter les conflits : Sert à inserer une personne 
+        // Exemple : /api/Person/InsertPerson?_idSalutation=2&_idTypeBusinessEntity=2&_idSystemLevel=1&_IDBoard=2013213&_firstName=Quentin&_name=BOULOGNE&_surName=&_photoPath=~/Uploads/2013213/photo_Quentin_BOULOGNE.jpg&_dateOfBirth=1996/20/06&_placeOfBirth=Dignes&_nationality=Française&_contryOfBirth=France&_comment&_type&_adresse1=ezez&_adresse2=ezezez&_postalCode=00000&_city=rfer&_country=reree
         [HttpPost, ActionName("InsertPerson")]
         public IHttpActionResult InsertPerson(int _idSalutation, int _idTypeBusinessEntity, String _type, int _idSystemLevel, String _IDBoard, String _firstName, 
             String _name, String _surName, String _photoPath, String _dateOfBirth, String _placeOfBirth, String _nationality, String _contryOfBirth, String _comment, String _adresse1,

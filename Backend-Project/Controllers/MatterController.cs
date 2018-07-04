@@ -10,7 +10,7 @@ namespace Backend_Project.Controllers
 {
     public class MatterController : ApiController
     {
-        //Get modules list from classe name (ex : /Matter/B3)
+        //Get modules list from classe name (ex : /Matter/B3) : Quelques bugs sont présents
        // [HttpGet, ActionName("get")]
         public IHttpActionResult GetModuleFromClassName(String classeName)
         {
